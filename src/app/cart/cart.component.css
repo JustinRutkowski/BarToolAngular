@@ -1,0 +1,74 @@
+.cart {
+    height: 12em;
+    width: 50%;
+}
+
+.navbar {
+    justify-content: center;
+    min-height: 0;
+}
+
+.form-control {
+    height: 2em;
+    font-size: 2.5em;
+    text-align: center;
+}
+
+h1 {
+    color: white;
+    font-size: 3em;
+    text-align: center;
+}
+
+label {
+    color: white;
+    font-size: 1.3em;
+    margin-left: 0.5em;
+}
+
+input {
+    text-align: center;
+    font-size: 1.3em;
+    height: 2em;
+}
+
+.overView {
+    margin: 2em;
+    background: #096600;
+    border-radius: 100px;
+    padding: 10px;
+    padding-bottom: 20px;
+}
+
+.col {
+    font-size: 1.42em;
+    margin-top: 2em;
+}
+
+.navbar {
+    justify-content: center;
+}
+
+.btn {
+    border-radius: 25px;
+    margin-top: 1em;
+    margin-left: 1.5em;
+    margin-right: 1.5em;
+    width: 200px;
+    font-size: 50px;
+    border: 1px solid black;
+}
+
+.btn-success {
+    border-radius: 25px;
+    text-align: center;
+    width: -moz-available;
+    width: -webkit-fill-available;
+    margin-bottom: 0.25em;
+    font-size: 3em;
+    border: 1px solid black;
+}
+
+.overlay-content {
+    margin-top: 0;
+}

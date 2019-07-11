@@ -1,0 +1,57 @@
+.btn-secondary {
+    color: black;
+    border-radius: 25px;
+    border: solid 1px black;
+    height: 100px;
+    width: 200px;
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+    margin-top: 0.2em;
+    margin-bottom: 0.2em;
+    font-size: 40px;
+}
+
+.btn-primary {
+    font-size: 3em;
+    margin-top: 0.2em;
+}
+
+.navbar {
+    justify-content: center;
+}
+
+h3 {
+    font-size: 27px;
+}
+
+.products {
+    margin-left: 2em;
+    margin-right: 2em;
+}
+
+.long {
+    font-size: 30px;
+}
+
+.verylong {
+    font-size: 19px;
+}
+
+img {
+    margin-right: 1em;
+}
+
+h1 {
+    margin-right: 1em;
+}
+
+.nav-tabs {
+    font-size: 2em;
+    border-bottom: 1px solid #ccc;
+}
+
+.nav-tabs>li.active>a,
+.nav-tabs>li.active>a:focus,
+.nav-tabs>li.active>a:hover {
+    background-color: #DDD;
+}

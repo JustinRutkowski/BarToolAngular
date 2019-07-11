@@ -1,0 +1,318 @@
+/* You can add global styles to this file, and also import other style files */
+
+#title {
+    margin-bottom: 2em;
+}
+
+hr {
+    border: 1px solid grey;
+    margin-left: 2em;
+    margin-right: 2em;
+}
+
+.btn-success {
+    background: #096600;
+}
+
+h3 {
+    color: black;
+    text-align: center;
+    border-bottom: solid 4px black;
+    font-weight: bolder;
+    font-size: 27px;
+}
+
+.btn-success:disabled {
+    background: darkgray;
+    border-radius: 25px;
+    text-align: center;
+    width: -moz-available;
+    width: -webkit-fill-available;
+    margin-bottom: 0.25em;
+    font-size: 3em;
+    border: 1px solid black;
+}
+
+button:disabled {
+    background-color: darkgray;
+}
+
+.navbar {
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+.cartItem {
+    border: 1px solid black;
+    color: black;
+    font-weight: 600;
+    border-radius: 25px;
+    width: 100%;
+    height: 2.8em;
+    font-size: 1.5em;
+    margin-left: 1%;
+}
+
+input {
+    border-radius: 25px;
+}
+
+.form-control {
+    border-radius: 25px;
+}
+
+option {
+    border-radius: 25px;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+
+/**************************************************************/
+
+#overlay {
+    display: none;
+}
+
+
+/* Position the content inside the overlay */
+
+.overlay-content {
+    overflow: auto;
+    top: 10%;
+    /* 25% from the top */
+    width: 100%;
+    /* 100% width */
+    text-align: center;
+    /* Centered text/links */
+    margin-top: 30px;
+    /* 30px top margin to avoid conflict with the close button on smaller screens */
+}
+
+
+/* Position the close button (top right corner) */
+
+.overlay .closebtn {
+    position: absolute;
+    right: 0;
+    font-size: 10em;
+    color: red;
+    z-index: 3;
+    top: 0;
+}
+
+.overlay {
+    position: fixed;
+    /* Sit on top of the page content */
+    overflow: auto;
+    display: none;
+    /* Hidden by default */
+    width: 100%;
+    /* Full width (cover the whole page) */
+    height: 100%;
+    /* Full height (cover the whole page) */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.95);
+    /* Black background with opacity */
+    z-index: 2;
+    /* Specify a stack order in case you're using a different order for other elements */
+    cursor: pointer;
+    /* Add a pointer on hover */
+}
+
+.button {
+    display: inline-block;
+    border-radius: 4px;
+    background-color: #f4511e;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 28px;
+    padding: 20px;
+    width: 200px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+}
+
+.button span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
+
+.button span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+}
+
+.button:hover span {
+    padding-right: 25px;
+}
+
+.button:hover span:after {
+    opacity: 1;
+    right: 0;
+}
+
+.fade-in {
+    animation: fadeIn ease 0.3s;
+    -webkit-animation: fadeIn ease 0.5s;
+    -moz-animation: fadeIn ease 0.3s;
+    -o-animation: fadeIn ease 0.3s;
+    -ms-animation: fadeIn ease 0.3s;
+}
+
+.fade-out {
+    animation: fadeOut ease 0.3s;
+    -webkit-animation: fadeOut ease 0.5s;
+    -moz-animation: fadeOut ease 0.3s;
+    -o-animation: fadeOut ease 0.3s;
+    -ms-animation: fadeOut ease 0.3s;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        border-radius: 100%;
+        margin-top: 100em;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@-moz-keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@-o-keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@-ms-keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        border-radius: 100%;
+        margin-top: 100em;
+    }
+}
+
+@-moz-keyframes fadeOut {
+    0% {
+        opacity: 1;
+        margin-left: 0%
+    }
+    100% {
+        opacity: 0;
+        margin-left: 100%
+    }
+}
+
+@-webkit-keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@-o-keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@-ms-keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+div.slide-up button {
+    animation: 0.5s slide-up;
+    margin-top: 1%
+}
+
+@keyframes slide-up {
+    0% {
+        margin-top: 100%;
+    }
+    80% {
+        margin-top: -10%;
+    }
+    100% {
+        margin-top: 1%;
+    }
+}
+
+div.slide-down button {
+    animation: 0.5s slide-down;
+    margin-top: 1%
+}
+
+@keyframes slide-down {
+    0% {
+        margin-top: 1%;
+    }
+    40% {
+        margin-top: -10%;
+    }
+    100% {
+        margin-top: 100%;
+    }
+}

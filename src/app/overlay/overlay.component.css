@@ -1,0 +1,82 @@
+::ng-deep .mat-select-trigger {
+    min-width: 65vw;
+}
+
+ ::ng-deep .mat-select-panel {
+    max-height: 65vh !important;
+}
+
+button:hover {
+    color: red;
+}
+
+.title {
+    text-align: center;
+    font-size: 5em;
+    color: white;
+    z-index: 2;
+    /* Specify a stack order in case you're using a different order for other elements */
+    cursor: pointer;
+    /* Add a pointer on hover */
+}
+
+h3 {
+    text-align: center;
+    border-bottom: solid 4px black;
+    font-weight: bolder;
+}
+
+.navbar {
+    justify-content: center;
+    min-height: 0;
+}
+
+label {
+    color: white;
+    font-size: 3em;
+}
+
+.form-group {
+    -webkit-appearance: none;
+    margin-left: 3em;
+    margin-right: 3em;
+}
+
+.form-control {
+    height: 2em;
+    font-size: 2.5em;
+    text-align: center;
+}
+
+.btn {
+    border-radius: 25px;
+    margin-top: 4em;
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+    height: 150px;
+    width: 200px;
+    font-size: 50px;
+}
+
+.btn-success {
+    border-radius: 25px;
+    text-align: center;
+    width: -moz-available;
+    width: -webkit-fill-available;
+    margin-bottom: 0.25em;
+    font-size: 3em;
+    border: 1px solid black;
+}
+
+.cartItemOverlay {
+    background-color: #c11c0e;
+    color: black;
+    border-radius: 25px;
+    text-align: center;
+    width: -moz-available;
+    width: -webkit-fill-available;
+    margin-top: 3em;
+    margin-bottom: 0.25em;
+    font-size: 4em;
+    border: 1px solid black;
+}
