@@ -2,16 +2,32 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Produkt } from '../produkt';
 import { ProduktService } from '../produkt.service';
 import { CommandExecutor } from 'selenium-webdriver/safari';
+import { Overlay } from '@angular/cdk/overlay';
 
 @Component({
     selector: 'cart',
     templateUrl: './cart.component.html',
     styleUrls: ['./cart.component.css']
 })
-export class CartComponent {
+export class CartComponent implements OnInit {
+    @Input() overlay: any;
     cartItems: Produkt[];
     condition: Boolean = false;
+    drinkMoney: HTMLInputElement;
+    moneyReceived: HTMLInputElement;
+    voucher: HTMLInputElement;
+    voucherLeft: HTMLElement;
+    change: HTMLElement;
 
+    ngOnInit() {
+        this.drinkMoney = <HTMLInputElement>document.getElementById("drinkMoney");
+        this.moneyReceived = <HTMLInputElement>document.getElementById("moneyReceived");
+        this.voucher = <HTMLInputElement>document.getElementById("voucher");
+        this.voucherLeft = <HTMLElement>document.getElementById("voucherLeft");
+        this.change = document.getElementById("change");
+    }
+
+    // todo
     off(overlay: HTMLElement) {
         overlay.className = "overlay fade-out";
         setTimeout(() => {
@@ -32,33 +48,39 @@ export class CartComponent {
     }
 
     /**
-     * 
+     ** displays the Paymentoverlay, copys current card to the overview, calculates the price sum 
      * @param container the whole container of the current cart
      */
-    placeOrder(container: HTMLCollectionOf<HTMLButtonElement>) {
-
+    placeOrder() {
+        var container = document.getElementById('containerNew');
+        var item: HTMLButtonElement;
+        var art;
         // reset fields
-        document.getElementById("change").innerHTML = "€";
-        document.getElementById("drinkMoney").value = null;
-        document.getElementById("moneyReceived").value = null;
-        document.getElementById("voucher").value = null;
-        document.getElementById("voucherLeft").innerHTML = "";
+        this.change.innerHTML = "€";
+        this.drinkMoney.value = null;
+        this.moneyReceived.value = null;
+        this.voucher.value = null;
+        this.voucherLeft.innerHTML = "";
 
-        document.getElementById('placeOrderOverlay').style.display = "block";
-        document.getElementById('moneyReceived').focus();
+        document.getElementById('paymentOverlay').style.display = "block";
+        this.moneyReceived.focus();
 
         var priceSum: number = 0;
+
+        // TO-DO refactore in an Angular way
+        // i=1 for skipping the heading of the container
         for (var i: number = 1; i < container.childElementCount; i++) {
-            var item: HTMLButtonElement = container.children.item(i);
+            item = <HTMLButtonElement>container.children.item(i);
 
             var buttonText: string = item.innerHTML;
+            art = buttonText.split("|", 3)[0].trim();
             var quantity: string = buttonText.split("|", 3)[1];
             var price: string = item.value;
 
             var overviewItem = document.createElement('button');
             overviewItem.innerHTML = buttonText;
             overviewItem.className = item.className + " overView";
-            overviewItem.style.background = item.style.background;
+            overviewItem.style.backgroundColor = document.getElementById(art).style.backgroundColor;
             overviewItem.id = item.innerHTML;
             priceSum = priceSum + (+price * +quantity);
             if (document.getElementById(item.innerHTML) == null) {
@@ -71,20 +93,24 @@ export class CartComponent {
     }
 
     /**
-     * 
+     * calculate the fiels in the payment overlay
+     * @param voucher voucher that the client might have
+     * @param price sum of the products in the cart
+     * @param change change money that the client receives
+     * @param moneyReceived money that we got from the client to pay
+     * @param drinkMoney money that the client voulentiery gives to us
      */
-    calculateChange() {
+    calculateChange(voucher, price, change, moneyReceived, drinkMoney) {
 
-        var price = document.getElementById("price").innerHTML.replace('€', '');
-        var moneyReceived = document.getElementById("moneyReceived").value;
-        var voucher = document.getElementById("voucher").value;
-        var voucherLeft = document.getElementById("voucherLeft").innerHTML
-        var drinkMoney = document.getElementById("drinkMoney").value;
-        var change = document.getElementById("change").innerHTML
+        var voucherLeft = this.voucherLeft.innerHTML
+        price = price.replace('€', '');
+        change = change.replace('€', '');
 
         console.log("voucher: " + voucher);
-
         console.log("price: " + price);
+        console.log("change: " + change);
+        console.log("moneyReceived: " + moneyReceived);
+        console.log("drinkMoney: " + drinkMoney);
 
         if (voucher != 0) {
             voucherLeft = (voucher - +price).toFixed(2) + " €";
@@ -104,10 +130,12 @@ export class CartComponent {
         }
 
         if (drinkMoney != 0) {
-            change = (+document.getElementById("change").innerHTML.replace('€', '') - drinkMoney).toFixed(2) + " €";
+            change = (+document.getElementById("change").innerHTML.replace('€', '')
+                - drinkMoney).toFixed(2) + " €";
         }
         // Control when the order can be finished
-        if ((moneyReceived >= +price || voucher + moneyReceived >= +price || voucher >= +price)) {
+        if ((moneyReceived >= +price || voucher + moneyReceived
+            >= +price || voucher >= +price)) {
 
             this.condition = true;
             console.log("change: " + change);
@@ -119,56 +147,42 @@ export class CartComponent {
             this.condition = false;
         }
 
-        document.getElementById("change").innerHTML = change;
-        document.getElementById("voucherLeft").innerHTML = voucherLeft;
+        this.change.innerHTML = change;
+        this.voucherLeft.innerHTML = voucherLeft;
 
     }
 
     /**
-     * 
+     ** sends the order to DB, resets the cart and overview, saves cart to previousCart 
      */
     finishOrder() {
 
         // gather all the things to send
         var BestellungsID;
-        // var user = document.getElementById("login").innerHTML;
 
-        console.log("passed");
-
-        var overlay = document.getElementById('placeOrderOverlay');
+        var overlay = document.getElementById('paymentOverlay');
         var containerNew = document.getElementById('containerNew');
         var containerOld = document.getElementById('containerOld');
 
-        
+        // fade-out animation and close the paymentOverlay
         containerOld.className = "cart slide-up";
         overlay.className = "overlay fade-out";
         setTimeout(() => {
             overlay.style.display = "none";
             overlay.className = "overlay fade-in";
-        }, 450);
+        }, 275);
 
-      
+        localStorage.setItem("cartOld", JSON.stringify(this.overlay.cartProdukte));
 
-        var currentCart = document.createElement('h3');
-        var currentCart2 = document.createElement('h3');
-
-        currentCart.innerHTML = "aktuelle Bestellung";
-        currentCart2.innerHTML = "letzte Bestellung";
-
-        containerOld.innerHTML = "";
-        containerOld.appendChild(currentCart2);
+        // copy the order to display the previous order
+        this.overlay.cartProdukteOld = this.overlay.cartProdukte;
 
 
-        for (var i: number = 1; i <= containerNew.childElementCount; i++) {
-            console.log(containerNew.children.item(i));
-            document.getElementById('containerOld').append(containerNew.children.item(i));
-        }
+        // reset the cart for a new order
+        this.overlay.cartProdukte = [];
 
-        containerNew.innerHTML = "";
-        containerNew.appendChild(currentCart);
-
+        // reset the overview
         document.getElementById('cartOverview').innerHTML = "";
-
         this.condition = false;
     }
 }

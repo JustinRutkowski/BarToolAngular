@@ -1,4 +1,5 @@
-import { Component} from '@angular/core';
+import { Component } from '@angular/core';
+import { Produkt } from './produkt';
 
 
 @Component({
@@ -8,14 +9,6 @@ import { Component} from '@angular/core';
 })
 
 export class AppComponent {
-  routerLink: string;
-  
-
-  ngOnInit() {
-    this.check();
-  }
-  check(){
-    console.log(this.routerLink);
-  }
-
+  cartProdukte: Produkt[] = new Array();
+  location;
 }

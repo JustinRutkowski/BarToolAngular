@@ -1,12 +1,17 @@
-<!--  -->
+<!-- using produkteName for display the names only once  -->
 <div class="products navbar">
-    <button mat-button [ngStyle]="{backgroundColor: getColor(i)}" class="btn btn-secondary button" *ngFor="let name of produkteName; let i = index;" [id]="name" (click)="ChooseQuantityAndSize(name)" [ngClass]="{'long': (name.length > 8), 'verylong': (name.length > 14)}">{{name}}</button>
+    <button mat-button [ngStyle]="{backgroundColor: getColor(i)}"
+        class="btn btn-secondary button"
+        *ngFor="let name of produkteName; let i = index;" [id]="name"
+        (click)="ChooseQuantityAndSize(name)"
+        [ngClass]="{'long': (name.length > 8), 'verylong': (name.length > 14)}">{{name}}
+    </button>
 </div>
 
 <hr>
 
 <!--  -->
-<overlay [produkte]="produkte"></overlay>
+<cart [overlay]="overlay"></cart>
 
 <!--  -->
-<cart></cart>
+<overlay [produkte]="produkte"></overlay>

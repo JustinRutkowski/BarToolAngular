@@ -1,7 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
 
+body{
+    background: #fafafa;
+}
+
 #title {
     margin-bottom: 2em;
+}
+
+
+.title {
+    text-align: center;
+    font-size: 5em;
+    color: white;
+    z-index: 2;
+    /* Specify a stack order in case you're using a different order for other elements */
+    cursor: pointer;
+    /* Add a pointer on hover */
 }
 
 hr {
@@ -11,7 +26,11 @@ hr {
 }
 
 .btn-success {
-    background: #096600;
+    background: #096600;  
+}
+
+div.ng-tns-c5-0.ng-trigger.ng-trigger-transformPanel.mat-select-panel{
+    border-radius: 25px;
 }
 
 h3 {
@@ -43,14 +62,14 @@ button:disabled {
 }
 
 .cartItem {
+    margin-left: 1%;
     border: 1px solid black;
     color: black;
     font-weight: 600;
     border-radius: 25px;
-    width: 100%;
+    width: 98%;
     height: 2.8em;
     font-size: 1.5em;
-    margin-left: 1%;
 }
 
 input {
@@ -99,7 +118,6 @@ body {
 
 
 /* Position the close button (top right corner) */
-
 .overlay .closebtn {
     position: absolute;
     right: 0;
@@ -172,25 +190,25 @@ body {
 }
 
 .fade-in {
-    animation: fadeIn ease 0.3s;
-    -webkit-animation: fadeIn ease 0.5s;
-    -moz-animation: fadeIn ease 0.3s;
-    -o-animation: fadeIn ease 0.3s;
-    -ms-animation: fadeIn ease 0.3s;
+    animation: fadeIn ease 0.4s;
+    -webkit-animation: fadeIn ease 0.4s;
+    -moz-animation: fadeIn ease 0.4s;
+    -o-animation: fadeIn ease 0.4s;
+    -ms-animation: fadeIn ease 0.4s;
 }
 
 .fade-out {
-    animation: fadeOut ease 0.3s;
-    -webkit-animation: fadeOut ease 0.5s;
-    -moz-animation: fadeOut ease 0.3s;
-    -o-animation: fadeOut ease 0.3s;
-    -ms-animation: fadeOut ease 0.3s;
+    animation: fadeOut ease 0.4s;
+    -webkit-animation: fadeOut ease 0.4s;
+    -moz-animation: fadeOut ease 0.4s;
+    -o-animation: fadeOut ease 0.4s;
+    -ms-animation: fadeOut ease 0.4s;
 }
 
 @keyframes fadeIn {
     0% {
         opacity: 0;
-        border-radius: 100%;
+        border-radius: 25%;
         margin-top: 100em;
     }
     100% {
@@ -201,6 +219,8 @@ body {
 @-moz-keyframes fadeIn {
     0% {
         opacity: 0;
+        border-radius: 25%;
+        margin-top: 100em;
     }
     100% {
         opacity: 1;
@@ -210,6 +230,8 @@ body {
 @-webkit-keyframes fadeIn {
     0% {
         opacity: 0;
+        border-radius: 25%;
+        margin-top: 100em;
     }
     100% {
         opacity: 1;
@@ -219,6 +241,8 @@ body {
 @-o-keyframes fadeIn {
     0% {
         opacity: 0;
+        border-radius: 25%;
+        margin-top: 100em;
     }
     100% {
         opacity: 1;
@@ -228,6 +252,8 @@ body {
 @-ms-keyframes fadeIn {
     0% {
         opacity: 0;
+        border-radius: 25%;
+        margin-top: 100em;
     }
     100% {
         opacity: 1;
@@ -240,7 +266,7 @@ body {
     }
     100% {
         opacity: 0;
-        border-radius: 100%;
+        border-radius: 25%;
         margin-top: 100em;
     }
 }
@@ -248,11 +274,11 @@ body {
 @-moz-keyframes fadeOut {
     0% {
         opacity: 1;
-        margin-left: 0%
     }
     100% {
         opacity: 0;
-        margin-left: 100%
+        border-radius: 25%;
+        margin-top: 100em;
     }
 }
 
@@ -262,6 +288,8 @@ body {
     }
     100% {
         opacity: 0;
+        border-radius: 25%;
+        margin-top: 100em;
     }
 }
 
@@ -271,6 +299,8 @@ body {
     }
     100% {
         opacity: 0;
+        border-radius: 25%;
+        margin-top: 100em;
     }
 }
 
@@ -280,11 +310,13 @@ body {
     }
     100% {
         opacity: 0;
+        border-radius: 25%;
+        margin-top: 100em;
     }
 }
 
 div.slide-up button {
-    animation: 0.5s slide-up;
+    animation: 0.4s slide-up;
     margin-top: 1%
 }
 
@@ -301,7 +333,7 @@ div.slide-up button {
 }
 
 div.slide-down button {
-    animation: 0.5s slide-down;
+    animation: 0.4s slide-down;
     margin-top: 1%
 }
 

@@ -7,9 +7,11 @@ export class Produkt{
     // verschiedene Groessen haben verschiedene Preise
     Preis: string;
     
+    Menge: string;
 
     constructor(
         Art: string,
         Groesse: string,
-        Preis: string) {}
+        Preis: string,
+        Menge: string) {}
 }

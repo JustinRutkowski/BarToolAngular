@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Produkt } from '../produkt';
-import { ProduktService } from '../produkt.service';
 
 @Component({
   selector: 'overlay',
@@ -8,24 +7,78 @@ import { ProduktService } from '../produkt.service';
   styleUrls: ['./overlay.component.css']
 })
 
-export class OverlayComponent {
+/**
+ * the basic Overlay where you can choose the size and quantity of the selected product
+ */
+export class OverlayComponent implements OnInit {
   @Input() produkte: Produkt[];
-  selected = '1';
+  // @Input() cartProdukte: Produkt[];
   error = '';
-  success = '';
+  selected = '1';
+  cartProdukte: Produkt[] = new Array();
+  cartProdukteOld: Produkt[] = new Array();
 
   /**
-   * controlls fading of overlays
-   * @param overlay the overlay to show
+   ** fades out an overlay 
+   * @param overlay the overlay to fade
    */
   off(overlay: HTMLElement) {
     overlay.className = "overlay fade-out";
     setTimeout(() => {
       overlay.style.display = "none";
       overlay.className = "overlay fade-in";
-    }, 450);
+    }, 275);
     this.selected = '1';
+  }
 
+  ngOnInit() {
+    this.cartProdukteOld = JSON.parse(localStorage.getItem("cartOld"));
+  }
+
+  /**
+   ** gets the color of the productbutton via id
+   * @param Art the name of the product to select via id
+   */
+  getColorFromExistingItem(Art: string) {
+    if (document.getElementById(Art) != null) {
+      var res = { 'backgroundColor': `${document.getElementById(Art).style.backgroundColor}` };
+    }
+    return res;
+  }
+
+  /**
+   ** displays the Overlay if you click on a product wich is in the current cart
+   * @param buttonItem the product as the HTMLButtonElement
+   * @param cartItem the product in the cart
+   */
+  cartItemOverlayOn(buttonItem: HTMLButtonElement, cartItem: Produkt) {
+    var cartItemOverlay = document.getElementById("cartItemOverlay");
+    cartItemOverlay.style.display = "block";
+    document.getElementById("title2").innerText = cartItem.Art;
+    var this2 = this;
+    var deleteButton: HTMLElement = document.getElementById('deleteButton');
+    var editButton = document.getElementById('editButton');
+
+    // todo Refactor anmiation with Angular Anmiation
+    deleteButton.onclick = function () {
+      buttonItem.className = "cart slide-down";
+      this2.off(cartItemOverlay)
+      setTimeout(() => {
+        this2.cartProdukte.splice(this2.cartProdukte.indexOf(cartItem), 1)
+        buttonItem.className = "cart slide-up";
+      }, 275);
+    }
+
+    editButton.onclick = function () {
+      buttonItem.className = "cart slide-down";
+      this2.off(cartItemOverlay)
+      setTimeout(() => {
+        this2.cartProdukte.splice(this2.cartProdukte.indexOf(cartItem), 1)
+        buttonItem.className = "cart slide-up";
+      }, 275);
+      document.getElementById("title").innerText = cartItem.Art;
+      document.getElementById("overlay").style.display = "block";
+    }
   }
 
   /**
@@ -34,67 +87,11 @@ export class OverlayComponent {
    * @param item the item to add
    * @param amount the quantity of the item
    */
-  cart(item: Produkt, amount: number) {
-
-    var this2 = this;
-
-    var title = document.getElementById("title");
-    var currentCart = document.getElementById("containerNew");
-    var deleteButton: HTMLElement = document.getElementById('delete');
-    var editButton: HTMLElement = document.getElementById('edit');
-    var cartItemOverlay: HTMLElement = document.getElementById('cartItemOverlay');
+  addToCart(item: Produkt, amount: number) {
     var sizeAndQuantityOverlay: HTMLElement = document.getElementById('overlay');
-    // Button creation for fixed amount on the single cart item
-    var cartItem: HTMLButtonElement = document.createElement("button");
-
-    // CSS Class has to be in global
-    cartItem.className = "cartItem";
-    cartItem.innerText = item.Art + " | " + amount + " | " + item.Groesse + " Liter";
-    cartItem.value = item.Preis;
-    currentCart.append(cartItem);
-
-    // set the color from the productbuttons
-    cartItem.style.background = document.getElementById(item.Art).style.backgroundColor;
-
-    cartItem.onclick = function () {
-
-      cartItemOverlay.style.display = "block";
-
-      /**
-       * delete button for individual product 
-       */
-      deleteButton.onclick = function () {
-        currentCart.className = "cart slide-down";
-        this2.off(cartItemOverlay)
-        setTimeout(() => {
-          cartItem.remove();
-          if (document.getElementById(cartItem.innerText) != null) {
-            document.getElementById(cartItem.innerText).remove();
-          }
-          currentCart.className = "cart slide-up";
-        }, 450);
-      }
-
-      /**
-       * edit button for individual product
-       */
-      editButton.onclick = function () {
-        currentCart.className = "cart slide-down";
-        this2.off(cartItemOverlay)
-        setTimeout(() => {
-          cartItem.remove();
-          if (document.getElementById(cartItem.innerText) != null) {
-            document.getElementById(cartItem.innerText).remove();
-          }
-          currentCart.className = "cart slide-up";
-        }, 450);
-        // print the name of the Product on top of the overlay
-        title.innerText = item.Art;
-        sizeAndQuantityOverlay.style.display = "block";
-      }
-    };
-    // setting the default quantity to 1
-    this.selected = '1';
+    item.Menge = amount.toString();
+    this.cartProdukte.push(item);
     this.off(sizeAndQuantityOverlay);
+    localStorage.setItem("cart", JSON.stringify(item));
   }
 }

@@ -10,14 +10,9 @@ button:hover {
     color: red;
 }
 
-.title {
-    text-align: center;
-    font-size: 5em;
-    color: white;
-    z-index: 2;
-    /* Specify a stack order in case you're using a different order for other elements */
-    cursor: pointer;
-    /* Add a pointer on hover */
+.cart {
+    height: 12em;
+    width: 50%;
 }
 
 h3 {

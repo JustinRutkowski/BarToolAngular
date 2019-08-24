@@ -1,6 +1,8 @@
-import { Component, Input } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { Produkt } from './produkt';
 import { ProduktService } from './produkt.service';
+import { OverlayComponent } from './overlay/overlay.component';
+
 
 @Component({
   selector: 'main',
@@ -9,44 +11,51 @@ import { ProduktService } from './produkt.service';
 
 })
 export class MainComponent {
-    produkte: Produkt[];
-    produkteName: String[];
-    error = '';
-    success = '';
-  
-    // Dependency Injection
-    constructor(private produktService: ProduktService) {}
-  
-    /**
-     * Get the products from Database on load
-     */
-    ngOnInit() {
-      this.getProdukte();
-    }
-  
-    /**
-     ** Selects all products from the Database
-     ** Uses service for request
-     */
-    getProdukte(): void {
-      this.produktService.getAll().subscribe(
-        (res: Produkt[]) => {
-          // getting the unique product names
-          this.produkteName = Array.from(new Set(res.map(x => x.Art)));
-          this.produkte = res;
-        },
-        (err) => {
-          this.error = err;
-        }
-      );
-    }
-  
+  produkte: Produkt[];
+  produkteName: String[];
+  error = '';
+  containerNew: HTMLElement;
+  message: string;
+  @ViewChild(OverlayComponent, {static: false}) overlay: OverlayComponent;
 
-    /**
-   ** Displays overlay to choose the size and quantity
-   ** Shows name of the selected product
-   * @param Art Name of the Product to display it on top of the overlay
+  constructor(private produktService: ProduktService) { }
+
+  /**
+   ** Get the products from Database on load
    */
+  ngOnInit() {
+    this.getProdukte();
+    this.produktService.currentMessage.subscribe(message => this.message = message);
+  }
+
+  newMessage() {
+    this.produktService.changeMessage(JSON.stringify(this.produkte));
+  }
+
+  /**
+   ** Selects all products from the Database
+   */
+  getProdukte(): void {
+    this.produktService.getAll().subscribe(
+      (res: Produkt[]) => {
+        // getting the unique product names
+        this.produkteName = Array.from(new Set(res.map(x => x.Art)));
+        this.produkte = res;
+
+        // send the data to service
+        this.newMessage();
+      },
+      (err) => {
+        this.error = err;
+      }
+    );
+  }
+
+  /**
+ ** Displays overlay to choose the size and quantity
+ ** Shows name of the selected product
+ * @param Art Name of the Product to display it on top of the overlay
+ */
   ChooseQuantityAndSize(Art: string) {
     // Zuweisung des Namens des jeweiligen Produktes für das Overlay
     document.getElementById("title").innerText = Art;

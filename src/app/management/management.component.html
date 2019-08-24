@@ -1,17 +1,20 @@
 <h2>Produkte hinzufügen</h2>
 
-
 <div class="form-group">
-    <div>
+    <div class="field">
         <label for="Produktname">Produktname</label>
         <input class="form-control" ngModel name="Produktname">
     </div>
-    <div>
+    <div class="field">
         <label for="Produktgröße">Produktgröße</label>
         <input class="form-control" ngModel name="Produktgröße">
     </div>
-    <div>
-        <label for="Produktpreis">Produktpreis</label>
+    <div class="field">
+        <label for="Produktpreis">Verkaufspreis</label>
+        <input class="form-control" ngModel name="Produktpreis">
+    </div>
+    <div class="field">
+        <label for="Produktpreis">Einkaufspreis</label>
         <input class="form-control" ngModel name="Produktpreis">
     </div>
 
@@ -20,3 +23,27 @@
 <hr>
 
 <h2>Produkte löschen</h2>
+<div class="products navbar">
+    <button mat-button [ngStyle]="{backgroundColor: getColor(i)}"
+        class="btn btn-secondary button"
+        *ngFor="let name of produkteName; let i = index;" [id]="name"
+        (click)="deleteProductOverlay(name)"
+        [ngClass]="{'long': (name.length > 8), 'verylong': (name.length > 14)}">{{name}}
+    </button>
+</div>
+
+<div #overlay id="overlay" class="overlay fade-in">
+    <!-- the currently displayed product -->
+    <h1 #title class="title" id="title"></h1>
+    <!-- Button to close the overlay -->
+    <a href="javascript:void(0)" class="closebtn" (click)="off(overlay)">&times;</a>
+    <!-- Overlay content -->
+    <div style="margin-top: 40%;" class="overlay-content">
+        <!-- show only the sizes for the coresponding product  -->
+        <ng-container *ngFor="let item of produkte" class="navbar">
+            <button *ngIf="item.Art == title.innerHTML" class="btn btn-danger"
+                (click)="deleteProduct(item); location.reload()">{{item.Groesse}} L
+            </button>
+        </ng-container>
+    </div>
+</div>

@@ -1,69 +1,83 @@
-<div class="navbar">
-    <button [disabled]="checkEmpty()" class="btn-success" (click)="placeOrder(containerNew)">zur Kasse</button>
+<button [disabled]="checkEmpty()" style="margin-left:10%; margin-right: 10%;"
+    class="btn-success" (click)="placeOrder()">zur
+    Kasse <i class="far fa-hand-point-up"></i></button>
 
-    <div style="border-right: solid 4px black;" id="containerOld" class="cart">
-        <h3>letzte Bestellung</h3>
-    </div>
 
-    <div #containerNew id="containerNew" class="cart slide-up">
-        <h3>aktuelle Bestellung</h3>
-        <!-- <button *ngFor="let item of cartProdukte" class="cartItem">{{item.Art + " | " + amount.value + " | " + item.Groesse}}</button> -->
-    </div>
-</div>
 
 <!-- placeOrder Overlay -->
-<div #placeOrderOverlay id="placeOrderOverlay" class="overlay fade-in">
+<div #paymentOverlay id="paymentOverlay" class="overlay fade-in">
     <h1>Zahlungsabwicklung</h1>
     <!-- Button to close the overlay navigation -->
-    <a href="javascript:void(0)" class="closebtn" (click)="off(placeOrderOverlay)">&times;</a>
+    <a href="javascript:void(0)" class="closebtn"
+        (click)="off(paymentOverlay)">&times;</a>
     <!-- Overlay content -->
     <div class="overlay-content">
-
+        <div class="col kosten">
+            <label><i class="fas fa-money-bill-alt"></i> Kosten: </label>
+            <label #price id="price"></label>
+        </div>
         <div class="row">
             <div class="col"></div>
             <div class="col">
-                <label>Gutschein</label>
-                <input type="number" step="0.01" min="0" oninput="validity.valid||(value='');" id="voucher" placeholder="Gutscheinbetrag?" (keyup)="calculateChange()">
-                <label id="Restbetrag">Restbetrag:</label>
+                <label class="opt">Gutschein</label>
+                <input #voucher type="number" step="0.01" min="0"
+                    oninput="validity.valid||(value='');" id="voucher"
+                    placeholder="Gutscheinbetrag"
+                    (keyup)="calculateChange(voucher.value, price.innerHTML, change.innerHTML, moneyReceived.value, drinkMoney.value)">
+
+            </div>
+            <div class="col">
+                <label class="opt">Nummer</label>
+                <input #voucherNumber type="number" step="0.01" min="0"
+                    oninput="validity.valid||(value='');" id="voucherNumber"
+                    placeholder="Gutscheinnummer">
+            </div>
+            <div class="col"></div>
+
+        </div>
+        <div class="row">
+
+            <div class="col">
+                <label id="Restbetrag"> </label>
                 <label id="voucherLeft"></label>
             </div>
-            <div class="col"></div>
 
         </div>
         <div class="row">
-            <div class="col">
-                <label>Kosten: </label>
-                <label id="price"></label>
-            </div>
             <div class="col"></div>
             <div class="col">
-                <label>Rückgeld:</label>
-                <label id="change"></label>
+                <label class="nec">Geld erhalten</label>
+                <input #moneyReceived type="number" step="0.01" min="0"
+                    oninput="validity.valid||(value='');" id="moneyReceived"
+                    placeholder="Eingabe Geld erhalten"
+                    (keyup)="calculateChange(voucher.value, price.innerHTML, change.innerHTML, moneyReceived.value, drinkMoney.value)">
             </div>
-        </div>
-        <div class="row">
-            <div class="col"></div>
             <div class="col">
-                <label>Geld erhalten</label>
-                <input type="number" step="0.01" min="0" oninput="validity.valid||(value='');" id="moneyReceived" placeholder="Eingabe Geld erhalten" (keyup)="calculateChange()">
+                <label class="opt">Trinkgeld</label>
+                <input #drinkMoney type="number" step="0.01" min="0"
+                    oninput="validity.valid||(value='');" id="drinkMoney"
+                    placeholder="Trinkgeld"
+                    (keyup)="calculateChange(voucher.value, price.innerHTML, change.innerHTML, moneyReceived.value, drinkMoney.value)">
             </div>
             <div class="col"></div>
         </div>
         <div class="row">
             <div class="col"></div>
-            <div class="col">
-                <label>Trinkgeld</label>
-                <input type="number" step="0.01" min="0" oninput="validity.valid||(value='');" id="drinkMoney" placeholder="Trinkgeld?" (keyup)="calculateChange()">
-            </div>
+
             <div class="col"></div>
 
         </div>
+        <div class="col kosten">
+            <label><i class="fas fa-hand-holding-usd"></i> Rückgeld: </label>
+            <label #change id="change"></label>
+        </div>
 
-        <button [disabled]="!condition" id="edit" type="submit" class="btn btn-success" (click)="finishOrder()">Bestellung abschließen</button>
+        <button [disabled]="!condition" id="edit" type="submit"
+            class="btn btn-success" (click)="finishOrder()">Bestellung abschließen <i class="far fa-hand-point-up"></i>
+        </button>
 
         <div class="overView">
-            <h1>Übersicht</h1>
-
+            <!-- <h1>Übersicht</h1> -->
             <div id="cartOverview" class="navbar shopppingCart">
             </div>
         </div>

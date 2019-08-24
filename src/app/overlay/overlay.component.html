@@ -1,5 +1,6 @@
 <!-- Product Overlay -->
 <div #overlay id="overlay" class="overlay fade-in">
+    <!-- the currently displayed product -->
     <h1 #title class="title" id="title"></h1>
     <!-- Button to close the overlay -->
     <a href="javascript:void(0)" class="closebtn" (click)="off(overlay)">&times;</a>
@@ -7,9 +8,10 @@
     <div class="overlay-content">
         <div class="form-group">
             <label>Menge</label>
-            <!-- mat to improve the design of the select -->
-            <mat-select #amount [(value)]="selected" class="form-control" id="amountList">
-                <mat-option value=1 selected>1</mat-option>
+            <!-- mat-select to improve the UX of the select -->
+            <mat-select #amount [(value)]="selected" class="form-control"
+                id="amountList">
+                <mat-option value=1>1</mat-option>
                 <mat-option value=2>2</mat-option>
                 <mat-option value=3>3</mat-option>
                 <mat-option value=4>4</mat-option>
@@ -21,19 +23,49 @@
                 <mat-option value=10>10</mat-option>
             </mat-select>
         </div>
+        <!-- show only the sizes for the coresponding product  -->
         <ng-container *ngFor="let item of produkte" class="navbar">
-            <button *ngIf="item.Art == title.innerHTML" class="btn btn-secondary" (click)="cart(item, amount.value)">{{item.Groesse}} L</button>
+            <button *ngIf="item.Art == title.innerHTML" class="btn btn-secondary"
+                (click)="addToCart(item, amount.value)">{{item.Groesse}} L
+            </button>
         </ng-container>
+    </div>
+</div>
+
+<div class="navbar">
+    <div #containerOld id="containerOld" class="cart">
+        <h3>letzte Bestellung</h3>
+        <button *ngFor="let item of cartProdukteOld" value="{{item.Preis}}"
+            [ngStyle]="getColorFromExistingItem(item.Art)"
+            class="cartItem">{{item.Art + " | " + item.Menge + " | " + item.Groesse}}
+
+        </button>
+    </div>
+    <div #containerNew style="border-left: solid 4px black;" id="containerNew"
+        class="cart slide-up">
+        <h3>aktuelle Bestellung</h3>
+        <button #product *ngFor="let item of cartProdukte; let i = index" value="{{item.Preis}}"
+            [ngStyle]="getColorFromExistingItem(item.Art)"
+            (click)="cartItemOverlayOn(product, item)"
+            class="cartItem">{{item.Art + " | " + item.Menge + " | " + item.Groesse}}</button>
     </div>
 </div>
 
 <!-- Shopping Cart Overlay -->
 <div #cartItemOverlay id="cartItemOverlay" class="overlay fade-in">
+    <h1 class="title" id="title2"></h1>
+
     <!-- Button to close the overlay -->
-    <a href="javascript:void(0)" class="closebtn" (click)="off(cartItemOverlay)">&times;</a>
+    <a href="javascript:void(0)" class="closebtn"
+        (click)="off(cartItemOverlay)">&times;</a>
     <!-- Overlay content -->
     <div class="overlay-content navbar">
-        <button id="delete" type="submit" class="cartItemOverlay">Entfernen</button>
-        <button id="edit" type="submit" class="cartItemOverlay">Bearbeiten</button>
+
+        <button id="deleteButton" type="submit" class="cartItemOverlay">Entfernen <i
+                class="far fa-hand-point-up"></i></button>
+                
+                <!-- just naming this one edit caused problems -->
+        <button id="editButton" type="submit" class="cartItemOverlay">Bearbeiten <i
+                class="far fa-hand-point-up"></i></button>
     </div>
 </div>

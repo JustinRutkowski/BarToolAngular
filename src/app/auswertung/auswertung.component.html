@@ -1,0 +1,34 @@
+<!-- <div #barChart id="barChart" style="margin-left: 4%; height: 375px; width: 750px;">
+
+
+<div #pieChart1 id="pieChart1" style="margin-left: 4%; height: 375px; width: 370px;">
+
+
+<div #pieChart2 id="pieChart2" style="margin-left: 4%; height: 375px; width: 370px;">
+
+
+<div #tabelChart id="tabelChart" style="margin-left: 4%; height: 375px; width: 370px;"> -->
+
+
+
+<google-chart id="chart" [type]="myType" [(data)]="myData"
+  [(columnNames)]="columnNames" [width]="myWidth" [options]="myOptions"
+  [height]="myHeight">
+</google-chart>
+
+<div class="navbar">
+  <google-chart [title]="myTitle2" [type]="myType2" [data]="myData2"
+    [columnNames]="columnNames2" [width]="myWidth2" [options]="myOptions"
+    [height]="myHeight">
+  </google-chart>
+
+  <google-chart [title]="myTitle" [type]="myType2" [data]="myData2"
+    [columnNames]="columnNames2" [width]="myWidth2" [options]="myOptions"
+    [height]="myHeight">
+  </google-chart>
+</div>
+
+<google-chart [type]="myType3" [(data)]="myData" [(columnNames)]="columnNames"
+  [width]="myWidth" [options]="myOptions" [height]="myHeight">
+</google-chart>
+<!-- </div> -->

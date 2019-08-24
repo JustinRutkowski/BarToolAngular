@@ -1,0 +1,1275 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>bar-tool-angular documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">bar-tool-angular documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li>CartComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/cart/cart.component.ts</code>
+</p>
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+    </p>
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>cart</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./cart.component.css</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./cart.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#cartItems">cartItems</a>
+                            </li>
+                            <li>
+                                <a href="#change">change</a>
+                            </li>
+                            <li>
+                                <a href="#condition">condition</a>
+                            </li>
+                            <li>
+                                <a href="#drinkMoney">drinkMoney</a>
+                            </li>
+                            <li>
+                                <a href="#moneyReceived">moneyReceived</a>
+                            </li>
+                            <li>
+                                <a href="#voucher">voucher</a>
+                            </li>
+                            <li>
+                                <a href="#voucherLeft">voucherLeft</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#calculateChange">calculateChange</a>
+                            </li>
+                            <li>
+                                <a href="#checkEmpty">checkEmpty</a>
+                            </li>
+                            <li>
+                                <a href="#finishOrder">finishOrder</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit">ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#off">off</a>
+                            </li>
+                            <li>
+                                <a href="#placeOrder">placeOrder</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Inputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#overlay">overlay</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+
+    <section>
+    <h3 id="inputs">Inputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="overlay"></a>
+                        <b>overlay</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/app/cart/cart.component.ts:13</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="calculateChange"></a>
+                    <span class="name">
+                        <b>
+                            calculateChange
+                        </b>
+                        <a href="#calculateChange"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>calculateChange(voucher, price, change, moneyReceived, drinkMoney)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="103"
+                            class="link-to-prism">src/app/cart/cart.component.ts:103</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>calculate the fiels in the payment overlay</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>voucher</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>voucher that the client might have</p>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>price</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>sum of the products in the cart</p>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>change</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>change money that the client receives</p>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>moneyReceived</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>money that we got from the client to pay</p>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>drinkMoney</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>money that the client voulentiery gives to us</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="checkEmpty"></a>
+                    <span class="name">
+                        <b>
+                            checkEmpty
+                        </b>
+                        <a href="#checkEmpty"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>checkEmpty()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="42"
+                            class="link-to-prism">src/app/cart/cart.component.ts:42</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Checks if the current cart is empty to disable the order button</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="finishOrder"></a>
+                    <span class="name">
+                        <b>
+                            finishOrder
+                        </b>
+                        <a href="#finishOrder"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>finishOrder()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="158"
+                            class="link-to-prism">src/app/cart/cart.component.ts:158</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><ul>
+<li>sends the order to DB, resets the cart and overview, saves cart to previousCart </li>
+</ul>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <b>
+                            ngOnInit
+                        </b>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="22"
+                            class="link-to-prism">src/app/cart/cart.component.ts:22</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="off"></a>
+                    <span class="name">
+                        <b>
+                            off
+                        </b>
+                        <a href="#off"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>off(overlay: HTMLElement)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="31"
+                            class="link-to-prism">src/app/cart/cart.component.ts:31</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>overlay</td>
+                                    <td>
+                                            <code>HTMLElement</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="placeOrder"></a>
+                    <span class="name">
+                        <b>
+                            placeOrder
+                        </b>
+                        <a href="#placeOrder"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>placeOrder()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="54"
+                            class="link-to-prism">src/app/cart/cart.component.ts:54</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><ul>
+<li>displays the Paymentoverlay, copys current card to the overview, calculates the price sum </li>
+</ul>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+        <h3 id="inputs">
+            Properties
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="cartItems"></a>
+                        <span class="name">
+                            <b>
+                            cartItems</b>
+                            <a href="#cartItems"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="../classes/Produkt.html" target="_self" >Produkt[]</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/cart/cart.component.ts:14</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="change"></a>
+                        <span class="name">
+                            <b>
+                            change</b>
+                            <a href="#change"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>HTMLElement</code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/cart/cart.component.ts:20</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="condition"></a>
+                        <span class="name">
+                            <b>
+                            condition</b>
+                            <a href="#condition"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank" >Boolean</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>false</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/cart/cart.component.ts:15</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="drinkMoney"></a>
+                        <span class="name">
+                            <b>
+                            drinkMoney</b>
+                            <a href="#drinkMoney"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>HTMLInputElement</code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/cart/cart.component.ts:16</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="moneyReceived"></a>
+                        <span class="name">
+                            <b>
+                            moneyReceived</b>
+                            <a href="#moneyReceived"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>HTMLInputElement</code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/cart/cart.component.ts:17</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="voucher"></a>
+                        <span class="name">
+                            <b>
+                            voucher</b>
+                            <a href="#voucher"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>HTMLInputElement</code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/cart/cart.component.ts:18</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="voucherLeft"></a>
+                        <span class="name">
+                            <b>
+                            voucherLeft</b>
+                            <a href="#voucherLeft"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>HTMLElement</code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/cart/cart.component.ts:19</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit, Input } from &#x27;@angular/core&#x27;;
+import { Produkt } from &#x27;../produkt&#x27;;
+import { ProduktService } from &#x27;../produkt.service&#x27;;
+import { CommandExecutor } from &#x27;selenium-webdriver/safari&#x27;;
+import { Overlay } from &#x27;@angular/cdk/overlay&#x27;;
+
+@Component({
+    selector: &#x27;cart&#x27;,
+    templateUrl: &#x27;./cart.component.html&#x27;,
+    styleUrls: [&#x27;./cart.component.css&#x27;]
+})
+export class CartComponent implements OnInit {
+    @Input() overlay: any;
+    cartItems: Produkt[];
+    condition: Boolean &#x3D; false;
+    drinkMoney: HTMLInputElement;
+    moneyReceived: HTMLInputElement;
+    voucher: HTMLInputElement;
+    voucherLeft: HTMLElement;
+    change: HTMLElement;
+
+    ngOnInit() {
+        this.drinkMoney &#x3D; &lt;HTMLInputElement&gt;document.getElementById(&quot;drinkMoney&quot;);
+        this.moneyReceived &#x3D; &lt;HTMLInputElement&gt;document.getElementById(&quot;moneyReceived&quot;);
+        this.voucher &#x3D; &lt;HTMLInputElement&gt;document.getElementById(&quot;voucher&quot;);
+        this.voucherLeft &#x3D; &lt;HTMLElement&gt;document.getElementById(&quot;voucherLeft&quot;);
+        this.change &#x3D; document.getElementById(&quot;change&quot;);
+    }
+
+    // todo
+    off(overlay: HTMLElement) {
+        overlay.className &#x3D; &quot;overlay fade-out&quot;;
+        setTimeout(() &#x3D;&gt; {
+            overlay.style.display &#x3D; &quot;none&quot;;
+            overlay.className &#x3D; &quot;overlay fade-in&quot;;
+        }, 250);
+    }
+
+    /**
+     * Checks if the current cart is empty to disable the order button
+     */
+    checkEmpty() {
+        if (document.getElementById(&#x27;containerNew&#x27;).childElementCount &#x3D;&#x3D; 1) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     ** displays the Paymentoverlay, copys current card to the overview, calculates the price sum 
+     * @param container the whole container of the current cart
+     */
+    placeOrder() {
+        var container &#x3D; document.getElementById(&#x27;containerNew&#x27;);
+        var item: HTMLButtonElement;
+        var art;
+        // reset fields
+        this.change.innerHTML &#x3D; &quot;€&quot;;
+        this.drinkMoney.value &#x3D; null;
+        this.moneyReceived.value &#x3D; null;
+        this.voucher.value &#x3D; null;
+        this.voucherLeft.innerHTML &#x3D; &quot;&quot;;
+
+        document.getElementById(&#x27;paymentOverlay&#x27;).style.display &#x3D; &quot;block&quot;;
+        this.moneyReceived.focus();
+
+        var priceSum: number &#x3D; 0;
+
+        // TO-DO refactore in an Angular way
+        // i&#x3D;1 for skipping the heading of the container
+        for (var i: number &#x3D; 1; i &lt; container.childElementCount; i++) {
+            item &#x3D; &lt;HTMLButtonElement&gt;container.children.item(i);
+
+            var buttonText: string &#x3D; item.innerHTML;
+            art &#x3D; buttonText.split(&quot;|&quot;, 3)[0].trim();
+            var quantity: string &#x3D; buttonText.split(&quot;|&quot;, 3)[1];
+            var price: string &#x3D; item.value;
+
+            var overviewItem &#x3D; document.createElement(&#x27;button&#x27;);
+            overviewItem.innerHTML &#x3D; buttonText;
+            overviewItem.className &#x3D; item.className + &quot; overView&quot;;
+            overviewItem.style.backgroundColor &#x3D; document.getElementById(art).style.backgroundColor;
+            overviewItem.id &#x3D; item.innerHTML;
+            priceSum &#x3D; priceSum + (+price * +quantity);
+            if (document.getElementById(item.innerHTML) &#x3D;&#x3D; null) {
+                document.getElementById(&#x27;cartOverview&#x27;).appendChild(overviewItem);
+            }
+        }
+        document.getElementById(&quot;price&quot;).innerHTML &#x3D; priceSum.toFixed(2) + &quot; €&quot;;
+
+
+    }
+
+    /**
+     * calculate the fiels in the payment overlay
+     * @param voucher voucher that the client might have
+     * @param price sum of the products in the cart
+     * @param change change money that the client receives
+     * @param moneyReceived money that we got from the client to pay
+     * @param drinkMoney money that the client voulentiery gives to us
+     */
+    calculateChange(voucher, price, change, moneyReceived, drinkMoney) {
+
+        var voucherLeft &#x3D; this.voucherLeft.innerHTML
+        price &#x3D; price.replace(&#x27;€&#x27;, &#x27;&#x27;);
+        change &#x3D; change.replace(&#x27;€&#x27;, &#x27;&#x27;);
+
+        console.log(&quot;voucher: &quot; + voucher);
+        console.log(&quot;price: &quot; + price);
+        console.log(&quot;change: &quot; + change);
+        console.log(&quot;moneyReceived: &quot; + moneyReceived);
+        console.log(&quot;drinkMoney: &quot; + drinkMoney);
+
+        if (voucher !&#x3D; 0) {
+            voucherLeft &#x3D; (voucher - +price).toFixed(2) + &quot; €&quot;;
+            console.log(&quot;voucherLeft: &quot; + voucherLeft);
+            if (+voucherLeft.replace(&#x27;€&#x27;, &#x27;&#x27;) &gt;&#x3D; 0) {
+                document.getElementById(&quot;Restbetrag&quot;).innerHTML &#x3D; &quot;Rest vom Gutschein:&quot;
+                change &#x3D; &quot;0.00 €&quot;;
+            }
+            if (+voucherLeft.replace(&#x27;€&#x27;, &#x27;&#x27;) &lt; 0) {
+                document.getElementById(&quot;Restbetrag&quot;).innerHTML &#x3D; &quot;noch zu zahlen:&quot;
+                change &#x3D; (moneyReceived - - +voucherLeft.replace(&#x27;€&#x27;, &#x27;&#x27;)).toFixed(2) + &quot; €&quot;;
+            }
+        }
+        else {
+            voucherLeft &#x3D; &quot;&quot;;
+            change &#x3D; (moneyReceived - +price).toFixed(2) + &quot; €&quot;;
+        }
+
+        if (drinkMoney !&#x3D; 0) {
+            change &#x3D; (+document.getElementById(&quot;change&quot;).innerHTML.replace(&#x27;€&#x27;, &#x27;&#x27;)
+                - drinkMoney).toFixed(2) + &quot; €&quot;;
+        }
+        // Control when the order can be finished
+        if ((moneyReceived &gt;&#x3D; +price || voucher + moneyReceived
+            &gt;&#x3D; +price || voucher &gt;&#x3D; +price)) {
+
+            this.condition &#x3D; true;
+            console.log(&quot;change: &quot; + change);
+            if (+change.replace(&#x27;€&#x27;, &#x27;&#x27;) &lt; 0) {
+
+                this.condition &#x3D; false;
+            }
+        } else {
+            this.condition &#x3D; false;
+        }
+
+        this.change.innerHTML &#x3D; change;
+        this.voucherLeft.innerHTML &#x3D; voucherLeft;
+
+    }
+
+    /**
+     ** sends the order to DB, resets the cart and overview, saves cart to previousCart 
+     */
+    finishOrder() {
+
+        // gather all the things to send
+        var BestellungsID;
+
+        var overlay &#x3D; document.getElementById(&#x27;paymentOverlay&#x27;);
+        var containerNew &#x3D; document.getElementById(&#x27;containerNew&#x27;);
+        var containerOld &#x3D; document.getElementById(&#x27;containerOld&#x27;);
+
+        // fade-out animation and close the paymentOverlay
+        containerOld.className &#x3D; &quot;cart slide-up&quot;;
+        overlay.className &#x3D; &quot;overlay fade-out&quot;;
+        setTimeout(() &#x3D;&gt; {
+            overlay.style.display &#x3D; &quot;none&quot;;
+            overlay.className &#x3D; &quot;overlay fade-in&quot;;
+        }, 275);
+
+        localStorage.setItem(&quot;cartOld&quot;, JSON.stringify(this.overlay.cartProdukte));
+
+        // copy the order to display the previous order
+        this.overlay.cartProdukteOld &#x3D; this.overlay.cartProdukte;
+
+
+        // reset the cart for a new order
+        this.overlay.cartProdukte &#x3D; [];
+
+        // reset the overview
+        document.getElementById(&#x27;cartOverview&#x27;).innerHTML &#x3D; &quot;&quot;;
+        this.condition &#x3D; false;
+    }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;button [disabled]&#x3D;&quot;checkEmpty()&quot; style&#x3D;&quot;margin-left:10%; margin-right: 10%;&quot;
+    class&#x3D;&quot;btn-success&quot; (click)&#x3D;&quot;placeOrder()&quot;&gt;zur
+    Kasse &lt;i class&#x3D;&quot;far fa-hand-point-up&quot;&gt;&lt;/i&gt;&lt;/button&gt;
+
+
+
+&lt;!-- placeOrder Overlay --&gt;
+&lt;div #paymentOverlay id&#x3D;&quot;paymentOverlay&quot; class&#x3D;&quot;overlay fade-in&quot;&gt;
+    &lt;h1&gt;Zahlungsabwicklung&lt;/h1&gt;
+    &lt;!-- Button to close the overlay navigation --&gt;
+    &lt;a href&#x3D;&quot;javascript:void(0)&quot; class&#x3D;&quot;closebtn&quot;
+        (click)&#x3D;&quot;off(paymentOverlay)&quot;&gt;&amp;times;&lt;/a&gt;
+    &lt;!-- Overlay content --&gt;
+    &lt;div class&#x3D;&quot;overlay-content&quot;&gt;
+        &lt;div class&#x3D;&quot;col kosten&quot;&gt;
+            &lt;label&gt;&lt;i class&#x3D;&quot;fas fa-money-bill-alt&quot;&gt;&lt;/i&gt; Kosten: &lt;/label&gt;
+            &lt;label #price id&#x3D;&quot;price&quot;&gt;&lt;/label&gt;
+        &lt;/div&gt;
+        &lt;div class&#x3D;&quot;row&quot;&gt;
+            &lt;div class&#x3D;&quot;col&quot;&gt;&lt;/div&gt;
+            &lt;div class&#x3D;&quot;col&quot;&gt;
+                &lt;label class&#x3D;&quot;opt&quot;&gt;Gutschein&lt;/label&gt;
+                &lt;input #voucher type&#x3D;&quot;number&quot; step&#x3D;&quot;0.01&quot; min&#x3D;&quot;0&quot;
+                    oninput&#x3D;&quot;validity.valid||(value&#x3D;&#x27;&#x27;);&quot; id&#x3D;&quot;voucher&quot;
+                    placeholder&#x3D;&quot;Gutscheinbetrag&quot;
+                    (keyup)&#x3D;&quot;calculateChange(voucher.value, price.innerHTML, change.innerHTML, moneyReceived.value, drinkMoney.value)&quot;&gt;
+
+            &lt;/div&gt;
+            &lt;div class&#x3D;&quot;col&quot;&gt;
+                &lt;label class&#x3D;&quot;opt&quot;&gt;Nummer&lt;/label&gt;
+                &lt;input #voucherNumber type&#x3D;&quot;number&quot; step&#x3D;&quot;0.01&quot; min&#x3D;&quot;0&quot;
+                    oninput&#x3D;&quot;validity.valid||(value&#x3D;&#x27;&#x27;);&quot; id&#x3D;&quot;voucherNumber&quot;
+                    placeholder&#x3D;&quot;Gutscheinnummer&quot;&gt;
+            &lt;/div&gt;
+            &lt;div class&#x3D;&quot;col&quot;&gt;&lt;/div&gt;
+
+        &lt;/div&gt;
+        &lt;div class&#x3D;&quot;row&quot;&gt;
+
+            &lt;div class&#x3D;&quot;col&quot;&gt;
+                &lt;label id&#x3D;&quot;Restbetrag&quot;&gt; &lt;/label&gt;
+                &lt;label id&#x3D;&quot;voucherLeft&quot;&gt;&lt;/label&gt;
+            &lt;/div&gt;
+
+        &lt;/div&gt;
+        &lt;div class&#x3D;&quot;row&quot;&gt;
+            &lt;div class&#x3D;&quot;col&quot;&gt;&lt;/div&gt;
+            &lt;div class&#x3D;&quot;col&quot;&gt;
+                &lt;label class&#x3D;&quot;nec&quot;&gt;Geld erhalten&lt;/label&gt;
+                &lt;input #moneyReceived type&#x3D;&quot;number&quot; step&#x3D;&quot;0.01&quot; min&#x3D;&quot;0&quot;
+                    oninput&#x3D;&quot;validity.valid||(value&#x3D;&#x27;&#x27;);&quot; id&#x3D;&quot;moneyReceived&quot;
+                    placeholder&#x3D;&quot;Eingabe Geld erhalten&quot;
+                    (keyup)&#x3D;&quot;calculateChange(voucher.value, price.innerHTML, change.innerHTML, moneyReceived.value, drinkMoney.value)&quot;&gt;
+            &lt;/div&gt;
+            &lt;div class&#x3D;&quot;col&quot;&gt;
+                &lt;label class&#x3D;&quot;opt&quot;&gt;Trinkgeld&lt;/label&gt;
+                &lt;input #drinkMoney type&#x3D;&quot;number&quot; step&#x3D;&quot;0.01&quot; min&#x3D;&quot;0&quot;
+                    oninput&#x3D;&quot;validity.valid||(value&#x3D;&#x27;&#x27;);&quot; id&#x3D;&quot;drinkMoney&quot;
+                    placeholder&#x3D;&quot;Trinkgeld&quot;
+                    (keyup)&#x3D;&quot;calculateChange(voucher.value, price.innerHTML, change.innerHTML, moneyReceived.value, drinkMoney.value)&quot;&gt;
+            &lt;/div&gt;
+            &lt;div class&#x3D;&quot;col&quot;&gt;&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class&#x3D;&quot;row&quot;&gt;
+            &lt;div class&#x3D;&quot;col&quot;&gt;&lt;/div&gt;
+
+            &lt;div class&#x3D;&quot;col&quot;&gt;&lt;/div&gt;
+
+        &lt;/div&gt;
+        &lt;div class&#x3D;&quot;col kosten&quot;&gt;
+            &lt;label&gt;&lt;i class&#x3D;&quot;fas fa-hand-holding-usd&quot;&gt;&lt;/i&gt; Rückgeld: &lt;/label&gt;
+            &lt;label #change id&#x3D;&quot;change&quot;&gt;&lt;/label&gt;
+        &lt;/div&gt;
+
+        &lt;button [disabled]&#x3D;&quot;!condition&quot; id&#x3D;&quot;edit&quot; type&#x3D;&quot;submit&quot;
+            class&#x3D;&quot;btn btn-success&quot; (click)&#x3D;&quot;finishOrder()&quot;&gt;Bestellung abschließen &lt;i class&#x3D;&quot;far fa-hand-point-up&quot;&gt;&lt;/i&gt;
+        &lt;/button&gt;
+
+        &lt;div class&#x3D;&quot;overView&quot;&gt;
+            &lt;!-- &lt;h1&gt;Übersicht&lt;/h1&gt; --&gt;
+            &lt;div id&#x3D;&quot;cartOverview&quot; class&#x3D;&quot;navbar shopppingCart&quot;&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>./cart.component.css</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">.cart {
+    height: 12em;
+    width: 50%;
+}
+
+.navbar {
+    justify-content: center;
+    min-height: 0;
+}
+
+.form-control {
+    height: 2em;
+    font-size: 2.5em;
+    text-align: center;
+}
+
+h1 {
+    color: white;
+    font-size: 3em;
+    text-align: center;
+}
+
+label {
+    color: white;
+    font-size: 1.3em;
+    margin-left: 0.5em;
+}
+
+input {
+    text-align: center;
+    font-size: 1.3em;
+    height: 2em;
+}
+
+.overView {
+    margin: 2em;
+    background: #096600;
+    border-radius: 100px;
+    padding: 10px;
+    padding-bottom: 20px;
+    padding-top: 20px;
+
+}
+
+.col {
+    font-size: 1.42em;
+    margin-top: 1.25em;
+}
+
+.opt{
+    color: #e0a800;
+}
+
+.nec{
+    color: #dc3545;
+}
+
+.kosten{
+    font-size: 4vw;
+}
+.navbar {
+    justify-content: center;
+}
+
+.btn {
+    border-radius: 25px;
+    margin-top: 1em;
+    margin-left: 1.5em;
+    margin-right: 1.5em;
+    width: 200px;
+    font-size: 50px;
+    border: 1px solid black;
+}
+
+.btn-success {
+    border-radius: 25px;
+    text-align: center;
+    width: -moz-available;
+    width: -webkit-fill-available;
+    margin-bottom: 0.25em;
+    font-size: 3em;
+    border: 1px solid black;
+}
+
+.overlay-content {
+    margin-top: 0;
+}</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><button [disabled]="checkEmpty()" style="margin-left:10%; margin-right: 10%;"    class="btn-success" (click)="placeOrder()">zur    Kasse <i class="far fa-hand-point-up"></i></button><!-- placeOrder Overlay --><div #paymentOverlay id="paymentOverlay" class="overlay fade-in">    <h1>Zahlungsabwicklung</h1>    <!-- Button to close the overlay navigation -->    <a href="javascript:void(0)" class="closebtn"        (click)="off(paymentOverlay)">&times;</a>    <!-- Overlay content -->    <div class="overlay-content">        <div class="col kosten">            <label><i class="fas fa-money-bill-alt"></i> Kosten: </label>            <label #price id="price"></label>        </div>        <div class="row">            <div class="col"></div>            <div class="col">                <label class="opt">Gutschein</label>                <input #voucher type="number" step="0.01" min="0"                    oninput="validity.valid||(value=\'\');" id="voucher"                    placeholder="Gutscheinbetrag"                    (keyup)="calculateChange(voucher.value, price.innerHTML, change.innerHTML, moneyReceived.value, drinkMoney.value)">            </div>            <div class="col">                <label class="opt">Nummer</label>                <input #voucherNumber type="number" step="0.01" min="0"                    oninput="validity.valid||(value=\'\');" id="voucherNumber"                    placeholder="Gutscheinnummer">            </div>            <div class="col"></div>        </div>        <div class="row">            <div class="col">                <label id="Restbetrag"> </label>                <label id="voucherLeft"></label>            </div>        </div>        <div class="row">            <div class="col"></div>            <div class="col">                <label class="nec">Geld erhalten</label>                <input #moneyReceived type="number" step="0.01" min="0"                    oninput="validity.valid||(value=\'\');" id="moneyReceived"                    placeholder="Eingabe Geld erhalten"                    (keyup)="calculateChange(voucher.value, price.innerHTML, change.innerHTML, moneyReceived.value, drinkMoney.value)">            </div>            <div class="col">                <label class="opt">Trinkgeld</label>                <input #drinkMoney type="number" step="0.01" min="0"                    oninput="validity.valid||(value=\'\');" id="drinkMoney"                    placeholder="Trinkgeld"                    (keyup)="calculateChange(voucher.value, price.innerHTML, change.innerHTML, moneyReceived.value, drinkMoney.value)">            </div>            <div class="col"></div>        </div>        <div class="row">            <div class="col"></div>            <div class="col"></div>        </div>        <div class="col kosten">            <label><i class="fas fa-hand-holding-usd"></i> Rückgeld: </label>            <label #change id="change"></label>        </div>        <button [disabled]="!condition" id="edit" type="submit"            class="btn btn-success" (click)="finishOrder()">Bestellung abschließen <i class="far fa-hand-point-up"></i>        </button>        <div class="overView">            <!-- <h1>Übersicht</h1> -->            <div id="cartOverview" class="navbar shopppingCart">            </div>        </div>    </div></div></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AuswertungComponent', 'selector': 'auswertung'},{'name': 'CartComponent', 'selector': 'cart'},{'name': 'MainComponent', 'selector': 'main'},{'name': 'ManagementComponent', 'selector': 'management'},{'name': 'OverlayComponent', 'selector': 'overlay'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'CartComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+                   
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'CartComponent.html';
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

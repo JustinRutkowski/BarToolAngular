@@ -38,13 +38,26 @@ input {
     border-radius: 100px;
     padding: 10px;
     padding-bottom: 20px;
+    padding-top: 20px;
+
 }
 
 .col {
     font-size: 1.42em;
-    margin-top: 2em;
+    margin-top: 1.25em;
 }
 
+.opt{
+    color: #e0a800;
+}
+
+.nec{
+    color: #dc3545;
+}
+
+.kosten{
+    font-size: 4vw;
+}
 .navbar {
     justify-content: center;
 }

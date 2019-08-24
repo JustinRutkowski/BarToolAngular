@@ -11,6 +11,11 @@
     font-size: 40px;
 }
 
+.preload-me{
+    border: 2px solid lightgray;
+    border-radius: 25px;
+}
+
 .btn-primary {
     font-size: 3em;
     margin-top: 0.2em;
