@@ -18,6 +18,8 @@ export class CartComponent implements OnInit {
     voucher: HTMLInputElement;
     voucherLeft: HTMLElement;
     change: HTMLElement;
+    voucherAmount;
+    voucherNumber;
 
     ngOnInit() {
         this.drinkMoney = <HTMLInputElement>document.getElementById("drinkMoney");
@@ -73,9 +75,15 @@ export class CartComponent implements OnInit {
             item = <HTMLButtonElement>container.children.item(i);
 
             var buttonText: string = item.innerHTML;
+            console.log(buttonText);
+            
             art = buttonText.split("|", 3)[0].trim();
-            var quantity: string = buttonText.split("|", 3)[1];
+            var quantity: string = buttonText.split("X")[0].split("|")[1];
+            console.log(quantity);
+            
             var price: string = item.value;
+            console.log(price);
+            
 
             var overviewItem = document.createElement('button');
             overviewItem.innerHTML = buttonText;

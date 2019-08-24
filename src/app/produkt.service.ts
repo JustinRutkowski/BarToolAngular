@@ -16,9 +16,9 @@ import { environment }  from '../environments/environment'
  * Klasse für den aufruf der HTTP Requests
  */
 export class ProduktService {
-  // baseUrl = "./"
+  baseUrl = "./"
 
-  baseUrl = 'http://localhost:80/BarToolAngular/';
+  // baseUrl = 'http://localhost:80/BarToolAngular/';
   produkt: Produkt;
   produkte: Produkt[];
   produkte2: Produkt[];

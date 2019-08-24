@@ -24,6 +24,7 @@
             </mat-select>
         </div>
         <!-- show only the sizes for the coresponding product  -->
+        <h6 style="margin-top: 1.5em" class="title">Größe</h6>
         <ng-container *ngFor="let item of produkte" class="navbar">
             <button *ngIf="item.Art == title.innerHTML" class="btn btn-secondary"
                 (click)="addToCart(item, amount.value)">{{item.Groesse}} L
@@ -36,8 +37,8 @@
     <div #containerOld id="containerOld" class="cart">
         <h3>letzte Bestellung</h3>
         <button *ngFor="let item of cartProdukteOld" value="{{item.Preis}}"
-            [ngStyle]="getColorFromExistingItem(item.Art)"
-            class="cartItem">{{item.Art + " | " + item.Menge + " | " + item.Groesse}}
+            style="background-color: lightgrey"
+            class="cartItem">{{item.Art + " | " + item.Menge + " X " + item.Groesse + ' Liter'}}
 
         </button>
     </div>
@@ -45,9 +46,9 @@
         class="cart slide-up">
         <h3>aktuelle Bestellung</h3>
         <button #product *ngFor="let item of cartProdukte; let i = index" value="{{item.Preis}}"
-            [ngStyle]="getColorFromExistingItem(item.Art)"
-            (click)="cartItemOverlayOn(product, item)"
-            class="cartItem">{{item.Art + " | " + item.Menge + " | " + item.Groesse}}</button>
+        style="background-color: white"
+        (click)="cartItemOverlayOn(containerNew, product, item)"
+            class="cartItem">{{item.Art + " | " + item.Menge + " X " + item.Groesse + ' Liter'}}</button>
     </div>
 </div>
 
@@ -63,7 +64,7 @@
 
         <button id="deleteButton" type="submit" class="cartItemOverlay">Entfernen <i
                 class="far fa-hand-point-up"></i></button>
-                
+
                 <!-- just naming this one edit caused problems -->
         <button id="editButton" type="submit" class="cartItemOverlay">Bearbeiten <i
                 class="far fa-hand-point-up"></i></button>

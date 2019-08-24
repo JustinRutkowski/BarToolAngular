@@ -67,4 +67,10 @@ export class ManagementComponent implements OnInit {
       }
     );
   }
+
+  confirm(item){
+    if(window.confirm(item.Art + " in " + item.Groesse + " Liter Variante wirklich löschen?")){
+      this.deleteProduct(item);
+    };
+  }
 }

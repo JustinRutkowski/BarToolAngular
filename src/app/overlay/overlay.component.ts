@@ -51,7 +51,7 @@ export class OverlayComponent implements OnInit {
    * @param buttonItem the product as the HTMLButtonElement
    * @param cartItem the product in the cart
    */
-  cartItemOverlayOn(buttonItem: HTMLButtonElement, cartItem: Produkt) {
+  cartItemOverlayOn(containerNew, buttonItem: HTMLButtonElement, cartItem: Produkt) {    
     var cartItemOverlay = document.getElementById("cartItemOverlay");
     cartItemOverlay.style.display = "block";
     document.getElementById("title2").innerText = cartItem.Art;
@@ -61,20 +61,20 @@ export class OverlayComponent implements OnInit {
 
     // todo Refactor anmiation with Angular Anmiation
     deleteButton.onclick = function () {
-      buttonItem.className = "cart slide-down";
+      containerNew.className = "cart slide-down";
       this2.off(cartItemOverlay)
       setTimeout(() => {
         this2.cartProdukte.splice(this2.cartProdukte.indexOf(cartItem), 1)
-        buttonItem.className = "cart slide-up";
+        containerNew.className = "cart slide-up";
       }, 275);
     }
 
     editButton.onclick = function () {
-      buttonItem.className = "cart slide-down";
+      containerNew.className = "cart slide-down";
       this2.off(cartItemOverlay)
       setTimeout(() => {
         this2.cartProdukte.splice(this2.cartProdukte.indexOf(cartItem), 1)
-        buttonItem.className = "cart slide-up";
+        containerNew.className = "cart slide-up";
       }, 275);
       document.getElementById("title").innerText = cartItem.Art;
       document.getElementById("overlay").style.display = "block";

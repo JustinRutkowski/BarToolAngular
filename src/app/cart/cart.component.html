@@ -22,15 +22,27 @@
                 <label class="opt">Gutschein</label>
                 <input #voucher type="number" step="0.01" min="0"
                     oninput="validity.valid||(value='');" id="voucher"
-                    placeholder="Gutscheinbetrag"
-                    (keyup)="calculateChange(voucher.value, price.innerHTML, change.innerHTML, moneyReceived.value, drinkMoney.value)">
+                    [(ngModel)]="voucherAmount" placeholder="Gutscheinbetrag"
+                    (keyup)="calculateChange(voucher.value, price.innerHTML, change.innerHTML, moneyReceived.value, drinkMoney.value)"
+                    name="model" #VoucherModel="ngModel">
+
+                <span class="help-block danger"
+                    *ngIf="VoucherModel.errors?.pattern && VoucherModel.touched">
+                    The model name can only contain the letters a-z or A-Z
+                </span>
 
             </div>
             <div class="col">
                 <label class="opt">Nummer</label>
-                <input #voucherNumber type="number" step="0.01" min="0"
+                <input type="number" step="0.01" min="0"
                     oninput="validity.valid||(value='');" id="voucherNumber"
-                    placeholder="Gutscheinnummer">
+                    [(ngModel)]="voucherNumber" [required]="voucherAmount != 0" [disabled]="voucherAmount == 0 || voucherAmount == undefined"
+                    placeholder="Gutscheinnummer" [ngStyle]="{'border': voucherAmount != 0 && voucherAmount != undefined ? '3px solid red' : 'black'}">
+
+                <span class="help-block danger"
+                    *ngIf="VoucherModel.errors?.required && VoucherModel.touched">
+                    The model name is required
+                </span>
             </div>
             <div class="col"></div>
 
@@ -73,7 +85,8 @@
         </div>
 
         <button [disabled]="!condition" id="edit" type="submit"
-            class="btn btn-success" (click)="finishOrder()">Bestellung abschließen <i class="far fa-hand-point-up"></i>
+            class="btn btn-success" (click)="finishOrder()">Bestellung abschließen <i
+                class="far fa-hand-point-up"></i>
         </button>
 
         <div class="overView">

@@ -38,11 +38,13 @@
     <!-- Button to close the overlay -->
     <a href="javascript:void(0)" class="closebtn" (click)="off(overlay)">&times;</a>
     <!-- Overlay content -->
-    <div style="margin-top: 40%;" class="overlay-content">
+    <h6 style="margin-top: 1.5em" class="title">Größe löschen</h6>
+
+    <div style="margin-top: 5%;" class="overlay-content">
         <!-- show only the sizes for the coresponding product  -->
         <ng-container *ngFor="let item of produkte" class="navbar">
             <button *ngIf="item.Art == title.innerHTML" class="btn btn-danger"
-                (click)="deleteProduct(item); location.reload()">{{item.Groesse}} L
+                (click)="confirm(item)">{{item.Groesse}} L
             </button>
         </ng-container>
     </div>
