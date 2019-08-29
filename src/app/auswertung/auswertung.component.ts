@@ -65,7 +65,7 @@ export class AuswertungComponent implements OnInit {
       // for (let i = 0; i < this.myData.length; i++) {
       //   this.elements.push({ produkt: this.myData[i][0], Groesse: this.myData[i][1], Preis: this.myData[i][2], Menge: parseInt(this.myData[i][3]), Umsatz: this.myData[i][4], Kosten: this.myData[i][5], Gewinn: this.myData[i][6] });
       // }
-    }, 300);
+    }, 500);
   }
 
   drawChart() {
