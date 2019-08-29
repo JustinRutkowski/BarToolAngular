@@ -9,9 +9,12 @@ export class Produkt{
     
     Menge: string;
 
+    Einkaufspreis: string;
+
     constructor(
         Art: string,
         Groesse: string,
         Preis: string,
-        Menge: string) {}
+        Menge: string,
+        Einkaufspreis: string) {}
 }

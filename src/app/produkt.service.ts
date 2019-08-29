@@ -6,7 +6,9 @@ import { map, catchError } from 'rxjs/operators';
 
 import { Produkt } from './produkt';
 import { Bestellung } from './bestellung';
-import { environment }  from '../environments/environment'
+import { environment } from '../environments/environment'
+import { Bill } from './cart/bill';
+import { Relation } from './cart/relation';
 
 @Injectable({
   providedIn: 'root'
@@ -18,8 +20,9 @@ import { environment }  from '../environments/environment'
 export class ProduktService {
   baseUrl = "./"
 
-  // baseUrl = 'http://localhost:80/BarToolAngular/';
+  // baseUrl = 'http://192.168.178.30:80/BarToolAngular/';
   produkt: Produkt;
+  bill: Bill;
   produkte: Produkt[];
   produkte2: Produkt[];
 
@@ -72,14 +75,61 @@ export class ProduktService {
       catchError(this.handleError));
   }
 
-  delete(item: Produkt): Observable<Produkt[]> {    
+  delete(item: Produkt): Observable<Produkt[]> {
     return this.http.post(`${this.baseUrl}/controller.php?cmd=4`, { data: item })
       .pipe(map((res) => {
         this.produkte = res['data'];
         return this.produkte;
       }),
-      catchError(this.handleError));
-}
+        catchError(this.handleError));
+  }
+
+  add(item: Produkt): Observable<Produkt[]> {
+    console.log(item);
+    
+    return this.http.post(`${this.baseUrl}/controller.php?cmd=5`, { data: item })
+      .pipe(map((res) => {
+        this.produkte = res['data'];
+        return this.produkte;
+      }),
+        catchError(this.handleError));
+  }
+
+  order(bill: Bill): Observable<Produkt[]> {
+    return this.http.post(`${this.baseUrl}/controller.php?cmd=6`, { data: bill })
+      .pipe(map((res) => {
+        this.produkte = res['data'];
+        return this.produkte;
+      }),
+        catchError(this.handleError));
+  }
+
+  getBill(bill: Bill): Observable<string> {
+    return this.http.post(`${this.baseUrl}/controller.php?cmd=7`, { data: bill })
+      .pipe(map((res) => {  
+        console.log(res);
+              
+        return res['data'];
+      }),
+        catchError(this.handleError));
+  }
+
+  getProdukt(produkt: Produkt): Observable<string> {
+    return this.http.post(`${this.baseUrl}/controller.php?cmd=8`, { data: produkt })
+      .pipe(map((res) => {        
+        return res['data'];
+      }),
+        catchError(this.handleError));
+  }
+
+  relateOrderAndProduct(relation: Relation): Observable<string> {
+    return this.http.post(`${this.baseUrl}/controller.php?cmd=9`, { data: relation })
+      .pipe(map((res) => {
+        console.log(res);     
+        return res['data'];
+      }),
+        catchError(this.handleError));
+  }
 
 
   /**

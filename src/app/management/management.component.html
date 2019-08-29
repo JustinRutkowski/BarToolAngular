@@ -1,25 +1,38 @@
 <h2>Produkte hinzufügen</h2>
+<form #f="ngForm"
+    (submit)="addProduct(name.value, size.value, price.value, purchase.value, f)"
+    class="form-group">
 
-<div class="form-group">
-    <div class="field">
-        <label for="Produktname">Produktname</label>
-        <input class="form-control" ngModel name="Produktname">
+    <div class="row">
+        <div class="col">
+            <label for="Produktname">Produktname</label>
+            <input required #name type="text" class="form-control"
+                [(ngModel)]="productName" name="Produktname">
+        </div>
+        <!-- oninput="validity.valid||(value='');" -->
+        <div class="col">
+            <label for="Produktgröße">Produktgröße in Liter</label>
+            <input required #size type="number" class="form-control"
+                [(ngModel)]="productSize" name="Produktgröße">
+        </div>
     </div>
-    <div class="field">
-        <label for="Produktgröße">Produktgröße</label>
-        <input class="form-control" ngModel name="Produktgröße">
-    </div>
-    <div class="field">
-        <label for="Produktpreis">Verkaufspreis</label>
-        <input class="form-control" ngModel name="Produktpreis">
-    </div>
-    <div class="field">
-        <label for="Produktpreis">Einkaufspreis</label>
-        <input class="form-control" ngModel name="Produktpreis">
-    </div>
+    <div style="margin-top: 5%" class="row">
+        <div class="col">
+            <label for="Produktpreis">Verkaufspreis in €</label>
+            <input required #price type="number" class="form-control"
+                [(ngModel)]="productPrice" name="Produktpreis">
+        </div>
 
-    <button class="btn-success">hinzufügen</button>
-</div>
+        <div class="col">
+            <label for="Produktpreis">Einkaufspreis in € <i
+                    style="color: lightgray">(optional)</i></label>
+            <input #purchase type="number" class="form-control"
+                [(ngModel)]="productPurchase" name="Produktpreis">
+        </div>
+    </div>
+    <button [disabled]="f.invalid" class="btn-success">hinzufügen <i
+            class="far fa-hand-point-up"></i></button>
+</form>
 <hr>
 
 <h2>Produkte löschen</h2>
@@ -32,7 +45,7 @@
     </button>
 </div>
 
-<div #overlay id="overlay" class="overlay fade-in">
+<div #overlay id="deleteOverlay" class="overlay fade-in">
     <!-- the currently displayed product -->
     <h1 #title class="title" id="title"></h1>
     <!-- Button to close the overlay -->

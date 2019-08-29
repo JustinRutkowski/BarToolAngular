@@ -34,12 +34,11 @@ input {
 
 .overView {
     margin: 2em;
-    background: #096600;
+    background: radial-gradient(lightgreen, tomato);
     border-radius: 100px;
     padding: 10px;
     padding-bottom: 20px;
     padding-top: 20px;
-
 }
 
 .col {
@@ -47,17 +46,18 @@ input {
     margin-top: 1.25em;
 }
 
-.opt{
+.opt {
     color: #e0a800;
 }
 
-.nec{
+.nec {
     color: #dc3545;
 }
 
-.kosten{
+.kosten {
     font-size: 4vw;
 }
+
 .navbar {
     justify-content: center;
 }

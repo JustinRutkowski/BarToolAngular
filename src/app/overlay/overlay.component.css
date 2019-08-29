@@ -1,9 +1,12 @@
 ::ng-deep .mat-select-trigger {
     min-width: 65vw;
+    font-size: 29px;
+    text-align: center;
+
 }
 
  ::ng-deep .mat-select-panel {
-    max-height: 65vh !important;
+    max-height: 115vw !important;
 }
 
 button:hover {
@@ -33,8 +36,8 @@ label {
 
 .form-group {
     -webkit-appearance: none;
-    margin-left: 3em;
-    margin-right: 3em;
+    margin-left: 8em;
+    margin-right: 8em;
 }
 
 .form-control {

@@ -1,6 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Produkt } from '../produkt';
 import { ProduktService } from '../produkt.service';
+import { Router } from '@angular/router';
+import swal from 'sweetalert';
 
 @Component({
   selector: 'management',
@@ -14,8 +16,12 @@ export class ManagementComponent implements OnInit {
   message: string;
   error = '';
   location = location;
+  productName;
+  productSize;
+  productPrice;
+  productPurchase;
 
-  constructor(private produktService: ProduktService) { }
+  constructor(private produktService: ProduktService, private router: Router) { }
 
   ngOnInit() {
     this.produktService.currentMessage.subscribe(message => this.message = message)
@@ -54,13 +60,16 @@ export class ManagementComponent implements OnInit {
   deleteProductOverlay(Art: string) {
     // Zuweisung des Namens des jeweiligen Produktes für das Overlay
     document.getElementById("title").innerText = Art;
-    document.getElementById('overlay').style.display = "block";
+    document.getElementById('deleteOverlay').style.display = "block";
   }
 
   deleteProduct(item) {
     this.produktService.delete(item).subscribe(
       (res: Produkt[]) => {
-        console.log(res);
+        setTimeout(() => {
+          this.router.navigateByUrl('/verwaltung');
+        }, 50);
+        swal("Gelöscht!", `${item.Art} in ${item.Groesse} Liter Variante wurde gelöscht`, "success");
       },
       (err) => {
         this.error = err;
@@ -68,9 +77,48 @@ export class ManagementComponent implements OnInit {
     );
   }
 
-  confirm(item){
-    if(window.confirm(item.Art + " in " + item.Groesse + " Liter Variante wirklich löschen?")){
+  addProduct(name, size, price, purchase, f) {
+    this.router.navigateByUrl('');
+    var item = new Produkt("", "", "", "", "");
+
+    item.Art = name;
+    item.Groesse = size;
+    item.Preis = price;
+    item.Einkaufspreis = purchase
+
+    this.produktService.add(item).subscribe(
+      (res: Produkt[]) => {
+        setTimeout(() => {
+          this.router.navigateByUrl('/verwaltung');
+        }, 50);
+        swal("Hinzugefügt!", `${item.Art} in ${item.Groesse} Liter Variante zum Preis von ${item.Preis}€ wurde hinzugefügt`, "success");
+        f.reset();
+      },
+      (err) => {
+        this.error = err;
+      }
+    );
+  }
+
+  async confirm(item) {
+    const willDelete = await swal({
+      title: "Produkt löschen?",
+      text: `${item.Art} in ${item.Groesse} Liter Variante zum Preis von ${item.Preis}€ wirklich löschen?`,
+      icon: "warning",
+      buttons: ["Nein", "Ja"],
+      dangerMode: true,
+    });
+
+    if (willDelete) {
       this.deleteProduct(item);
-    };
+      this.router.navigateByUrl('');
+
+      // document.getElementById('deleteOverlay').style.display = "none";
+      // to refresh 
+    }
+    // if (window.confirm(item.Art + " in " + item.Groesse + " Liter Variante wirklich löschen?")) {
+    //  
+    //   // alert("erfolgreich gelöscht");
+    // };
   }
 }

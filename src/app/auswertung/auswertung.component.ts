@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ProduktService } from '../produkt.service';
 import { Produkt } from '../produkt';
 import { Observable } from 'rxjs';
 import { Bestellung } from '../bestellung';
 import { Router } from '@angular/router';
-import { GoogleChartsModule } from 'angular-google-charts';
+import * as jspdf from 'jspdf';
+import html2canvas from 'html2canvas';
+import { Chart } from 'chart.js';
 
 declare let google: any;
 
@@ -14,93 +16,124 @@ declare let google: any;
   styleUrls: ['./auswertung.component.css']
 })
 export class AuswertungComponent implements OnInit {
-
-  produkt: Produkt = new Produkt("", "", "", "");
+  chart = []; // This will hold our chart info
+  produkt: Produkt = new Produkt("", "", "", "", "");
   produkte: Produkt[];
   produkte2: Produkt[];
   bestellungen: Bestellung[]
-  myWidth = "750"
-  myWidth2 = "370"
-  myHeight = "375"
+  myWidth = "780"
+  myWidth2 = "780"
+  myHeight = "325"
   myData = new Array();
   myData2 = new Array();
+  myData3 = new Array();
   myType = "Bar";
   myType2 = "PieChart";
   myType3 = "Table";
-  myTitle = "Verkaufte Größen"
-  myTitle2 = "Umsätze nach Produkt"
-  columnNames = ["Produkte", "verkaufte Menge", "Umsatz", "Kosten", "Gewinn"];
+  myTitle = "Verkaufte Mengen nach Produkt"
+  myTitle2 = "Erzielte Umsätze nach Produkt"
+  columnNames = ["Produkt", "Größe", "Preis", "Menge", "Umsatz", "Kosten", "Gewinn"];
   columnNames2 = ["Produkte", "Umsatz"];
-  myOptions = {
-    is3D: true,
-  };
+  options;
+  data;
+  Menge: number = 0;
+  Umsatz: number = 0;
+  // public barChartOptions = {
+  //   scaleShowVerticalLines: false,
+  //   responsive: true
+  // };
+  // pieChartLabels = this.columnNames2;
+  // pieChartType = 'pie';
+  // elements: any = [];
+  // headElements = this.columnNames;
 
-  constructor(private produktService: ProduktService, private router: Router) {
+  constructor(private produktService: ProduktService) {
 
   }
 
-  // ngOnInit() {
-  //   setTimeout(() => {
-  //     google.charts.load('current', {
-  //       packages: ['corechart', 'table', 'bar']
-  //     });
-
-  //     // google.charts.setOnLoadCallback(
-  //     // });
-  //     // google.charts.setOnLoadCallback(() => this.drawChart);
-  //     // window.addEventListener('resize', () => {
-  //     //   if (this.router.url === '/auswertung') {
-  //     //     return this.drawChart();
-  //     //   }
-  //     // });
-  //   }, 275);
-  // }
-
-  // drawChart() {
-  //   const data = google.visualization.arrayToDataTable(this.myData);
-  //   const chart = new google.visualization.LineChart(
-  //     document.getElementById('chart'),
-  //   );
-  //   chart.draw(data, this.myOptions);
-  // }
+  closeSession() { }
 
   ngOnInit() {
-    setTimeout(() => {
-      google.charts.load('current', { 'packages': ['bar', 'pie'] });
-      this.getProdukte();
-    }, 50);
+    this.getProdukte();
 
     setTimeout(() => {
-      this.drawChart();
+      google.charts.load('current', { 'packages': ['corechart'] });
+
+      // Set a callback to run when the Google Visualization API is loaded.
+      google.charts.setOnLoadCallback(this.drawChart());
+
+      // for (let i = 0; i < this.myData.length; i++) {
+      //   this.elements.push({ produkt: this.myData[i][0], Groesse: this.myData[i][1], Preis: this.myData[i][2], Menge: parseInt(this.myData[i][3]), Umsatz: this.myData[i][4], Kosten: this.myData[i][5], Gewinn: this.myData[i][6] });
+      // }
     }, 300);
   }
 
   drawChart() {
-    var dataBar = new google.visualization.DataTable();
-    dataBar.addColumn('string', 'Produkte');
-    dataBar.addColumn('number', 'verkaufte Menge');
-    dataBar.addColumn('number', 'Umsatz');
-    dataBar.addColumn('number', 'Kosten');
-    dataBar.addColumn('number', 'Gewinn');
+    // First Pie Chart.
+    var data = new google.visualization.DataTable();
+    data.addColumn('string', 'Produkte');
+    data.addColumn('number', 'Umsatz');
+    data.addRows(this.myData2);
 
-    dataBar.addRows(this.myData);
+    // Set chart options
+    var options1 = {
+      'title': 'Produkte nach erzieltem Umsatz',
+      'width': 780,
+      'height': 325,
+      'is3D': true,
+      
+    };
+    var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+    chart.draw(data, options1);
 
-    const chartBar = new google.charts.Bar(document.querySelector('#barChart'));
-    chartBar.draw(dataBar);
+    // !-----------------------------------------------------------------
 
-    //------------------------------------------------------------------------------------
+    // Second Pie Chart.
+    var data2 = new google.visualization.DataTable();
+    // columnNames = ["Produkt", "Größe", "Preis", "Menge", "Umsatz", "Kosten", "Gewinn"];
 
-    var dataPie1 = new google.visualization.DataTable();
-    dataPie1.addColumn('string', 'Produkte');
-    dataPie1.addColumn('number', 'Umsatz');
+    data2.addColumn('string', 'Produkte');
+    data2.addColumn('number', 'Umsatz');
+    data2.addRows(this.myData3);
 
-    dataPie1.addRows(this.myData2);
+    // Set chart options
+    var options2 = {
+      title: 'Produkte nach Anzahl verkaufter Mengen',
+      width: 780,
+      height: 325,
+      is3D: true,
 
-    const chartPie1 = new google.charts.Bar(document.querySelector('#pieChart1'));
-    chartPie1.draw(dataPie1);
+      animation: {
+        startup: true,
+        duration: 10000,
+        easing: 'out',
+      },
+    };
+    var chart2 = new google.visualization.PieChart(document.getElementById('chart_div2'));
+    chart2.draw(data2, options2);
 
+    // !-----------------------------------------------------------------
+
+    // Table Chart.
+    var data3 = new google.visualization.DataTable();
+    data3.addColumn('string', 'Produkte');
+    data3.addColumn('string', 'Größe in Liter');
+    data3.addColumn('number', 'Preis in €');
+    data3.addColumn('number', 'Menge');
+    data3.addColumn('number', 'Umsatz in €');
+    data3.addColumn('number', 'Kosten in €');
+    data3.addColumn('number', 'Gewinn in €');
+
+    data3.addRows(this.myData);
+
+    // Set chart options
+    var options3 = {
+      'width': 780,
+      'height': 325,
+    };
+    var chart3 = new google.visualization.Table(document.getElementById('chart_div3'));
+    chart3.draw(data3, options3);
   }
-
   /**
    ** gets all the products in the products table
    */
@@ -108,6 +141,7 @@ export class AuswertungComponent implements OnInit {
     this.produktService.getAll().subscribe(
       (res: Produkt[]) => {
         this.produkte = res;
+        console.log(this.produkte);
         // get sum of selled amount per product
         for (var i = 0; i < this.produkte.length; i++) {
           this.getMenge(this.produkte[i]);
@@ -126,11 +160,38 @@ export class AuswertungComponent implements OnInit {
         this.produkte2 = res
         if (this.produkte2 != null) {
           for (var i = 0; i < this.produkte2.length; i++) {
-            this.myData.push([this.produkte2[i].Art, parseInt(this.produkte2[i].Menge), (produkt.Preis * parseInt(this.produkte2[i].Menge)), parseInt(produkt.Preis), parseInt(produkt.Preis)]);
-            this.myData2.push([this.produkte2[i].Art, (parseInt(produkt.Preis) * parseInt(this.produkte2[i].Menge))])
+            if (this.produkte2[i].Menge != null) {
+              this.Menge = this.Menge + parseInt(this.produkte2[i].Menge);
+              this.Umsatz = this.Umsatz + parseInt(produkt.Preis) * parseInt(this.produkte2[i].Menge);
+
+              this.myData.push([this.produkte2[i].Art, this.produkte2[i].Groesse, parseInt(produkt.Preis), parseInt(this.produkte2[i].Menge), parseInt(produkt.Preis) * parseInt(this.produkte2[i].Menge), parseInt(produkt.Einkaufspreis), parseInt(produkt.Preis) * parseInt(this.produkte2[i].Menge) - parseInt(produkt.Einkaufspreis)])
+
+              this.myData2.push([this.produkte2[i].Art + " " + this.produkte2[i].Groesse + " L", (parseInt(produkt.Preis) * parseInt(this.produkte2[i].Menge))]);
+
+              this.myData3.push([`${this.produkte2[i].Art} ${this.produkte2[i].Groesse} L`, parseInt(this.produkte2[i].Menge)]);
+            }
           }
         }
       }
     );
+  }
+
+  public captureScreen(data) {
+    html2canvas(data).then(canvas => {
+      // Few necessary setting options  
+      var imgWidth = 208;
+      var pageHeight = 295;
+      var imgHeight = canvas.height * imgWidth / canvas.width;
+      var heightLeft = imgHeight;
+
+      const contentDataURL = canvas.toDataURL('image/png')
+      let pdf = new jspdf('p', 'mm', 'a4'); // A4 size page of PDF  
+      var position = 20;
+
+      pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight)
+      pdf.text(70, 10, 'Produktabrechnung BarTool');
+
+      pdf.save('BarTool_Abrechnung.pdf'); // Generated PDF   
+    });
   }
 }

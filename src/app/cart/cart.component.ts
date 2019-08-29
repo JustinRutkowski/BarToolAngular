@@ -3,6 +3,8 @@ import { Produkt } from '../produkt';
 import { ProduktService } from '../produkt.service';
 import { CommandExecutor } from 'selenium-webdriver/safari';
 import { Overlay } from '@angular/cdk/overlay';
+import { Bill } from './bill';
+import { Relation } from './relation';
 
 @Component({
     selector: 'cart',
@@ -11,7 +13,7 @@ import { Overlay } from '@angular/cdk/overlay';
 })
 export class CartComponent implements OnInit {
     @Input() overlay: any;
-    cartItems: Produkt[];
+    @Input() cartItems: Produkt[];
     condition: Boolean = false;
     drinkMoney: HTMLInputElement;
     moneyReceived: HTMLInputElement;
@@ -20,6 +22,13 @@ export class CartComponent implements OnInit {
     change: HTMLElement;
     voucherAmount;
     voucherNumber;
+    error = "";
+    bill = new Bill("", "", "", "", "", "", "");
+    produkt: Produkt = new Produkt("", "", "", "", "");
+    relation = new Relation("", "", "");
+
+
+    constructor(private produktService: ProduktService) { };
 
     ngOnInit() {
         this.drinkMoney = <HTMLInputElement>document.getElementById("drinkMoney");
@@ -35,7 +44,7 @@ export class CartComponent implements OnInit {
         setTimeout(() => {
             overlay.style.display = "none";
             overlay.className = "overlay fade-in";
-        }, 250);
+        }, 275);
     }
 
     /**
@@ -65,7 +74,7 @@ export class CartComponent implements OnInit {
         this.voucherLeft.innerHTML = "";
 
         document.getElementById('paymentOverlay').style.display = "block";
-        this.moneyReceived.focus();
+        // this.moneyReceived.focus();
 
         var priceSum: number = 0;
 
@@ -76,19 +85,19 @@ export class CartComponent implements OnInit {
 
             var buttonText: string = item.innerHTML;
             console.log(buttonText);
-            
+
             art = buttonText.split("|", 3)[0].trim();
             var quantity: string = buttonText.split("X")[0].split("|")[1];
             console.log(quantity);
-            
+
             var price: string = item.value;
             console.log(price);
-            
+
 
             var overviewItem = document.createElement('button');
             overviewItem.innerHTML = buttonText;
             overviewItem.className = item.className + " overView";
-            overviewItem.style.backgroundColor = document.getElementById(art).style.backgroundColor;
+            overviewItem.style.backgroundColor = "white";
             overviewItem.id = item.innerHTML;
             priceSum = priceSum + (+price * +quantity);
             if (document.getElementById(item.innerHTML) == null) {
@@ -109,8 +118,16 @@ export class CartComponent implements OnInit {
      * @param drinkMoney money that the client voulentiery gives to us
      */
     calculateChange(voucher, price, change, moneyReceived, drinkMoney) {
+        var docVoucher = <HTMLInputElement>document.getElementById("voucherNumber");
+        var bool = docVoucher.disabled;
 
-        var voucherLeft = this.voucherLeft.innerHTML
+        if (bool == true) {
+            console.log(bool);
+            document.getElementById("voucherNumber").innerHTML = '';
+            this.voucherNumber = '';
+        }
+
+        var voucherLeft = this.voucherLeft.innerHTML;
         price = price.replace('€', '');
         change = change.replace('€', '');
 
@@ -158,6 +175,23 @@ export class CartComponent implements OnInit {
         this.change.innerHTML = change;
         this.voucherLeft.innerHTML = voucherLeft;
 
+
+        this.bill.Bestellungspreis = price;
+        this.bill.Gelderhalten = moneyReceived;
+        this.bill.Gutscheinwert = voucher;
+        var gutscheinnummer: HTMLInputElement;
+        gutscheinnummer = <HTMLInputElement>document.getElementById("voucherNumber");
+        this.bill.Gutscheinnummer = gutscheinnummer.value;
+        // var nutzer: HTMLInputElement;
+        // nutzer = <HTMLInputElement>document.getElementById("user").value;
+        // this.bill.Nutzer = nutzer.toString();
+        this.bill.Rueckgeld = change;
+        this.bill.Trinkgeld = drinkMoney;
+
+        this.bill.Nutzer = "test";
+
+        console.log(this.bill);
+
     }
 
     /**
@@ -182,15 +216,68 @@ export class CartComponent implements OnInit {
 
         localStorage.setItem("cartOld", JSON.stringify(this.overlay.cartProdukte));
 
+        this.order(this.bill)
+
         // copy the order to display the previous order
         this.overlay.cartProdukteOld = this.overlay.cartProdukte;
-
-
-        // reset the cart for a new order
-        this.overlay.cartProdukte = [];
 
         // reset the overview
         document.getElementById('cartOverview').innerHTML = "";
         this.condition = false;
+
     }
+
+    order(bill) {
+        this.produktService.order(bill).subscribe(
+            (res: Produkt[]) => {
+                console.log(res);
+                for (var i = 0; i < this.overlay.cartProdukte.length; i++) {
+                    this.order2(this.bill, this.overlay.cartProdukte[i])
+                }
+
+                // reset the cart for a new order
+                this.overlay.cartProdukte = [];
+            },
+            (err) => {
+                this.error = err;
+            }
+        );
+    }
+
+    order2(bill: Bill, produkt: Produkt) {
+        this.produktService.getBill(bill).subscribe(
+            (res: string) => {
+                console.log(res);
+
+                this.relation.BestellungsID = res[0]['MAX(BestellungsID)'];
+                this.produktService.getProdukt(produkt).subscribe(
+                    (res: string) => {
+                        this.relation.ProdukteID = res['produkteID'];
+
+                        this.relation.Menge = produkt.Menge;
+                        console.log(this.relation);
+
+                        this.produktService.relateOrderAndProduct(this.relation).subscribe(
+                            (res: string) => {
+                                console.log(res);
+                            },
+                            (err) => {
+                                this.error = err;
+                            }
+                        );
+                    },
+                    (err) => {
+                        this.error = err;
+                    }
+                );
+            },
+            (err) => {
+                this.error = err;
+            }
+        );
+
+
+
+    }
+
 }

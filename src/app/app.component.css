@@ -29,13 +29,9 @@ h3 {
     font-size: 27px;
 }
 
-.products {
-    margin-left: 2em;
-    margin-right: 2em;
-}
 
 .long {
-    font-size: 30px;
+    font-size: 24px;
 }
 
 .verylong {
@@ -51,7 +47,7 @@ h1 {
 }
 
 .nav-tabs {
-    font-size: 2em;
+    font-size: 1.75em;
     border-bottom: 1px solid #ccc;
 }
 

@@ -10,5 +10,4 @@ import { Produkt } from './produkt';
 
 export class AppComponent {
   cartProdukte: Produkt[] = new Array();
-  location;
 }

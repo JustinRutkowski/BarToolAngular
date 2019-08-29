@@ -1,13 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
 
-body{
+body {
     background: #fafafa;
 }
 
 #title {
     margin-bottom: 2em;
 }
-
 
 .title {
     text-align: center;
@@ -25,12 +24,26 @@ hr {
     margin-right: 2em;
 }
 
-.btn-success {
-    background: #096600;  
+.google-visualization-table-td {
+    text-align: center !important;
+    font-size: 120% !important;
 }
 
-div.ng-tns-c5-0.ng-trigger.ng-trigger-transformPanel.mat-select-panel{
+.google-visualization-table-th {
+    text-align: center !important;
+}
+
+
+.btn-success {
+    background: #096600;
+}
+
+div.ng-tns-c5-0.ng-trigger.ng-trigger-transformPanel.mat-select-panel {
     border-radius: 25px;
+}
+
+.mat-option-text {
+    text-align: center !important;
 }
 
 h3 {
@@ -78,15 +91,16 @@ input {
 
 .form-control {
     border-radius: 25px;
+    height: 50px;
 }
 
 option {
     border-radius: 25px;
 }
 
-html,
-body {
+html, body {
     height: 100%;
+    overflow-x: hidden;
 }
 
 body {
@@ -94,18 +108,16 @@ body {
     font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
-
 /**************************************************************/
 
 #overlay {
     display: none;
 }
 
-
 /* Position the content inside the overlay */
 
 .overlay-content {
-    overflow: auto;
+    overflow-x: hidden;
     top: 10%;
     /* 25% from the top */
     width: 100%;
@@ -116,8 +128,8 @@ body {
     /* 30px top margin to avoid conflict with the close button on smaller screens */
 }
 
-
 /* Position the close button (top right corner) */
+
 .overlay .closebtn {
     position: absolute;
     right: 0;
@@ -164,7 +176,7 @@ body {
     margin: 5px;
 }
 
-.button span {
+/* .button span {
     cursor: pointer;
     display: inline-block;
     position: relative;
@@ -178,16 +190,16 @@ body {
     top: 0;
     right: -20px;
     transition: 0.5s;
-}
+} */
 
-.button:hover span {
+/* .button:hover span {
     padding-right: 25px;
 }
 
 .button:hover span:after {
     opacity: 1;
     right: 0;
-}
+} */
 
 .fade-in {
     animation: fadeIn ease 0.4s;
