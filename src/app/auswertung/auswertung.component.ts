@@ -129,7 +129,6 @@ export class AuswertungComponent implements OnInit {
     // Set chart options
     var options3 = {
       'width': 780,
-      'height': 325,
     };
     var chart3 = new google.visualization.Table(document.getElementById('chart_div3'));
     chart3.draw(data3, options3);
@@ -184,11 +183,11 @@ export class AuswertungComponent implements OnInit {
       var imgHeight = canvas.height * imgWidth / canvas.width;
       var heightLeft = imgHeight;
 
-      const contentDataURL = canvas.toDataURL('image/png')
+      const contentDataURL = canvas.toDataURL('image/svg')
       let pdf = new jspdf('p', 'mm', 'a4'); // A4 size page of PDF  
       var position = 20;
 
-      pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight)
+      pdf.addImage(contentDataURL, 'SVG', 0, position, imgWidth, imgHeight)
       pdf.text(70, 10, 'Produktabrechnung BarTool');
 
       pdf.save('BarTool_Abrechnung.pdf'); // Generated PDF   

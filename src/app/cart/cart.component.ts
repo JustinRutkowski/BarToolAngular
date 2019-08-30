@@ -26,7 +26,10 @@ export class CartComponent implements OnInit {
     bill = new Bill("", "", "", "", "", "", "");
     produkt: Produkt = new Produkt("", "", "", "", "");
     relation = new Relation("", "", "");
-
+    val: HTMLInputElement;
+    input: number = 0;
+    drinkMoneymode: boolean = false;
+    previous: boolean;
 
     constructor(private produktService: ProduktService) { };
 
@@ -47,6 +50,11 @@ export class CartComponent implements OnInit {
         }, 275);
     }
 
+    ngAfterViewInit() {
+
+        this.val.value = "0";
+    }
+
     /**
      * Checks if the current cart is empty to disable the order button
      */
@@ -58,11 +66,40 @@ export class CartComponent implements OnInit {
         }
     }
 
+    deleteInput(moneyReceived, drinkMoney) {
+        moneyReceived.value = '';
+        drinkMoney.value = '';
+        this.input = 0;
+    }
+
+    inputMoney(value) {
+        if (this.drinkMoneymode == false) {
+            this.val = <HTMLInputElement>document.getElementById("moneyReceived");
+        } else {
+            this.val = <HTMLInputElement>document.getElementById("drinkMoney");
+        }
+
+        this.val.value = (this.input + parseFloat(value)).toFixed(2);
+        this.input = parseFloat(this.val.value);
+
+    }
+
+    switchText(btnSwitch){
+        if(this.drinkMoneymode == true){
+            btnSwitch.innerHTML = "Geld eingeben";
+            btnSwitch.style.color = "#5bc0de"
+        } else {
+            btnSwitch.innerHTML = "Trinkgeld eingeben";
+            btnSwitch.style.color = "rgb(40, 167, 69)"
+        }
+    }
+
     /**
      ** displays the Paymentoverlay, copys current card to the overview, calculates the price sum 
      * @param container the whole container of the current cart
      */
     placeOrder() {
+        this.drinkMoneymode = false;
         var container = document.getElementById('containerNew');
         var item: HTMLButtonElement;
         var art;
@@ -77,7 +114,7 @@ export class CartComponent implements OnInit {
         // this.moneyReceived.focus();
 
         var priceSum: number = 0;
-
+        document.getElementById('cartOverview').innerHTML = '';
         // TO-DO refactore in an Angular way
         // i=1 for skipping the heading of the container
         for (var i: number = 1; i < container.childElementCount; i++) {
@@ -98,8 +135,11 @@ export class CartComponent implements OnInit {
             overviewItem.innerHTML = buttonText;
             overviewItem.className = item.className + " overView";
             overviewItem.style.backgroundColor = "white";
-            overviewItem.id = item.innerHTML;
+            overviewItem.id = item.innerHTML + " ov";
             priceSum = priceSum + (+price * +quantity);
+
+
+
             if (document.getElementById(item.innerHTML) == null) {
                 document.getElementById('cartOverview').appendChild(overviewItem);
             }
@@ -131,15 +171,19 @@ export class CartComponent implements OnInit {
         price = price.replace('€', '');
         change = change.replace('€', '');
 
-        console.log("voucher: " + voucher);
-        console.log("price: " + price);
-        console.log("change: " + change);
-        console.log("moneyReceived: " + moneyReceived);
-        console.log("drinkMoney: " + drinkMoney);
-
+        // console.log("voucher: " + voucher);
+        // console.log("price: " + price);
+        // console.log("change: " + change);
+        // console.log("moneyReceived: " + moneyReceived);
+        // console.log("drinkMoney: " + drinkMoney);
+        if (drinkMoney != 0) {
+            change = (+document.getElementById("change").innerHTML.replace('€', '')
+                - drinkMoney).toFixed(2) + " €";
+                console.log(change);          
+        }
         if (voucher != 0) {
             voucherLeft = (voucher - +price).toFixed(2) + " €";
-            console.log("voucherLeft: " + voucherLeft);
+            // console.log("voucherLeft: " + voucherLeft);
             if (+voucherLeft.replace('€', '') >= 0) {
                 document.getElementById("Restbetrag").innerHTML = "Rest vom Gutschein:"
                 change = "0.00 €";
@@ -151,13 +195,9 @@ export class CartComponent implements OnInit {
         }
         else {
             voucherLeft = "";
-            change = (moneyReceived - +price).toFixed(2) + " €";
+            change = (moneyReceived - +price - drinkMoney).toFixed(2) + " €";
         }
 
-        if (drinkMoney != 0) {
-            change = (+document.getElementById("change").innerHTML.replace('€', '')
-                - drinkMoney).toFixed(2) + " €";
-        }
         // Control when the order can be finished
         if ((moneyReceived >= +price || voucher + moneyReceived
             >= +price || voucher >= +price)) {

@@ -24,6 +24,10 @@ hr {
     margin-right: 2em;
 }
 
+path{
+    font-size: 200%;
+}
+
 .google-visualization-table-td {
     text-align: center !important;
     font-size: 120% !important;
