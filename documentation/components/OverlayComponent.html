@@ -249,8 +249,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="90"
-                            class="link-to-prism">src/app/overlay/overlay.component.ts:90</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="98"
+                            class="link-to-prism">src/app/overlay/overlay.component.ts:98</a></div>
                 </td>
             </tr>
 
@@ -338,15 +338,15 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>cartItemOverlayOn(cartItemOverlay: HTMLElement, event: literal type, cartItem: <a href="../classes/Produkt.html">Produkt</a>)</code>
+<code>cartItemOverlayOn(containerNew, buttonItem: HTMLButtonElement, cartItem: <a href="../classes/Produkt.html">Produkt</a>)</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="55"
-                            class="link-to-prism">src/app/overlay/overlay.component.ts:55</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="54"
+                            class="link-to-prism">src/app/overlay/overlay.component.ts:54</a></div>
                 </td>
             </tr>
 
@@ -371,9 +371,8 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>cartItemOverlay</td>
+                                    <td>containerNew</td>
                                     <td>
-                                            <code>HTMLElement</code>
                                     </td>
 
                                     <td>
@@ -382,14 +381,12 @@
 
 
                                     <td>
-                                        <p>the overlay to display</p>
-
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>event</td>
+                                    <td>buttonItem</td>
                                     <td>
-                                            <code>literal type</code>
+                                            <code>HTMLButtonElement</code>
                                     </td>
 
                                     <td>
@@ -398,7 +395,7 @@
 
 
                                     <td>
-                                        <p>todo</p>
+                                        <p>the product as the HTMLButtonElement</p>
 
                                     </td>
                                 </tr>
@@ -821,33 +818,41 @@ export class OverlayComponent implements OnInit {
 
   /**
    ** displays the Overlay if you click on a product wich is in the current cart
-   * @param cartItemOverlay the overlay to display
-   * @param event todo
+   * @param buttonItem the product as the HTMLButtonElement
    * @param cartItem the product in the cart
    */
-  cartItemOverlayOn(cartItemOverlay: HTMLElement, event: { path: { className: string; }[]; }, cartItem: Produkt) {
+  cartItemOverlayOn(containerNew, buttonItem: HTMLButtonElement, cartItem: Produkt) {
+    var cartItemOverlay &#x3D; document.getElementById(&quot;cartItemOverlay&quot;);
+    cartItemOverlay.style.display &#x3D; &quot;block&quot;;
     document.getElementById(&quot;title2&quot;).innerText &#x3D; cartItem.Art;
     var this2 &#x3D; this;
-    cartItemOverlay.style.display &#x3D; &quot;block&quot;;
-    var deleteButton: HTMLElement &#x3D; document.getElementById(&#x27;delete&#x27;);
+    var deleteButton: HTMLElement &#x3D; document.getElementById(&#x27;deleteButton&#x27;);
     var editButton &#x3D; document.getElementById(&#x27;editButton&#x27;);
 
     // todo Refactor anmiation with Angular Anmiation
     deleteButton.onclick &#x3D; function () {
-      event.path[1].className &#x3D; &quot;cart slide-down&quot;;
+      containerNew.className &#x3D; &quot;cart slide-down&quot;;
       this2.off(cartItemOverlay)
       setTimeout(() &#x3D;&gt; {
+        if (document.getElementById(buttonItem.innerHTML + &quot; ov&quot;) !&#x3D; null) {
+          let id &#x3D; buttonItem.innerHTML + &quot; ov&quot;
+          document.getElementById(id).remove()
+        }
         this2.cartProdukte.splice(this2.cartProdukte.indexOf(cartItem), 1)
-        event.path[1].className &#x3D; &quot;cart slide-up&quot;;
+        containerNew.className &#x3D; &quot;cart slide-up&quot;;
       }, 275);
     }
 
     editButton.onclick &#x3D; function () {
-      event.path[1].className &#x3D; &quot;cart slide-down&quot;;
+      containerNew.className &#x3D; &quot;cart slide-down&quot;;
       this2.off(cartItemOverlay)
       setTimeout(() &#x3D;&gt; {
+        if (document.getElementById(buttonItem.innerHTML + &quot; ov&quot;) !&#x3D; null) {
+          let id &#x3D; buttonItem.innerHTML + &quot; ov&quot;
+          document.getElementById(id).remove()
+        }
         this2.cartProdukte.splice(this2.cartProdukte.indexOf(cartItem), 1)
-        event.path[1].className &#x3D; &quot;cart slide-up&quot;;
+        containerNew.className &#x3D; &quot;cart slide-up&quot;;
       }, 275);
       document.getElementById(&quot;title&quot;).innerText &#x3D; cartItem.Art;
       document.getElementById(&quot;overlay&quot;).style.display &#x3D; &quot;block&quot;;
@@ -866,7 +871,6 @@ export class OverlayComponent implements OnInit {
     this.cartProdukte.push(item);
     this.off(sizeAndQuantityOverlay);
     localStorage.setItem(&quot;cart&quot;, JSON.stringify(item));
-    console.log(localStorage);
   }
 }</code></pre>
     </div>
@@ -898,6 +902,7 @@ export class OverlayComponent implements OnInit {
             &lt;/mat-select&gt;
         &lt;/div&gt;
         &lt;!-- show only the sizes for the coresponding product  --&gt;
+        &lt;h6 style&#x3D;&quot;margin-top: 1.5em&quot; class&#x3D;&quot;title&quot;&gt;Größe&lt;/h6&gt;
         &lt;ng-container *ngFor&#x3D;&quot;let item of produkte&quot; class&#x3D;&quot;navbar&quot;&gt;
             &lt;button *ngIf&#x3D;&quot;item.Art &#x3D;&#x3D; title.innerHTML&quot; class&#x3D;&quot;btn btn-secondary&quot;
                 (click)&#x3D;&quot;addToCart(item, amount.value)&quot;&gt;{{item.Groesse}} L
@@ -907,22 +912,21 @@ export class OverlayComponent implements OnInit {
 &lt;/div&gt;
 
 &lt;div class&#x3D;&quot;navbar&quot;&gt;
-    &lt;div #containerOld  id&#x3D;&quot;containerOld&quot;
-        class&#x3D;&quot;cart&quot;&gt;
+    &lt;div #containerOld id&#x3D;&quot;containerOld&quot; class&#x3D;&quot;cart&quot;&gt;
         &lt;h3&gt;letzte Bestellung&lt;/h3&gt;
-        &lt;button #product *ngFor&#x3D;&quot;let item of cartProdukteOld&quot; value&#x3D;&quot;{{item.Preis}}&quot;
-        [ngStyle]&#x3D;&quot;getColorFromExistingItem(item.Art)&quot;
-        (click)&#x3D;&quot;cartItemOverlayOn(cartItemOverlay, $event, item)&quot;
-        class&#x3D;&quot;cartItem&quot; disabled&gt;{{item.Art + &quot; | &quot; + item.Menge + &quot; | &quot; + item.Groesse}}
-        
-    &lt;/button&gt;
+        &lt;button *ngFor&#x3D;&quot;let item of cartProdukteOld&quot; value&#x3D;&quot;{{item.Preis}}&quot;
+            style&#x3D;&quot;background-color: lightgrey&quot;
+            class&#x3D;&quot;cartItem&quot;&gt;{{item.Art + &quot; | &quot; + item.Menge + &quot; X &quot; + item.Groesse + &#x27; Liter&#x27;}}
+
+        &lt;/button&gt;
     &lt;/div&gt;
-    &lt;div #containerNew style&#x3D;&quot;border-left: solid 4px black;&quot; id&#x3D;&quot;containerNew&quot; class&#x3D;&quot;cart slide-up&quot;&gt;
+    &lt;div #containerNew style&#x3D;&quot;border-left: solid 4px black;&quot; id&#x3D;&quot;containerNew&quot;
+        class&#x3D;&quot;cart slide-up&quot;&gt;
         &lt;h3&gt;aktuelle Bestellung&lt;/h3&gt;
-        &lt;button #product *ngFor&#x3D;&quot;let item of cartProdukte&quot; value&#x3D;&quot;{{item.Preis}}&quot;
-            [ngStyle]&#x3D;&quot;getColorFromExistingItem(item.Art)&quot;
-            (click)&#x3D;&quot;cartItemOverlayOn(cartItemOverlay, $event, item)&quot;
-            class&#x3D;&quot;cartItem&quot;&gt;{{item.Art + &quot; | &quot; + item.Menge + &quot; | &quot; + item.Groesse}}&lt;/button&gt;
+        &lt;button #product *ngFor&#x3D;&quot;let item of cartProdukte; let i &#x3D; index&quot; value&#x3D;&quot;{{item.Preis}}&quot;
+        style&#x3D;&quot;background-color: white&quot;
+        (click)&#x3D;&quot;cartItemOverlayOn(containerNew, product, item)&quot;
+            class&#x3D;&quot;cartItem&quot;&gt;{{item.Art + &quot; | &quot; + item.Menge + &quot; X &quot; + item.Groesse + &#x27; Liter&#x27;}}&lt;/button&gt;
     &lt;/div&gt;
 &lt;/div&gt;
 
@@ -936,9 +940,12 @@ export class OverlayComponent implements OnInit {
     &lt;!-- Overlay content --&gt;
     &lt;div class&#x3D;&quot;overlay-content navbar&quot;&gt;
 
-        &lt;button id&#x3D;&quot;delete&quot; type&#x3D;&quot;submit&quot; class&#x3D;&quot;cartItemOverlay&quot;&gt;Entfernen &lt;i class&#x3D;&quot;far fa-hand-point-up&quot;&gt;&lt;/i&gt;&lt;/button&gt;
-        &lt;button id&#x3D;&quot;editButton&quot; type&#x3D;&quot;submit&quot;
-            class&#x3D;&quot;cartItemOverlay&quot;&gt;Bearbeiten &lt;i class&#x3D;&quot;far fa-hand-point-up&quot;&gt;&lt;/i&gt;&lt;/button&gt;
+        &lt;button id&#x3D;&quot;deleteButton&quot; type&#x3D;&quot;submit&quot; class&#x3D;&quot;cartItemOverlay&quot;&gt;Entfernen &lt;i
+                class&#x3D;&quot;far fa-hand-point-up&quot;&gt;&lt;/i&gt;&lt;/button&gt;
+
+                &lt;!-- just naming this one edit caused problems --&gt;
+        &lt;button id&#x3D;&quot;editButton&quot; type&#x3D;&quot;submit&quot; class&#x3D;&quot;cartItemOverlay&quot;&gt;Bearbeiten &lt;i
+                class&#x3D;&quot;far fa-hand-point-up&quot;&gt;&lt;/i&gt;&lt;/button&gt;
     &lt;/div&gt;
 &lt;/div&gt;</code></pre>
     </div>
@@ -949,10 +956,13 @@ export class OverlayComponent implements OnInit {
                 </p>
                 <pre class="line-numbers"><code class="language-scss">::ng-deep .mat-select-trigger {
     min-width: 65vw;
+    font-size: 29px;
+    text-align: center;
+
 }
 
  ::ng-deep .mat-select-panel {
-    max-height: 65vh !important;
+    max-height: 115vw !important;
 }
 
 button:hover {
@@ -962,18 +972,6 @@ button:hover {
 .cart {
     height: 12em;
     width: 50%;
-}
-
-
-
-.title {
-    text-align: center;
-    font-size: 5em;
-    color: white;
-    z-index: 2;
-    /* Specify a stack order in case you&#x27;re using a different order for other elements */
-    cursor: pointer;
-    /* Add a pointer on hover */
 }
 
 h3 {
@@ -994,8 +992,8 @@ label {
 
 .form-group {
     -webkit-appearance: none;
-    margin-left: 3em;
-    margin-right: 3em;
+    margin-left: 8em;
+    margin-right: 8em;
 }
 
 .form-control {
@@ -1006,7 +1004,7 @@ label {
 
 .btn {
     border-radius: 25px;
-    margin-top: 4em;
+    margin-top: 1em;
     margin-left: 0.5em;
     margin-right: 0.5em;
     height: 150px;
@@ -1063,8 +1061,8 @@ label {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><!-- Product Overlay --><div #overlay id="overlay" class="overlay fade-in">    <!-- the currently displayed product -->    <h1 #title class="title" id="title"></h1>    <!-- Button to close the overlay -->    <a href="javascript:void(0)" class="closebtn" (click)="off(overlay)">&times;</a>    <!-- Overlay content -->    <div class="overlay-content">        <div class="form-group">            <label>Menge</label>            <!-- mat-select to improve the UX of the select -->            <mat-select #amount [(value)]="selected" class="form-control"                id="amountList">                <mat-option value=1>1</mat-option>                <mat-option value=2>2</mat-option>                <mat-option value=3>3</mat-option>                <mat-option value=4>4</mat-option>                <mat-option value=5>5</mat-option>                <mat-option value=6>6</mat-option>                <mat-option value=7>7</mat-option>                <mat-option value=8>8</mat-option>                <mat-option value=9>9</mat-option>                <mat-option value=10>10</mat-option>            </mat-select>        </div>        <!-- show only the sizes for the coresponding product  -->        <ng-container *ngFor="let item of produkte" class="navbar">            <button *ngIf="item.Art == title.innerHTML" class="btn btn-secondary"                (click)="addToCart(item, amount.value)">{{item.Groesse}} L            </button>        </ng-container>    </div></div><div class="navbar">    <div #containerOld  id="containerOld"        class="cart">        <h3>letzte Bestellung</h3>        <button #product *ngFor="let item of cartProdukteOld" value="{{item.Preis}}"        [ngStyle]="getColorFromExistingItem(item.Art)"        (click)="cartItemOverlayOn(cartItemOverlay, $event, item)"        class="cartItem" disabled>{{item.Art + " | " + item.Menge + " | " + item.Groesse}}            </button>    </div>    <div #containerNew style="border-left: solid 4px black;" id="containerNew" class="cart slide-up">        <h3>aktuelle Bestellung</h3>        <button #product *ngFor="let item of cartProdukte" value="{{item.Preis}}"            [ngStyle]="getColorFromExistingItem(item.Art)"            (click)="cartItemOverlayOn(cartItemOverlay, $event, item)"            class="cartItem">{{item.Art + " | " + item.Menge + " | " + item.Groesse}}</button>    </div></div><!-- Shopping Cart Overlay --><div #cartItemOverlay id="cartItemOverlay" class="overlay fade-in">    <h1 class="title" id="title2"></h1>    <!-- Button to close the overlay -->    <a href="javascript:void(0)" class="closebtn"        (click)="off(cartItemOverlay)">&times;</a>    <!-- Overlay content -->    <div class="overlay-content navbar">        <button id="delete" type="submit" class="cartItemOverlay">Entfernen <i class="far fa-hand-point-up"></i></button>        <button id="editButton" type="submit"            class="cartItemOverlay">Bearbeiten <i class="far fa-hand-point-up"></i></button>    </div></div></div>'
-    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AuswertungComponent', 'selector': 'auswertung'},{'name': 'CartComponent', 'selector': 'cart'},{'name': 'MainComponent', 'selector': 'main'},{'name': 'ManagementComponent', 'selector': 'management'},{'name': 'OverlayComponent', 'selector': 'overlay'}];
+        var COMPONENT_TEMPLATE = '<div><!-- Product Overlay --><div #overlay id="overlay" class="overlay fade-in">    <!-- the currently displayed product -->    <h1 #title class="title" id="title"></h1>    <!-- Button to close the overlay -->    <a href="javascript:void(0)" class="closebtn" (click)="off(overlay)">&times;</a>    <!-- Overlay content -->    <div class="overlay-content">        <div class="form-group">            <label>Menge</label>            <!-- mat-select to improve the UX of the select -->            <mat-select #amount [(value)]="selected" class="form-control"                id="amountList">                <mat-option value=1>1</mat-option>                <mat-option value=2>2</mat-option>                <mat-option value=3>3</mat-option>                <mat-option value=4>4</mat-option>                <mat-option value=5>5</mat-option>                <mat-option value=6>6</mat-option>                <mat-option value=7>7</mat-option>                <mat-option value=8>8</mat-option>                <mat-option value=9>9</mat-option>                <mat-option value=10>10</mat-option>            </mat-select>        </div>        <!-- show only the sizes for the coresponding product  -->        <h6 style="margin-top: 1.5em" class="title">Größe</h6>        <ng-container *ngFor="let item of produkte" class="navbar">            <button *ngIf="item.Art == title.innerHTML" class="btn btn-secondary"                (click)="addToCart(item, amount.value)">{{item.Groesse}} L            </button>        </ng-container>    </div></div><div class="navbar">    <div #containerOld id="containerOld" class="cart">        <h3>letzte Bestellung</h3>        <button *ngFor="let item of cartProdukteOld" value="{{item.Preis}}"            style="background-color: lightgrey"            class="cartItem">{{item.Art + " | " + item.Menge + " X " + item.Groesse + \' Liter\'}}        </button>    </div>    <div #containerNew style="border-left: solid 4px black;" id="containerNew"        class="cart slide-up">        <h3>aktuelle Bestellung</h3>        <button #product *ngFor="let item of cartProdukte; let i = index" value="{{item.Preis}}"        style="background-color: white"        (click)="cartItemOverlayOn(containerNew, product, item)"            class="cartItem">{{item.Art + " | " + item.Menge + " X " + item.Groesse + \' Liter\'}}</button>    </div></div><!-- Shopping Cart Overlay --><div #cartItemOverlay id="cartItemOverlay" class="overlay fade-in">    <h1 class="title" id="title2"></h1>    <!-- Button to close the overlay -->    <a href="javascript:void(0)" class="closebtn"        (click)="off(cartItemOverlay)">&times;</a>    <!-- Overlay content -->    <div class="overlay-content navbar">        <button id="deleteButton" type="submit" class="cartItemOverlay">Entfernen <i                class="far fa-hand-point-up"></i></button>                <!-- just naming this one edit caused problems -->        <button id="editButton" type="submit" class="cartItemOverlay">Bearbeiten <i                class="far fa-hand-point-up"></i></button>    </div></div></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AuswertungComponent', 'selector': 'auswertung'},{'name': 'CartComponent', 'selector': 'cart'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MainComponent', 'selector': 'main'},{'name': 'ManagementComponent', 'selector': 'management'},{'name': 'OverlayComponent', 'selector': 'overlay'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'OverlayComponent'};
 </script>

@@ -12,17 +12,17 @@ import { MatButtonModule } from '@angular/material';
 import { MatSelectModule } from '@angular/material/select';
 import { Routes, RouterModule } from '@angular/router';
 import { AuswertungComponent } from './auswertung/auswertung.component';
-import { ChartsModule } from 'ng2-charts';
 import { WavesModule, TableModule, IconsModule } from 'angular-bootstrap-md';
 import { GoogleChartsModule } from 'angular-google-charts';
 import { LoginComponent } from './login/login/login.component';
-import {MatProgressSpinnerModule, MatRadioModule, MatSliderModule} from '@angular/material'
-
-const appRoutes: Routes = [
-  { path: '', component: MainComponent },
-  { path: 'verwaltung', component: ManagementComponent },
-  { path: 'auswertung', component: AuswertungComponent },
-];
+import { MatProgressSpinnerModule, MatRadioModule, MatSliderModule } from '@angular/material'
+import { ExcelService } from './excel.service';
+import { AppRoutingModule } from './app-routing/app-routing.module';
+// const appRoutes: Routes = [
+//   { path: '', component: MainComponent },
+//   { path: 'verwaltung', component: ManagementComponent },
+//   { path: 'auswertung', component: AuswertungComponent },
+// ];
 
 @NgModule({
   declarations: [
@@ -36,7 +36,6 @@ const appRoutes: Routes = [
   ],
   imports: [
     MatProgressSpinnerModule, MatRadioModule, MatSliderModule,
-    ChartsModule,
     BrowserModule,
     HttpClientModule,
     FormsModule,
@@ -47,10 +46,11 @@ const appRoutes: Routes = [
     WavesModule,
     IconsModule,
     GoogleChartsModule,
-    RouterModule.forRoot(appRoutes),
+    AppRoutingModule,
+    // RouterModule.forRoot(appRoutes),
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  providers: [],
+  providers: [ExcelService],
 
   bootstrap: [AppComponent]
 })

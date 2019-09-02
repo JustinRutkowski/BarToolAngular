@@ -51,7 +51,7 @@ export class OverlayComponent implements OnInit {
    * @param buttonItem the product as the HTMLButtonElement
    * @param cartItem the product in the cart
    */
-  cartItemOverlayOn(containerNew, buttonItem: HTMLButtonElement, cartItem: Produkt) {    
+  cartItemOverlayOn(containerNew, buttonItem: HTMLButtonElement, cartItem: Produkt) {
     var cartItemOverlay = document.getElementById("cartItemOverlay");
     cartItemOverlay.style.display = "block";
     document.getElementById("title2").innerText = cartItem.Art;
@@ -64,8 +64,10 @@ export class OverlayComponent implements OnInit {
       containerNew.className = "cart slide-down";
       this2.off(cartItemOverlay)
       setTimeout(() => {
-        let id = buttonItem.innerHTML + " ov" 
-        document.getElementById(id).remove()
+        if (document.getElementById(buttonItem.innerHTML + " ov") != null) {
+          let id = buttonItem.innerHTML + " ov"
+          document.getElementById(id).remove()
+        }
         this2.cartProdukte.splice(this2.cartProdukte.indexOf(cartItem), 1)
         containerNew.className = "cart slide-up";
       }, 275);
@@ -75,8 +77,10 @@ export class OverlayComponent implements OnInit {
       containerNew.className = "cart slide-down";
       this2.off(cartItemOverlay)
       setTimeout(() => {
-        let id = buttonItem.innerHTML + " ov" 
-        document.getElementById(id).remove()
+        if (document.getElementById(buttonItem.innerHTML + " ov") != null) {
+          let id = buttonItem.innerHTML + " ov"
+          document.getElementById(id).remove()
+        }
         this2.cartProdukte.splice(this2.cartProdukte.indexOf(cartItem), 1)
         containerNew.className = "cart slide-up";
       }, 275);

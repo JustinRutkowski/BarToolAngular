@@ -24,7 +24,7 @@ hr {
     margin-right: 2em;
 }
 
-path{
+path {
     font-size: 200%;
 }
 
@@ -36,7 +36,6 @@ path{
 .google-visualization-table-th {
     text-align: center !important;
 }
-
 
 .btn-success {
     background: #096600;
@@ -85,7 +84,7 @@ button:disabled {
     font-weight: 600;
     border-radius: 25px;
     width: 98%;
-    height: 2.8em;
+    height: 2.6em;
     font-size: 1.5em;
 }
 
@@ -223,111 +222,71 @@ body {
 
 @keyframes fadeIn {
     0% {
-        opacity: 0;
-        border-radius: 25%;
-        margin-top: 100em;
+        top: 100%;
     }
-    100% {
-        opacity: 1;
-    }
+    100% {}
 }
 
 @-moz-keyframes fadeIn {
     0% {
-        opacity: 0;
-        border-radius: 25%;
-        margin-top: 100em;
+        top: 100%;
     }
-    100% {
-        opacity: 1;
-    }
+    100% {}
 }
 
 @-webkit-keyframes fadeIn {
     0% {
-        opacity: 0;
-        border-radius: 25%;
-        margin-top: 100em;
+        top: 100%;
     }
-    100% {
-        opacity: 1;
-    }
+    100% {}
 }
 
 @-o-keyframes fadeIn {
     0% {
-        opacity: 0;
-        border-radius: 25%;
-        margin-top: 100em;
+        top: 100%;
     }
-    100% {
-        opacity: 1;
-    }
+    100% {}
 }
 
 @-ms-keyframes fadeIn {
     0% {
-        opacity: 0;
-        border-radius: 25%;
-        margin-top: 100em;
+        top: 100%;
     }
-    100% {
-        opacity: 1;
-    }
+    100% {}
 }
 
 @keyframes fadeOut {
-    0% {
-        opacity: 1;
-    }
+    0% {}
     100% {
-        opacity: 0;
-        border-radius: 25%;
-        margin-top: 100em;
+        top: 120%;
     }
 }
 
 @-moz-keyframes fadeOut {
-    0% {
-        opacity: 1;
-    }
+    0% {}
     100% {
-        opacity: 0;
-        border-radius: 25%;
-        margin-top: 100em;
+        top: 120%;
     }
 }
 
 @-webkit-keyframes fadeOut {
-    0% {
-        opacity: 1;
-    }
+    0% {}
     100% {
-        opacity: 0;
-        border-radius: 25%;
-        margin-top: 100em;
+        top: 120%;
     }
 }
 
 @-o-keyframes fadeOut {
-    0% {
-        opacity: 1;
-    }
+    0% {}
     100% {
-        opacity: 0;
-        border-radius: 25%;
-        margin-top: 100em;
+        top: 120%;
     }
 }
 
 @-ms-keyframes fadeOut {
-    0% {
-        opacity: 1;
-    }
+    0% {}
     100% {
-        opacity: 0;
-        border-radius: 25%;
-        margin-top: 100em;
+        top: 120%;
     }
 }
 

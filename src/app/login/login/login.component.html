@@ -1,3 +1,19 @@
-<p>
-  login works!
-</p>
+<!-- Product Overlay -->
+<div #login id="login" class="overlay fade-in">
+  <!-- the currently displayed product -->
+  <h1 class="title">BarTool Login</h1>
+  <!-- Button to close the overlay -->
+  <!-- Overlay content -->
+  <div class="overlay-content">
+    <div class="form-group">
+      <form #f="ngForm" name="theForm">
+        <input [(ngModel)]="log" #LogModel="ngModel" name="model" #loginInput
+          id="logon" type="text" class="form-control" placeholder="Sitzungsname"
+          pattern="^[a-zA-Z1-9]+$" required>
+        <button [disabled]="f.invalid" class="btn btn-secondary"
+          (click)="_login(loginInput.value); off(login)">login</button>
+      </form>
+    </div>
+    <!-- show only the sizes for the coresponding product  -->
+  </div>
+</div>

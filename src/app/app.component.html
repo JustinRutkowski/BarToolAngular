@@ -13,12 +13,13 @@
 
         <!-- Google Charts wont reload without reloading the window -->
         <li role="presentation" routerLinkActive="active"> <a
-                routerLink='/auswertung'
-                >Auswertung</a>
+                routerLink='/auswertung'>Auswertung</a>
         </li>
     </ul>
 </div>
 
 <hr>
 
-<router-outlet></router-outlet>
+<div class="content" [@routeAnimations]="prepareRoute(outlet)">
+    <router-outlet #outlet="outlet"></router-outlet>
+</div>

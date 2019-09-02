@@ -42,17 +42,19 @@ switch ($cmd) {
 
         $produktName = mysqli_real_escape_string($con, $request->data->Art);
         $size = mysqli_real_escape_string($con, $request->data->Groesse);
+        $Nutzer = mysqli_real_escape_string($con, $request->data->Nutzer);
 
         $stmt = $con->prepare(
-            "SELECT Sum(Menge) as Menge from produktebestellung WHERE ProdukteID = (SELECT produkteID from produkte WHERE Art = ? and Groesse = ?)"
+            "SELECT Sum(Menge) as Menge from produktebestellung WHERE ProdukteID = (SELECT produkteID from produkte WHERE Art = ? and Groesse = ?) and Nutzer = ?"
         );
 
-        $stmt->bind_param("ss", $produktName, $size);
+        $stmt->bind_param("sss", $produktName, $size, $Nutzer);
         $result = $stmt->execute();
 
         /* bind result variables */
         $stmt->bind_result($menge);
 
+        // menge is the only one comming from the query, the other ones are just passed through
         $cr = 0;
         while ($stmt->fetch()) {
             $res[$cr]['Art']        = $produktName;
@@ -67,12 +69,12 @@ switch ($cmd) {
 
     case 3:
         // prepare sql and bind parameters
-        $stmt = $conPDO->prepare("DELETE MyGuests (firstname, lastname, email)
-            VALUES (:firstname, :lastname, :email)");
-        $stmt->bindParam(
-            ':firstname',
-            $firstname,
-        );
+        // $stmt = $conPDO->prepare("DELETE MyGuests (firstname, lastname, email)
+        //     VALUES (:firstname, :lastname, :email)");
+        // $stmt->bindParam(
+        //     ':firstname',
+        //     $firstname,
+        // );
         break;
 
     case 4:
@@ -137,14 +139,6 @@ switch ($cmd) {
         break;
 
     case 7:
-        $BestellungsPreis = mysqli_real_escape_string($con, $request->data->Bestellungspreis);
-        $GutscheinWert = mysqli_real_escape_string($con, $request->data->Gutscheinwert);
-        $GutscheinNummer = mysqli_real_escape_string($con, $request->data->Gutscheinnummer);
-        $GeldErhalten = mysqli_real_escape_string($con, $request->data->Gelderhalten);
-        $TrinkGeld = mysqli_real_escape_string($con, $request->data->Trinkgeld);
-        $Rueckgeld = mysqli_real_escape_string($con, $request->data->Rueckgeld);
-        $Nutzer = mysqli_real_escape_string($con, $request->data->Nutzer);
-
         // prepare sql and bind parameters
         $stmt = $conPDO->prepare("SELECT MAX(BestellungsID) FROM bestellungen");
         $stmt->execute();
@@ -158,31 +152,32 @@ switch ($cmd) {
         $Art = mysqli_real_escape_string($con, $request->data->Art);
         $Groesse = mysqli_real_escape_string($con, $request->data->Groesse);
         $Preis = mysqli_real_escape_string($con, $request->data->Preis);
-
-
         // prepare sql and bind parameters
-        $stmt = $conPDO->prepare("SELECT produkteID from produkte where Art = :Art and Groesse = :Groesse and Preis = :Preis");
-        $stmt->execute(array(
-            ':Art' => $Art,
-            ':Groesse' => $Groesse,
-            ':Preis' => $Preis,
-        ));
+        $stmt = $con->prepare("SELECT produkteID from produkte where Art = ? and Groesse = ? and Preis = ?");
+        $stmt->bind_param("sss", $Art, $Groesse, $Preis);
+        $result = $stmt->execute();
 
-        echo json_encode(array('data' => $stmt->fetch()));
+        /* bind result variables */
+        $stmt->bind_result($id);
+            /* fetch values */
+        while ($stmt->fetch()) {
+            echo json_encode(array('data' => $id));
+        }
         break;
 
     case 9:
         $BestellungsID = mysqli_real_escape_string($con, $request->data->BestellungsID);
         $ProdukteID = mysqli_real_escape_string($con, $request->data->ProdukteID);
         $Menge = mysqli_real_escape_string($con, $request->data->Menge);
-
+        $Nutzer = mysqli_real_escape_string($con, $request->data->Nutzer);
 
         // prepare sql and bind parameters
-        $stmt = $conPDO->prepare("INSERT INTO produktebestellung (BestellungsID, ProdukteID, Menge) values (:BestellungsID, :ProdukteID, :Menge)");
+        $stmt = $conPDO->prepare("INSERT INTO produktebestellung (BestellungsID, ProdukteID, Menge, Nutzer) values (:BestellungsID, :ProdukteID, :Menge, :Nutzer)");
         $stmt->execute(array(
             ':BestellungsID' => $BestellungsID,
             ':ProdukteID' => $ProdukteID,
             ':Menge' => $Menge,
+            ':Nutzer' => $Nutzer,
         ));
 
         echo json_encode(array('data' => ""));

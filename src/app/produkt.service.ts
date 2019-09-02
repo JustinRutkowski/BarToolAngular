@@ -85,7 +85,6 @@ export class ProduktService {
   }
 
   add(item: Produkt): Observable<Produkt[]> {
-    console.log(item);
     
     return this.http.post(`${this.baseUrl}/controller.php?cmd=5`, { data: item })
       .pipe(map((res) => {
@@ -107,7 +106,6 @@ export class ProduktService {
   getBill(bill: Bill): Observable<string> {
     return this.http.post(`${this.baseUrl}/controller.php?cmd=7`, { data: bill })
       .pipe(map((res) => {  
-        console.log(res);
               
         return res['data'];
       }),
@@ -115,8 +113,12 @@ export class ProduktService {
   }
 
   getProdukt(produkt: Produkt): Observable<string> {
+    console.log(produkt);
+    
     return this.http.post(`${this.baseUrl}/controller.php?cmd=8`, { data: produkt })
-      .pipe(map((res) => {        
+      .pipe(map((res) => {    
+        console.log(res);
+            
         return res['data'];
       }),
         catchError(this.handleError));
@@ -125,7 +127,6 @@ export class ProduktService {
   relateOrderAndProduct(relation: Relation): Observable<string> {
     return this.http.post(`${this.baseUrl}/controller.php?cmd=9`, { data: relation })
       .pipe(map((res) => {
-        console.log(res);     
         return res['data'];
       }),
         catchError(this.handleError));

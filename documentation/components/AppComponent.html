@@ -126,13 +126,24 @@
                             <li>
                                 <a href="#cartProdukte">cartProdukte</a>
                             </li>
-                            <li>
-                                <a href="#location">location</a>
-                            </li>
                         </ul>
                     </td>
                 </tr>
 
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#prepareRoute">prepareRoute</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
 
 
 
@@ -147,7 +158,82 @@
 
 
 
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="prepareRoute"></a>
+                    <span class="name">
+                        <b>
+                            prepareRoute
+                        </b>
+                        <a href="#prepareRoute"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>prepareRoute(outlet: <a href="https://angular.io/api/router/RouterOutlet" target="_blank">RouterOutlet</a>)</code>
+                </td>
+            </tr>
 
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="18"
+                            class="link-to-prism">src/app/app.component.ts:18</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>outlet</td>
+                                    <td>
+                                                <code><a href="https://angular.io/api/router/RouterOutlet" target="_blank" >RouterOutlet</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
     <section>
     
         <h3 id="inputs">
@@ -178,28 +264,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/app/app.component.ts:12</a></div>
-                            </td>
-                        </tr>
-
-
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="location"></a>
-                        <span class="name">
-                            <b>
-                            location</b>
-                            <a href="#location"><span class="icon ion-ios-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/app/app.component.ts:13</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/app.component.ts:16</a></div>
                             </td>
                         </tr>
 
@@ -214,17 +279,24 @@
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
 import { Produkt } from &#x27;./produkt&#x27;;
-
-
+import { RouterOutlet } from &#x27;@angular/router&#x27;;
+import { BrowserAnimationsModule } from &#x27;@angular/platform-browser/animations&#x27;;
+import { slideInAnimation } from &#x27;./_animations/animation&#x27;;
 @Component({
   selector: &#x27;app-root&#x27;,
   templateUrl: &#x27;./app.component.html&#x27;,
   styleUrls: [&#x27;./app.component.css&#x27;],
+  animations: [
+    slideInAnimation
+  ]
 })
 
 export class AppComponent {
   cartProdukte: Produkt[] &#x3D; new Array();
-  location;
+
+  prepareRoute(outlet: RouterOutlet){
+    return outlet &amp;&amp; outlet.activatedRouteData &amp;&amp; outlet.activatedRouteData[&#x27;animation&#x27;];
+  }
 }
 </code></pre>
     </div>
@@ -245,14 +317,16 @@ export class AppComponent {
 
         &lt;!-- Google Charts wont reload without reloading the window --&gt;
         &lt;li role&#x3D;&quot;presentation&quot; routerLinkActive&#x3D;&quot;active&quot;&gt; &lt;a
-                routerLink&#x3D;&#x27;/auswertung&#x27; (click)&#x3D;&quot;location.reload();&quot;&gt;Auswertung&lt;/a&gt;
+                routerLink&#x3D;&#x27;/auswertung&#x27;&gt;Auswertung&lt;/a&gt;
         &lt;/li&gt;
     &lt;/ul&gt;
 &lt;/div&gt;
 
 &lt;hr&gt;
 
-&lt;router-outlet&gt;&lt;/router-outlet&gt;</code></pre>
+&lt;div class&#x3D;&quot;content&quot; [@routeAnimations]&#x3D;&quot;prepareRoute(outlet)&quot;&gt;
+    &lt;router-outlet #outlet&#x3D;&quot;outlet&quot;&gt;&lt;/router-outlet&gt;
+&lt;/div&gt;</code></pre>
     </div>
 
     <div class="tab-pane fade " id="c-styleData">
@@ -291,9 +365,8 @@ h3 {
 }
 
 
-
 .long {
-    font-size: 30px;
+    font-size: 24px;
 }
 
 .verylong {
@@ -309,7 +382,7 @@ h1 {
 }
 
 .nav-tabs {
-    font-size: 1.76em;
+    font-size: 1.75em;
     border-bottom: 1px solid #ccc;
 }
 
@@ -345,8 +418,8 @@ h1 {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><!-- Header of the main page --><div class="navbar">    <img class="mobile-logo preload-me"        src="http://cat-stairs.de/wp-content/uploads/2015/02/cat-stairs-header_mobil.jpg"        srcset="http://cat-stairs.de/wp-content/uploads/2015/02/cat-stairs-header_mobil.jpg 274w"        width="270" height="95" sizes="274px" alt="CAT-stairs">    <ul class="nav nav-tabs">        <li role="presentation" routerLinkActive="active"            [routerLinkActiveOptions]="{exact: true}"> <a routerLink=\'/\'>BarTool</a>        </li>        <li role="presentation" routerLinkActive="active"> <a                routerLink=\'/verwaltung\'>Verwaltung</a></li>        <!-- Google Charts wont reload without reloading the window -->        <li role="presentation" routerLinkActive="active"> <a                routerLink=\'/auswertung\' (click)="location.reload();">Auswertung</a>        </li>    </ul></div><hr><router-outlet></router-outlet></div>'
-    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AuswertungComponent', 'selector': 'auswertung'},{'name': 'CartComponent', 'selector': 'cart'},{'name': 'MainComponent', 'selector': 'main'},{'name': 'ManagementComponent', 'selector': 'management'},{'name': 'OverlayComponent', 'selector': 'overlay'}];
+        var COMPONENT_TEMPLATE = '<div><!-- Header of the main page --><div class="navbar">    <img class="mobile-logo preload-me"        src="http://cat-stairs.de/wp-content/uploads/2015/02/cat-stairs-header_mobil.jpg"        srcset="http://cat-stairs.de/wp-content/uploads/2015/02/cat-stairs-header_mobil.jpg 274w"        width="270" height="95" sizes="274px" alt="CAT-stairs">    <ul class="nav nav-tabs">        <li role="presentation" routerLinkActive="active"            [routerLinkActiveOptions]="{exact: true}"> <a routerLink=\'/\'>BarTool</a>        </li>        <li role="presentation" routerLinkActive="active"> <a                routerLink=\'/verwaltung\'>Verwaltung</a></li>        <!-- Google Charts wont reload without reloading the window -->        <li role="presentation" routerLinkActive="active"> <a                routerLink=\'/auswertung\'>Auswertung</a>        </li>    </ul></div><hr><div class="content" [@routeAnimations]="prepareRoute(outlet)">    <router-outlet #outlet="outlet"></router-outlet></div></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AuswertungComponent', 'selector': 'auswertung'},{'name': 'CartComponent', 'selector': 'cart'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MainComponent', 'selector': 'main'},{'name': 'ManagementComponent', 'selector': 'management'},{'name': 'OverlayComponent', 'selector': 'overlay'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'AppComponent'};
 </script>

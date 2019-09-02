@@ -79,7 +79,7 @@ export class ManagementComponent implements OnInit {
 
   addProduct(name, size, price, purchase, f) {
     this.router.navigateByUrl('');
-    var item = new Produkt("", "", "", "", "");
+    var item = new Produkt("", "", "", "", "", "");
 
     item.Art = name;
     item.Groesse = size;

@@ -42,7 +42,7 @@
 
 <ol class="breadcrumb">
   <li>Classes</li>
-  <li>Produkt</li>
+  <li>Bill</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -60,7 +60,7 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/app/produkt.ts</code>
+            <code>src/app/cart/bill.ts</code>
         </p>
 
 
@@ -80,22 +80,25 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <a href="#Art">Art</a>
+                                <a href="#Bestellungspreis">Bestellungspreis</a>
                             </li>
                             <li>
-                                <a href="#Einkaufspreis">Einkaufspreis</a>
+                                <a href="#Gelderhalten">Gelderhalten</a>
                             </li>
                             <li>
-                                <a href="#Groesse">Groesse</a>
+                                <a href="#Gutscheinnummer">Gutscheinnummer</a>
                             </li>
                             <li>
-                                <a href="#Menge">Menge</a>
+                                <a href="#Gutscheinwert">Gutscheinwert</a>
                             </li>
                             <li>
                                 <a href="#Nutzer">Nutzer</a>
                             </li>
                             <li>
-                                <a href="#Preis">Preis</a>
+                                <a href="#Rueckgeld">Rueckgeld</a>
+                            </li>
+                            <li>
+                                <a href="#Trinkgeld">Trinkgeld</a>
                             </li>
                         </ul>
                     </td>
@@ -116,12 +119,12 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(Art: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, Groesse: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, Preis: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, Menge: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, Einkaufspreis: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, Nutzer: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+<code>constructor(Bestellungspreis: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, Gutscheinwert: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, Gutscheinnummer: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, Gelderhalten: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, Trinkgeld: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, Rueckgeld: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, Nutzer: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/produkt.ts:14</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="8" class="link-to-prism">src/app/cart/bill.ts:8</a></div>
                             </td>
                         </tr>
 
@@ -139,7 +142,7 @@
                                         </thead>
                                         <tbody>
                                                 <tr>
-                                                        <td>Art</td>
+                                                        <td>Bestellungspreis</td>
                                                   
                                                         <td>
                                                                         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
@@ -151,7 +154,7 @@
                                                     
                                                 </tr>
                                                 <tr>
-                                                        <td>Groesse</td>
+                                                        <td>Gutscheinwert</td>
                                                   
                                                         <td>
                                                                         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
@@ -163,7 +166,7 @@
                                                     
                                                 </tr>
                                                 <tr>
-                                                        <td>Preis</td>
+                                                        <td>Gutscheinnummer</td>
                                                   
                                                         <td>
                                                                         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
@@ -175,7 +178,7 @@
                                                     
                                                 </tr>
                                                 <tr>
-                                                        <td>Menge</td>
+                                                        <td>Gelderhalten</td>
                                                   
                                                         <td>
                                                                         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
@@ -187,7 +190,19 @@
                                                     
                                                 </tr>
                                                 <tr>
-                                                        <td>Einkaufspreis</td>
+                                                        <td>Trinkgeld</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>Rueckgeld</td>
                                                   
                                                         <td>
                                                                         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
@@ -228,11 +243,11 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="Art"></a>
+                        <a name="Bestellungspreis"></a>
                         <span class="name">
                             <b>
-                            Art</b>
-                            <a href="#Art"><span class="icon ion-ios-link"></span></a>
+                            Bestellungspreis</b>
+                            <a href="#Bestellungspreis"><span class="icon ion-ios-link"></span></a>
                         </span>
                     </td>
                 </tr>
@@ -244,7 +259,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="2" class="link-to-prism">src/app/produkt.ts:2</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="2" class="link-to-prism">src/app/cart/bill.ts:2</a></div>
                             </td>
                         </tr>
 
@@ -255,11 +270,11 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="Einkaufspreis"></a>
+                        <a name="Gelderhalten"></a>
                         <span class="name">
                             <b>
-                            Einkaufspreis</b>
-                            <a href="#Einkaufspreis"><span class="icon ion-ios-link"></span></a>
+                            Gelderhalten</b>
+                            <a href="#Gelderhalten"><span class="icon ion-ios-link"></span></a>
                         </span>
                     </td>
                 </tr>
@@ -271,7 +286,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/app/produkt.ts:12</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="5" class="link-to-prism">src/app/cart/bill.ts:5</a></div>
                             </td>
                         </tr>
 
@@ -282,11 +297,11 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="Groesse"></a>
+                        <a name="Gutscheinnummer"></a>
                         <span class="name">
                             <b>
-                            Groesse</b>
-                            <a href="#Groesse"><span class="icon ion-ios-link"></span></a>
+                            Gutscheinnummer</b>
+                            <a href="#Gutscheinnummer"><span class="icon ion-ios-link"></span></a>
                         </span>
                     </td>
                 </tr>
@@ -298,7 +313,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="5" class="link-to-prism">src/app/produkt.ts:5</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="4" class="link-to-prism">src/app/cart/bill.ts:4</a></div>
                             </td>
                         </tr>
 
@@ -309,11 +324,11 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="Menge"></a>
+                        <a name="Gutscheinwert"></a>
                         <span class="name">
                             <b>
-                            Menge</b>
-                            <a href="#Menge"><span class="icon ion-ios-link"></span></a>
+                            Gutscheinwert</b>
+                            <a href="#Gutscheinwert"><span class="icon ion-ios-link"></span></a>
                         </span>
                     </td>
                 </tr>
@@ -325,7 +340,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">src/app/produkt.ts:10</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="3" class="link-to-prism">src/app/cart/bill.ts:3</a></div>
                             </td>
                         </tr>
 
@@ -352,7 +367,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/produkt.ts:14</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="8" class="link-to-prism">src/app/cart/bill.ts:8</a></div>
                             </td>
                         </tr>
 
@@ -363,11 +378,11 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="Preis"></a>
+                        <a name="Rueckgeld"></a>
                         <span class="name">
                             <b>
-                            Preis</b>
-                            <a href="#Preis"><span class="icon ion-ios-link"></span></a>
+                            Rueckgeld</b>
+                            <a href="#Rueckgeld"><span class="icon ion-ios-link"></span></a>
                         </span>
                     </td>
                 </tr>
@@ -379,7 +394,34 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="8" class="link-to-prism">src/app/produkt.ts:8</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="7" class="link-to-prism">src/app/cart/bill.ts:7</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="Trinkgeld"></a>
+                        <span class="name">
+                            <b>
+                            Trinkgeld</b>
+                            <a href="#Trinkgeld"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="6" class="link-to-prism">src/app/cart/bill.ts:6</a></div>
                             </td>
                         </tr>
 
@@ -398,29 +440,23 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">export class Produkt{
-    Art: string;
-
-    // ein Produkt kann in verschiedenne Groessen auftreten
-    Groesse: string;
-
-    // verschiedene Groessen haben verschiedene Preise
-    Preis: string;
-    
-    Menge: string;
-
-    Einkaufspreis: string;
-
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">export class Bill{
+    Bestellungspreis: string;
+    Gutscheinwert: string;
+    Gutscheinnummer: string;
+    Gelderhalten: string;
+    Trinkgeld: string;
+    Rueckgeld: string;
     Nutzer: string;
 
     constructor(
-        Art: string,
-        Groesse: string,
-        Preis: string,
-        Menge: string,
-        Einkaufspreis: string,
-        Nutzer: string
-        ) {}
+        Bestellungspreis: string,
+        Gutscheinwert: string,
+        Gutscheinnummer: string,
+        Gelderhalten: string,
+        Trinkgeld: string,
+        Rueckgeld: string,
+        Nutzer: string,) {}
 }</code></pre>
     </div>
 </div>
@@ -449,7 +485,7 @@
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'class';
-            var COMPODOC_CURRENT_PAGE_URL = 'Produkt.html';
+            var COMPODOC_CURRENT_PAGE_URL = 'Bill.html';
        </script>
 
        <script src="../js/libs/custom-elements.min.js"></script>

@@ -1,0 +1,16 @@
+.form-control{
+    margin-top: 2em;
+    text-align: center;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 2em;
+}
+
+.btn-secondary{
+    border-radius: 25px;
+    margin-top: 3em;
+    width: 6em;
+    height: 3em;
+    font-size: 2em;
+}

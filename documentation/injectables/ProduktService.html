@@ -78,6 +78,16 @@
                                 <a href="#baseUrl">baseUrl</a>
                             </li>
                             <li>
+                                <a href="#bill">bill</a>
+                            </li>
+                            <li>
+                                <a href="#currentMessage">currentMessage</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#messageSource">messageSource</a>
+                            </li>
+                            <li>
                                 <a href="#produkt">produkt</a>
                             </li>
                             <li>
@@ -99,10 +109,25 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
+                                <a href="#add">add</a>
+                            </li>
+                            <li>
+                                <a href="#changeMessage">changeMessage</a>
+                            </li>
+                            <li>
+                                <a href="#delete">delete</a>
+                            </li>
+                            <li>
                                 <a href="#getAll">getAll</a>
                             </li>
                             <li>
+                                <a href="#getBill">getBill</a>
+                            </li>
+                            <li>
                                 <a href="#getMenge">getMenge</a>
+                            </li>
+                            <li>
+                                <a href="#getProdukt">getProdukt</a>
                             </li>
                             <li>
                                 <a href="#getZuordnung">getZuordnung</a>
@@ -110,6 +135,12 @@
                             <li>
                                     <span class="modifier">Private</span>
                                 <a href="#handleError">handleError</a>
+                            </li>
+                            <li>
+                                <a href="#order">order</a>
+                            </li>
+                            <li>
+                                <a href="#relateOrderAndProduct">relateOrderAndProduct</a>
                             </li>
                         </ul>
                     </td>
@@ -134,7 +165,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/app/produkt.service.ts:24</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/app/produkt.service.ts:30</a></div>
                             </td>
                         </tr>
 
@@ -181,6 +212,216 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
+                    <a name="add"></a>
+                    <span class="name">
+                        <b>
+                            add
+                        </b>
+                        <a href="#add"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>add(item: <a href="../classes/Produkt.html">Produkt</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="87"
+                            class="link-to-prism">src/app/produkt.service.ts:87</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>item</td>
+                                    <td>
+                                                <code><a href="../classes/Produkt.html" target="_self" >Produkt</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../classes/Produkt.html" target="_self" >Observable&lt;Produkt[]&gt;</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="changeMessage"></a>
+                    <span class="name">
+                        <b>
+                            changeMessage
+                        </b>
+                        <a href="#changeMessage"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>changeMessage(message: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="38"
+                            class="link-to-prism">src/app/produkt.service.ts:38</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>message</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="delete"></a>
+                    <span class="name">
+                        <b>
+                            delete
+                        </b>
+                        <a href="#delete"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>delete(item: <a href="../classes/Produkt.html">Produkt</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="78"
+                            class="link-to-prism">src/app/produkt.service.ts:78</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>item</td>
+                                    <td>
+                                                <code><a href="../classes/Produkt.html" target="_self" >Produkt</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../classes/Produkt.html" target="_self" >Observable&lt;Produkt[]&gt;</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
                     <a name="getAll"></a>
                     <span class="name">
                         <b>
@@ -199,8 +440,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="31"
-                            class="link-to-prism">src/app/produkt.service.ts:31</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="45"
+                            class="link-to-prism">src/app/produkt.service.ts:45</a></div>
                 </td>
             </tr>
 
@@ -213,6 +454,76 @@
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="../classes/Produkt.html" target="_self" >Observable&lt;Produkt[]&gt;</a></code>
 
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getBill"></a>
+                    <span class="name">
+                        <b>
+                            getBill
+                        </b>
+                        <a href="#getBill"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getBill(bill: <a href="../classes/Bill.html">Bill</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="106"
+                            class="link-to-prism">src/app/produkt.service.ts:106</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>bill</td>
+                                    <td>
+                                                <code><a href="../classes/Bill.html" target="_self" >Bill</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Observable&lt;string&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        
                     </div>
                 </td>
             </tr>
@@ -240,8 +551,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="43"
-                            class="link-to-prism">src/app/produkt.service.ts:43</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="57"
+                            class="link-to-prism">src/app/produkt.service.ts:57</a></div>
                 </td>
             </tr>
 
@@ -294,6 +605,76 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
+                    <a name="getProdukt"></a>
+                    <span class="name">
+                        <b>
+                            getProdukt
+                        </b>
+                        <a href="#getProdukt"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getProdukt(produkt: <a href="../classes/Produkt.html">Produkt</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="115"
+                            class="link-to-prism">src/app/produkt.service.ts:115</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>produkt</td>
+                                    <td>
+                                                <code><a href="../classes/Produkt.html" target="_self" >Produkt</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Observable&lt;string&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
                     <a name="getZuordnung"></a>
                     <span class="name">
                         <b>
@@ -312,8 +693,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="55"
-                            class="link-to-prism">src/app/produkt.service.ts:55</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="69"
+                            class="link-to-prism">src/app/produkt.service.ts:69</a></div>
                 </td>
             </tr>
 
@@ -355,8 +736,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="69"
-                            class="link-to-prism">src/app/produkt.service.ts:69</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="140"
+                            class="link-to-prism">src/app/produkt.service.ts:140</a></div>
                 </td>
             </tr>
 
@@ -405,6 +786,146 @@
             </tr>
         </tbody>
     </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="order"></a>
+                    <span class="name">
+                        <b>
+                            order
+                        </b>
+                        <a href="#order"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>order(bill: <a href="../classes/Bill.html">Bill</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="97"
+                            class="link-to-prism">src/app/produkt.service.ts:97</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>bill</td>
+                                    <td>
+                                                <code><a href="../classes/Bill.html" target="_self" >Bill</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../classes/Produkt.html" target="_self" >Observable&lt;Produkt[]&gt;</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="relateOrderAndProduct"></a>
+                    <span class="name">
+                        <b>
+                            relateOrderAndProduct
+                        </b>
+                        <a href="#relateOrderAndProduct"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>relateOrderAndProduct(relation: <a href="../classes/Relation.html">Relation</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="127"
+                            class="link-to-prism">src/app/produkt.service.ts:127</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>relation</td>
+                                    <td>
+                                                <code><a href="../classes/Relation.html" target="_self" >Relation</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Observable&lt;string&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </section>
             <section>
     
@@ -431,12 +952,92 @@
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                            <i>Default value : </i><code>&#x27;http://localhost:80/BarToolAngular/&#x27;</code>
+                            <i>Default value : </i><code>&quot;./&quot;</code>
                         </td>
                     </tr>
                         <tr>
                             <td class="col-md-4">
                                     <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">src/app/produkt.service.ts:21</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="bill"></a>
+                        <span class="name">
+                            <b>
+                            bill</b>
+                            <a href="#bill"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="../classes/Bill.html" target="_self" >Bill</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/app/produkt.service.ts:25</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="currentMessage"></a>
+                        <span class="name">
+                            <b>
+                            currentMessage</b>
+                            <a href="#currentMessage"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>this.messageSource.asObservable()</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/app/produkt.service.ts:30</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="messageSource"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                            messageSource</b>
+                            <a href="#messageSource"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>new BehaviorSubject(&#x27;default message&#x27;)</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/app/produkt.service.ts:29</a></div>
                             </td>
                         </tr>
 
@@ -463,7 +1064,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/produkt.service.ts:22</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/app/produkt.service.ts:24</a></div>
                             </td>
                         </tr>
 
@@ -490,7 +1091,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/app/produkt.service.ts:23</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/app/produkt.service.ts:26</a></div>
                             </td>
                         </tr>
 
@@ -517,7 +1118,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/app/produkt.service.ts:24</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/app/produkt.service.ts:27</a></div>
                             </td>
                         </tr>
 
@@ -532,13 +1133,15 @@
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
 import { HttpClient, HttpErrorResponse, HttpParams } from &#x27;@angular/common/http&#x27;;
-
+import { BehaviorSubject } from &#x27;rxjs&#x27;;
 import { Observable, throwError } from &#x27;rxjs&#x27;;
 import { map, catchError } from &#x27;rxjs/operators&#x27;;
 
 import { Produkt } from &#x27;./produkt&#x27;;
 import { Bestellung } from &#x27;./bestellung&#x27;;
-import { environment }  from &#x27;../environments/environment&#x27;
+import { environment } from &#x27;../environments/environment&#x27;
+import { Bill } from &#x27;./cart/bill&#x27;;
+import { Relation } from &#x27;./cart/relation&#x27;;
 
 @Injectable({
   providedIn: &#x27;root&#x27;
@@ -548,14 +1151,26 @@ import { environment }  from &#x27;../environments/environment&#x27;
  * Klasse für den aufruf der HTTP Requests
  */
 export class ProduktService {
-  // baseUrl &#x3D; &quot;./&quot;
+  baseUrl &#x3D; &quot;./&quot;
 
-  baseUrl &#x3D; &#x27;http://localhost:80/BarToolAngular/&#x27;;
+  // baseUrl &#x3D; &#x27;http://192.168.178.30:80/BarToolAngular/&#x27;;
   produkt: Produkt;
+  bill: Bill;
   produkte: Produkt[];
   produkte2: Produkt[];
 
+  private messageSource &#x3D; new BehaviorSubject(&#x27;default message&#x27;);
+  currentMessage &#x3D; this.messageSource.asObservable();
+
   constructor(private http: HttpClient) { }
+
+  /**
+   * 
+   * @param message 
+   */
+  changeMessage(message: string) {
+    this.messageSource.next(message)
+  }
 
   /**
    * get all products from the products table
@@ -591,6 +1206,63 @@ export class ProduktService {
         return this.produkte;
       }),
       catchError(this.handleError));
+  }
+
+  delete(item: Produkt): Observable&lt;Produkt[]&gt; {
+    return this.http.post(&#x60;${this.baseUrl}/controller.php?cmd&#x3D;4&#x60;, { data: item })
+      .pipe(map((res) &#x3D;&gt; {
+        this.produkte &#x3D; res[&#x27;data&#x27;];
+        return this.produkte;
+      }),
+        catchError(this.handleError));
+  }
+
+  add(item: Produkt): Observable&lt;Produkt[]&gt; {
+    
+    return this.http.post(&#x60;${this.baseUrl}/controller.php?cmd&#x3D;5&#x60;, { data: item })
+      .pipe(map((res) &#x3D;&gt; {
+        this.produkte &#x3D; res[&#x27;data&#x27;];
+        return this.produkte;
+      }),
+        catchError(this.handleError));
+  }
+
+  order(bill: Bill): Observable&lt;Produkt[]&gt; {
+    return this.http.post(&#x60;${this.baseUrl}/controller.php?cmd&#x3D;6&#x60;, { data: bill })
+      .pipe(map((res) &#x3D;&gt; {
+        this.produkte &#x3D; res[&#x27;data&#x27;];
+        return this.produkte;
+      }),
+        catchError(this.handleError));
+  }
+
+  getBill(bill: Bill): Observable&lt;string&gt; {
+    return this.http.post(&#x60;${this.baseUrl}/controller.php?cmd&#x3D;7&#x60;, { data: bill })
+      .pipe(map((res) &#x3D;&gt; {  
+              
+        return res[&#x27;data&#x27;];
+      }),
+        catchError(this.handleError));
+  }
+
+  getProdukt(produkt: Produkt): Observable&lt;string&gt; {
+    console.log(produkt);
+    
+    return this.http.post(&#x60;${this.baseUrl}/controller.php?cmd&#x3D;8&#x60;, { data: produkt })
+      .pipe(map((res) &#x3D;&gt; {    
+        console.log(res);
+            
+        return res[&#x27;data&#x27;];
+      }),
+        catchError(this.handleError));
+  }
+
+  relateOrderAndProduct(relation: Relation): Observable&lt;string&gt; {
+    return this.http.post(&#x60;${this.baseUrl}/controller.php?cmd&#x3D;9&#x60;, { data: relation })
+      .pipe(map((res) &#x3D;&gt; {
+        return res[&#x27;data&#x27;];
+      }),
+        catchError(this.handleError));
   }
 
 

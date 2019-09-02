@@ -1,24 +1,27 @@
-<google-chart style="display: none" #chart [type]="myType3"
-  [(data)]="myData" [(columnNames)]="columnNames" [width]="myWidth"
-  [height]="myHeight">
+<google-chart style="display: none" #chart [type]="myType3" [(data)]="myData"
+  [(columnNames)]="columnNames" [width]="myWidth" [height]="myHeight">
 </google-chart>
 
 <div class="navbar">
   <p class="headInfo">Gesamtmenge: {{Menge}}</p>
+
   <p class="headInfo">Gesamtumsatz: <i style="text-align: right">{{Umsatz}} €</i></p>
+  <button mat-button class="btn btn-info" (click)="confirm(chartDiv3);">Sitzung
+    abschließen</button>
 </div>
 
-<div #chartDiv3 id="chart_div3"><mat-spinner style="margin-left: 43%; margin-top: 10%; margin-bottom: 10%"></mat-spinner></div>
-
-<div style="width: 100%" class="navbar">
-  <button mat-button class="btn btn-info"
-    (click)="captureScreen(chartDiv3); closeSession();">Sitzung abschließen</button>
+<div #chartDiv3 id="chart_div3">
+  <mat-spinner style="margin-left: 43%; margin-top: 10%; margin-bottom: 10%">
+  </mat-spinner>
 </div>
 
+<div #chartDiv id="chart_div">
+  <mat-spinner style="margin-left: 43%; margin-top: 20%"></mat-spinner>
+</div>
 
-<div #chartDiv id="chart_div"><mat-spinner style="margin-left: 43%; margin-top: 20%"></mat-spinner></div>
-
-<div #chartDiv2 id="chart_div2"><mat-spinner style="margin-left: 43%; margin-top: 20%"></mat-spinner></div>
+<div #chartDiv2 id="chart_div2">
+  <mat-spinner style="margin-left: 43%; margin-top: 20%"></mat-spinner>
+</div>
 
 <!-- <table id="contentToConvert" mdbTable>
   <thead class="thead-light">

@@ -42,7 +42,7 @@
 
 <ol class="breadcrumb">
   <li>Classes</li>
-  <li>Produkt</li>
+  <li>Relation</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -60,7 +60,7 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/app/produkt.ts</code>
+            <code>src/app/cart/relation.ts</code>
         </p>
 
 
@@ -80,13 +80,7 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <a href="#Art">Art</a>
-                            </li>
-                            <li>
-                                <a href="#Einkaufspreis">Einkaufspreis</a>
-                            </li>
-                            <li>
-                                <a href="#Groesse">Groesse</a>
+                                <a href="#BestellungsID">BestellungsID</a>
                             </li>
                             <li>
                                 <a href="#Menge">Menge</a>
@@ -95,7 +89,7 @@
                                 <a href="#Nutzer">Nutzer</a>
                             </li>
                             <li>
-                                <a href="#Preis">Preis</a>
+                                <a href="#ProdukteID">ProdukteID</a>
                             </li>
                         </ul>
                     </td>
@@ -116,12 +110,12 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(Art: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, Groesse: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, Preis: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, Menge: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, Einkaufspreis: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, Nutzer: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+<code>constructor(BestellungsID: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, ProdukteID: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, Menge: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, Nutzer: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/produkt.ts:14</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="5" class="link-to-prism">src/app/cart/relation.ts:5</a></div>
                             </td>
                         </tr>
 
@@ -139,7 +133,7 @@
                                         </thead>
                                         <tbody>
                                                 <tr>
-                                                        <td>Art</td>
+                                                        <td>BestellungsID</td>
                                                   
                                                         <td>
                                                                         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
@@ -151,19 +145,7 @@
                                                     
                                                 </tr>
                                                 <tr>
-                                                        <td>Groesse</td>
-                                                  
-                                                        <td>
-                                                                        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-                                                        </td>
-                                                  
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-                                                </tr>
-                                                <tr>
-                                                        <td>Preis</td>
+                                                        <td>ProdukteID</td>
                                                   
                                                         <td>
                                                                         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
@@ -176,18 +158,6 @@
                                                 </tr>
                                                 <tr>
                                                         <td>Menge</td>
-                                                  
-                                                        <td>
-                                                                        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-                                                        </td>
-                                                  
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-                                                </tr>
-                                                <tr>
-                                                        <td>Einkaufspreis</td>
                                                   
                                                         <td>
                                                                         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
@@ -228,11 +198,11 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="Art"></a>
+                        <a name="BestellungsID"></a>
                         <span class="name">
                             <b>
-                            Art</b>
-                            <a href="#Art"><span class="icon ion-ios-link"></span></a>
+                            BestellungsID</b>
+                            <a href="#BestellungsID"><span class="icon ion-ios-link"></span></a>
                         </span>
                     </td>
                 </tr>
@@ -244,61 +214,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="2" class="link-to-prism">src/app/produkt.ts:2</a></div>
-                            </td>
-                        </tr>
-
-
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="Einkaufspreis"></a>
-                        <span class="name">
-                            <b>
-                            Einkaufspreis</b>
-                            <a href="#Einkaufspreis"><span class="icon ion-ios-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/app/produkt.ts:12</a></div>
-                            </td>
-                        </tr>
-
-
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="Groesse"></a>
-                        <span class="name">
-                            <b>
-                            Groesse</b>
-                            <a href="#Groesse"><span class="icon ion-ios-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="5" class="link-to-prism">src/app/produkt.ts:5</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="2" class="link-to-prism">src/app/cart/relation.ts:2</a></div>
                             </td>
                         </tr>
 
@@ -325,7 +241,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">src/app/produkt.ts:10</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="4" class="link-to-prism">src/app/cart/relation.ts:4</a></div>
                             </td>
                         </tr>
 
@@ -352,7 +268,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/produkt.ts:14</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="5" class="link-to-prism">src/app/cart/relation.ts:5</a></div>
                             </td>
                         </tr>
 
@@ -363,11 +279,11 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="Preis"></a>
+                        <a name="ProdukteID"></a>
                         <span class="name">
                             <b>
-                            Preis</b>
-                            <a href="#Preis"><span class="icon ion-ios-link"></span></a>
+                            ProdukteID</b>
+                            <a href="#ProdukteID"><span class="icon ion-ios-link"></span></a>
                         </span>
                     </td>
                 </tr>
@@ -379,7 +295,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="8" class="link-to-prism">src/app/produkt.ts:8</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="3" class="link-to-prism">src/app/cart/relation.ts:3</a></div>
                             </td>
                         </tr>
 
@@ -398,28 +314,17 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">export class Produkt{
-    Art: string;
-
-    // ein Produkt kann in verschiedenne Groessen auftreten
-    Groesse: string;
-
-    // verschiedene Groessen haben verschiedene Preise
-    Preis: string;
-    
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">export class Relation{
+    BestellungsID: string;
+    ProdukteID: string;
     Menge: string;
-
-    Einkaufspreis: string;
-
     Nutzer: string;
 
     constructor(
-        Art: string,
-        Groesse: string,
-        Preis: string,
+        BestellungsID: string,
+        ProdukteID: string,
         Menge: string,
-        Einkaufspreis: string,
-        Nutzer: string
+        Nutzer: string,
         ) {}
 }</code></pre>
     </div>
@@ -449,7 +354,7 @@
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'class';
-            var COMPODOC_CURRENT_PAGE_URL = 'Produkt.html';
+            var COMPODOC_CURRENT_PAGE_URL = 'Relation.html';
        </script>
 
        <script src="../js/libs/custom-elements.min.js"></script>

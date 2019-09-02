@@ -32,13 +32,19 @@
                 <div style="float: right" class="col">
                     <button #btn50
                         (click)="inputMoney(btn50.value); calculateChange(voucher.value,price.innerHTML, change.innerHTML,moneyReceived.value, drinkMoney.value)"
-                        type="button" class="btn-info" value="50" [ngStyle]="drinkMoneymode == true && {'backgroundColor': '#28a745'}" > 50 €</button>
+                        type="button" class="btn-info" value="50"
+                        [ngStyle]="drinkMoneymode == true && {'backgroundColor': '#28a745'}">
+                        50 €</button>
                     <button #btn20
                         (click)="inputMoney(btn20.value); calculateChange(voucher.value,price.innerHTML, change.innerHTML,moneyReceived.value, drinkMoney.value)"
-                        type="button" class="btn-info" value="20" [ngStyle]="drinkMoneymode == true && {'backgroundColor': '#28a745'}"> 20 €</button>
+                        type="button" class="btn-info" value="20"
+                        [ngStyle]="drinkMoneymode == true && {'backgroundColor': '#28a745'}">
+                        20 €</button>
                     <button #btn10
                         (click)="inputMoney(btn10.value); calculateChange(voucher.value,price.innerHTML, change.innerHTML,moneyReceived.value, drinkMoney.value)"
-                        type="button" class="btn-info" value="10" [ngStyle]="drinkMoneymode == true && {'backgroundColor': '#28a745'}"> 10 €</button>
+                        type="button" class="btn-info" value="10"
+                        [ngStyle]="drinkMoneymode == true && {'backgroundColor': '#28a745'}">
+                        10 €</button>
                 </div>
             </div>
             <div class="row">
@@ -55,29 +61,50 @@
                         *ngIf="VoucherModel.errors?.required && VoucherModel.touched">
                         The model name is required
                     </span>
+                    <label id="Restbetrag"> </label>
+                    <label id="voucherLeft"></label>
                 </div>
                 <div style="float: right" class="col">
                     <button #btn5
                         (click)="inputMoney(btn5.value); calculateChange(voucher.value,price.innerHTML, change.innerHTML,moneyReceived.value, drinkMoney.value)"
-                        type="button" class="btn-info" value="5" [ngStyle]="drinkMoneymode == true && {'backgroundColor': '#28a745'}"> 5 €</button>
+                        type="button" class="btn-info" value="5"
+                        [ngStyle]="drinkMoneymode == true && {'backgroundColor': '#28a745'}">
+                        5 €</button>
                     <button #btn2
                         (click)="inputMoney(btn2.value); calculateChange(voucher.value,price.innerHTML, change.innerHTML,moneyReceived.value, drinkMoney.value)"
-                        type="button" class="btn-info" value="2" [ngStyle]="drinkMoneymode == true && {'backgroundColor': '#28a745'}"> 2 €</button>
+                        type="button" class="btn-info" value="2"
+                        [ngStyle]="drinkMoneymode == true && {'backgroundColor': '#28a745'}">
+                        2 €</button>
                     <button #btn1
                         (click)="inputMoney(btn1.value); calculateChange(voucher.value,price.innerHTML, change.innerHTML,moneyReceived.value, drinkMoney.value)"
-                        type="button" class="btn-info" value="1" [ngStyle]="drinkMoneymode == true && {'backgroundColor': '#28a745'}"> 1 €</button>
+                        type="button" class="btn-info" value="1"
+                        [ngStyle]="drinkMoneymode == true && {'backgroundColor': '#28a745'}">
+                        1 €</button>
                 </div>
             </div>
             <div class="row">
+                <div class="col"></div>
 
-                <div class="col">
-                    <label id="Restbetrag"> </label>
-                    <label id="voucherLeft"></label>
+                <div style="float: right; z-index: 1000;" class="col">
+                    <button #btn05
+                        (click)="inputMoney(btn05.value); calculateChange(voucher.value,price.innerHTML, change.innerHTML,moneyReceived.value, drinkMoney.value)"
+                        type="button" class="btn-info" value="0.5"
+                        [ngStyle]="drinkMoneymode == true && {'backgroundColor': '#28a745'}">
+                        0,50 €</button>
+                    <button #btn02
+                        (click)="inputMoney(btn02.value); calculateChange(voucher.value,price.innerHTML, change.innerHTML,moneyReceived.value, drinkMoney.value)"
+                        type="button" class="btn-info" value="0.2"
+                        [ngStyle]="drinkMoneymode == true && {'backgroundColor': '#28a745'}">
+                        0,20 €</button>
+                    <button #btn01
+                        (click)="inputMoney(btn01.value); calculateChange(voucher.value,price.innerHTML, change.innerHTML,moneyReceived.value, drinkMoney.value)"
+                        type="button" class="btn-info" value="0.1"
+                        [ngStyle]="drinkMoneymode == true && {'backgroundColor': '#28a745'}">
+                        0,10 €</button>
                 </div>
-
             </div>
             <div class="row">
-                <div class="col">
+                <div class="col" style="margin-top: -6em;">
                     <div class="row">
                         <label class="nec">Geld erhalten</label>
                     </div>
@@ -86,29 +113,24 @@
                         id="moneyReceived" placeholder="Eingabe Gelderhalten"
                         (keyup)="calculateChange(voucher.value,price.innerHTML, change.innerHTML,moneyReceived.value, drinkMoney.value)">
                 </div>
-                <div style="float: right" class="col">
-                    <button #btn05
-                        (click)="inputMoney(btn05.value); calculateChange(voucher.value,price.innerHTML, change.innerHTML,moneyReceived.value, drinkMoney.value)"
-                        type="button" class="btn-info" value="0.5" [ngStyle]="drinkMoneymode == true && {'backgroundColor': '#28a745'}"> 0,50 €</button>
-                    <button #btn02
-                        (click)="inputMoney(btn02.value); calculateChange(voucher.value,price.innerHTML, change.innerHTML,moneyReceived.value, drinkMoney.value)"
-                        type="button" class="btn-info" value="0.2" [ngStyle]="drinkMoneymode == true && {'backgroundColor': '#28a745'}"> 0,20 €</button>
-                    <button #btn01
-                        (click)="inputMoney(btn01.value); calculateChange(voucher.value,price.innerHTML, change.innerHTML,moneyReceived.value, drinkMoney.value)"
-                        type="button" class="btn-info" value="0.1" [ngStyle]="drinkMoneymode == true && {'backgroundColor': '#28a745'}"> 0,10 €</button>
-                </div>
+                <button type="button"
+                    (click)="deleteInput(moneyReceived, drinkMoney); drinkMoneymode = false"
+                    class="btn-custom"
+                    style="margin-right: 0.1em; color:white">Eingabe löschen</button>
+                <button type="button" #btnSwitch
+                    (click)="drinkMoneymode = !drinkMoneymode; input = 0; switchText(btnSwitch)"
+                    class="btn-custom">Trinkgeld eingeben</button>
 
             </div>
             <div class="row">
-                <div class="col">
+                <div class="col" style="margin-top: -4.5em;">
                     <!-- <label class="opt">Trinkgeld</label> -->
                     <input #drinkMoney type="number" step="0.01" min="0"
                         oninput="validity.valid||(value='');" id="drinkMoney"
                         placeholder="Trinkgeld"
                         (keyup)="calculateChange(voucher.value, price.innerHTML, change.innerHTML, moneyReceived.value, drinkMoney.value)">
                 </div>
-                <button type="button" (click)="deleteInput(moneyReceived, drinkMoney); drinkMoneymode = false" class="btn-custom" style="margin-right: 0.1em; color:white" >Eingabe löschen</button>
-                <button type="button" #btnSwitch (click)="drinkMoneymode = !drinkMoneymode; input = 0; switchText(btnSwitch)"class="btn-custom">Trinkgeld eingeben</button>
+
             </div>
             <div class="row">
 
