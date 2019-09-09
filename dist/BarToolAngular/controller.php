@@ -159,7 +159,7 @@ switch ($cmd) {
 
         /* bind result variables */
         $stmt->bind_result($id);
-            /* fetch values */
+        /* fetch values */
         while ($stmt->fetch()) {
             echo json_encode(array('data' => $id));
         }
@@ -178,6 +178,24 @@ switch ($cmd) {
             ':ProdukteID' => $ProdukteID,
             ':Menge' => $Menge,
             ':Nutzer' => $Nutzer,
+        ));
+
+        echo json_encode(array('data' => ""));
+        break;
+
+    case 10:
+        $login = mysqli_real_escape_string($con, $request->login);
+
+        $stmt = $conPDO->prepare("DELETE FROM bestellungen where Nutzer = :Nutzer");
+
+        $stmt2 = $conPDO->prepare("DELETE FROM produktebestellung where Nutzer = :Nutzer");
+
+        $stmt->execute(array(
+            ':Nutzer' => $login,
+        ));
+
+        $stmt2->execute(array(
+            ':Nutzer' => $login,
         ));
 
         echo json_encode(array('data' => ""));

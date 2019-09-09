@@ -19,8 +19,8 @@ import { Relation } from './cart/relation';
  */
 export class ProduktService {
   baseUrl = "./"
-
   // baseUrl = 'http://192.168.178.30:80/BarToolAngular/';
+  // baseUrl = 'http://localhost/BarToolAngular/'
   produkt: Produkt;
   bill: Bill;
   produkte: Produkt[];
@@ -85,7 +85,7 @@ export class ProduktService {
   }
 
   add(item: Produkt): Observable<Produkt[]> {
-    
+
     return this.http.post(`${this.baseUrl}/controller.php?cmd=5`, { data: item })
       .pipe(map((res) => {
         this.produkte = res['data'];
@@ -105,8 +105,8 @@ export class ProduktService {
 
   getBill(bill: Bill): Observable<string> {
     return this.http.post(`${this.baseUrl}/controller.php?cmd=7`, { data: bill })
-      .pipe(map((res) => {  
-              
+      .pipe(map((res) => {
+
         return res['data'];
       }),
         catchError(this.handleError));
@@ -114,11 +114,11 @@ export class ProduktService {
 
   getProdukt(produkt: Produkt): Observable<string> {
     console.log(produkt);
-    
+
     return this.http.post(`${this.baseUrl}/controller.php?cmd=8`, { data: produkt })
-      .pipe(map((res) => {    
+      .pipe(map((res) => {
         console.log(res);
-            
+
         return res['data'];
       }),
         catchError(this.handleError));
@@ -126,6 +126,15 @@ export class ProduktService {
 
   relateOrderAndProduct(relation: Relation): Observable<string> {
     return this.http.post(`${this.baseUrl}/controller.php?cmd=9`, { data: relation })
+      .pipe(map((res) => {
+        return res['data'];
+      }),
+        catchError(this.handleError));
+  }
+
+  deleteEntries(login) {
+
+    return this.http.post(`${this.baseUrl}/controller.php?cmd=10`, { login })
       .pipe(map((res) => {
         return res['data'];
       }),

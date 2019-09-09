@@ -42,7 +42,7 @@ export class AuswertungComponent implements OnInit {
   login = localStorage.getItem("login");;
   check = false;
   Menge: number = 0;
-  Umsatz: number = 0;
+  Umsatz: string = '0';
   // public barChartOptions = {
   //   scaleShowVerticalLines: false,
   //   responsive: true
@@ -52,12 +52,7 @@ export class AuswertungComponent implements OnInit {
   // elements: any = [];
   // headElements = this.columnNames;
 
-  constructor(private produktService: ProduktService, private router: Router, private excelService: ExcelService) {
-
-  }
-
-
-
+  constructor(private produktService: ProduktService, private router: Router, private excelService: ExcelService) { }
 
   ngOnInit() {
     this.getProdukte();
@@ -121,12 +116,6 @@ export class AuswertungComponent implements OnInit {
       width: 780,
       height: 325,
       is3D: true,
-
-      animation: {
-        startup: true,
-        duration: 10000,
-        easing: 'out',
-      },
     };
     var chart2 = new google.visualization.PieChart(document.getElementById('chart_div2'));
     chart2.draw(data2, options2);
@@ -135,9 +124,9 @@ export class AuswertungComponent implements OnInit {
 
     // Table Chart.
     var data3 = new google.visualization.DataTable();
-    data3.addColumn('string', 'Produkte');
+    data3.addColumn('string', 'Produkt');
     data3.addColumn('string', 'Größe');
-    data3.addColumn('string', 'Preie');
+    data3.addColumn('string', 'Preis');
     data3.addColumn('number', 'Menge');
     data3.addColumn('string', 'Umsatz');
     data3.addColumn('string', 'Kosten');
@@ -182,13 +171,13 @@ export class AuswertungComponent implements OnInit {
           for (var i = 0; i < this.produkte2.length; i++) {
             if (this.produkte2[i].Menge != null) {
               this.Menge = this.Menge + parseFloat(this.produkte2[i].Menge);
-              this.Umsatz = this.Umsatz + parseFloat(produkt.Preis) * parseFloat(this.produkte2[i].Menge);
+              this.Umsatz = (parseFloat(this.Umsatz) + parseFloat(produkt.Preis) * parseFloat(this.produkte2[i].Menge)).toFixed(2).toString().replace('.', ',');
 
-              this.myData.push([this.produkte2[i].Art, this.produkte2[i].Groesse + " L", parseFloat(produkt.Preis) + " €", parseFloat(this.produkte2[i].Menge), parseFloat(produkt.Preis) * parseFloat(this.produkte2[i].Menge) + " €", parseFloat(produkt.Einkaufspreis) + " €", parseFloat(produkt.Preis) * parseFloat(this.produkte2[i].Menge) - parseFloat(produkt.Einkaufspreis) + " €"])
+              this.myData.push([this.produkte2[i].Art, (this.produkte2[i].Groesse).replace('.', ',') + " L", (parseFloat(produkt.Preis)).toFixed(2).toString().replace('.', ',') + " €", parseFloat(this.produkte2[i].Menge), (parseFloat(produkt.Preis) * parseFloat(this.produkte2[i].Menge)).toFixed(2).toString().replace('.', ',') + " €", (parseFloat(produkt.Einkaufspreis)).toFixed(2).toString().replace('.', ',') + " €", (parseFloat(produkt.Preis) * parseFloat(this.produkte2[i].Menge) - parseFloat(produkt.Einkaufspreis)).toFixed(2).toString().replace('.', ',') + " €"])
 
-              this.myData2.push([this.produkte2[i].Art + " " + this.produkte2[i].Groesse + " L", (parseFloat(produkt.Preis) * parseFloat(this.produkte2[i].Menge))]);
+              this.myData2.push([(this.produkte2[i].Art + " " + this.produkte2[i].Groesse).toString().replace('.', ',') + " L", (parseFloat(produkt.Preis) * parseFloat(this.produkte2[i].Menge))]);
 
-              this.myData3.push([`${this.produkte2[i].Art} ${this.produkte2[i].Groesse} L`, parseFloat(this.produkte2[i].Menge)]);
+              this.myData3.push([(`${this.produkte2[i].Art} ${this.produkte2[i].Groesse} L`).replace('.', ','), parseFloat(this.produkte2[i].Menge)]);
             }
           }
         }
@@ -206,22 +195,30 @@ export class AuswertungComponent implements OnInit {
     });
 
     if (willDelete) {
-      this.captureScreenAndCloseSession(data);
+      this.captureScreen(data);
       this.exportAsXLSX();
+      this.deleteDBEntries(localStorage.getItem("login"));
       // document.getElementById('deleteOverlay').style.display = "none";
       // to refresh 
     }
   }
-  captureScreenAndCloseSession(data) {
+  captureScreen(data) {
+
     var today = new Date();
     var dd = String(today.getDate()).padStart(2, '0');
     var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
     var yyyy = today.getFullYear();
 
-    this.date = (dd + '.' + mm + '.' + yyyy);
+    var hours = String(today.getHours()).padStart(2, '0');
+    var minutes = String(today.getMinutes()).padStart(2, '0');
+
+    var time = hours + ":" + minutes;
+    console.log(time);
+
+    this.date = (dd + '.' + mm + '.' + yyyy + " | " + time);
     html2canvas(data).then(canvas => {
       // Few necessary setting options  
-      var imgWidth = 208;
+      var imgWidth = 220;
       var pageHeight = 295;
       var imgHeight = canvas.height * imgWidth / canvas.width;
       var heightLeft = imgHeight;
@@ -229,26 +226,19 @@ export class AuswertungComponent implements OnInit {
       const contentDataURL = canvas.toDataURL('image/svg')
       let pdf = new jspdf('p', 'mm', 'a4'); // A4 size page of PDF  
       var position = 50;
-
+      pdf.internal.scaleFactor = 30;
       pdf.addImage(contentDataURL, 'SVG', 0, position, imgWidth, imgHeight)
-      pdf.text(70, 10, 'Produktabrechnung BarTool');
-      pdf.text(10, 30, `Sitzungsname: ${this.login}`);
+      pdf.text(70, 10, 'Sitzungsabrechnung BarTool');
+      pdf.text(10, 30, `Nutzer: ${this.login}`);
       pdf.text(85, 30, `Gesamtumsatz: ${this.Umsatz}`);
       pdf.text(150, 30, `Gesamtmenge: ${this.Menge}`);
-      pdf.text(85, 40, `Vom: ${this.date}`);
+      pdf.text(75, 40, `Vom: ${this.date}`);
       pdf.save('BarTool_Abrechnung.pdf'); // Generated PDF   
     });
-
-    localStorage.removeItem("login");
-    localStorage.removeItem("check");
-    setTimeout(() => {
-      this.router.navigateByUrl('/');
-    }, 500);
-
   }
 
   exportAsXLSX() {
-    this.myData.unshift(["Produkt", "Größe", "Preis", "Menge", "Umsatz", "Kosten", "Gewinn", `Sitzungsname: ${this.login}`, `Vom: ${this.date}`])
+    this.myData.unshift(["Produkt", "Größe", "Preis", "Menge", "Umsatz", "Kosten", "Gewinn", `Nutzer: ${this.login}`, `Vom: ${this.date}`])
     // var assocArray = [];
     // for (var i = 0; i < this.myData.length; i++) {
     //   var item = this.myData[i];
@@ -263,7 +253,22 @@ export class AuswertungComponent implements OnInit {
     //   }));
     // }
     // console.log(assocArray);
-    this.excelService.exportAsExcelFile(this.myData, 'Produktabrechnung BarTool');
+    this.excelService.exportAsExcelFile(this.myData, 'Sitzungsabrechnung BarTool');
+  }
+
+  deleteDBEntries(login) {
+
+    this.produktService.deleteEntries(login).subscribe(
+      (res: Produkt[]) => {
+
+        localStorage.removeItem("login");
+        localStorage.removeItem("check");
+        setTimeout(() => {
+          this.router.navigateByUrl('/');
+        }, 500);
+
+      },
+    );
   }
 }
 

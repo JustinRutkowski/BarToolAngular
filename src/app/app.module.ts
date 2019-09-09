@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA, LOCALE_ID } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
@@ -50,7 +50,7 @@ import { AppRoutingModule } from './app-routing/app-routing.module';
     // RouterModule.forRoot(appRoutes),
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  providers: [ExcelService],
+  providers: [{provide: LOCALE_ID, useValue: "de-CH"}, ExcelService],
 
   bootstrap: [AppComponent]
 })

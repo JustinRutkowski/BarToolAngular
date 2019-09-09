@@ -9,7 +9,7 @@ export const slideInAnimation = trigger('routeAnimations', [
                 position: 'absolute',
                 top: 0,
                 left: 0,
-                width: '100%'
+                width: '100%',
             })
         ], { optional: true }),
         query(':enter', [
@@ -22,7 +22,9 @@ export const slideInAnimation = trigger('routeAnimations', [
                 animate('300ms ease-out', style({ left: '0%' }))
             ], { optional: true }),
             query(':leave', [
-                animate('300ms ease-out', style({ left: '-100%' }))
+                animate('300ms ease-out', style({
+                    left: '-100%'
+                }))
             ], { optional: true })
         ])
     ]),

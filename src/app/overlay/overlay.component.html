@@ -26,7 +26,7 @@
         <!-- show only the sizes for the coresponding product  -->
         <h6 style="margin-top: 1.5em" class="title">Größe</h6>
         <ng-container *ngFor="let item of produkte" class="navbar">
-            <button *ngIf="item.Art == title.innerHTML" class="btn btn-secondary"
+            <button class="btn btn-secondary" *ngIf="item.Art == title.innerHTML" class="btn btn-secondary"
                 (click)="addToCart(item, amount.value)">{{item.Groesse}} L
             </button>
         </ng-container>

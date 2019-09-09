@@ -8,7 +8,7 @@
     <div class="form-group">
       <form #f="ngForm" name="theForm">
         <input [(ngModel)]="log" #LogModel="ngModel" name="model" #loginInput
-          id="logon" type="text" class="form-control" placeholder="Sitzungsname"
+          id="logon" type="text" class="form-control" placeholder="Nutzer"
           pattern="^[a-zA-Z1-9]+$" required>
         <button [disabled]="f.invalid" class="btn btn-secondary"
           (click)="_login(loginInput.value); off(login)">login</button>

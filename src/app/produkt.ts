@@ -12,13 +12,13 @@ export class Produkt{
     Einkaufspreis: string;
 
     Nutzer: string;
-
+    
     constructor(
         Art: string,
         Groesse: string,
         Preis: string,
         Menge: string,
         Einkaufspreis: string,
-        Nutzer: string
+        Nutzer: string,
         ) {}
 }

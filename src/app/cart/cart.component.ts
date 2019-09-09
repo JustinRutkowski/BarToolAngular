@@ -142,9 +142,7 @@ export class CartComponent implements OnInit {
                 document.getElementById('cartOverview').appendChild(overviewItem);
             }
         }
-        document.getElementById("price").innerHTML = priceSum.toFixed(2) + " €";
-
-
+        document.getElementById("price").innerHTML = priceSum.toFixed(2).replace('.',',') + " €";
     }
 
     /**
@@ -166,6 +164,7 @@ export class CartComponent implements OnInit {
 
         var voucherLeft = this.voucherLeft.innerHTML;
         price = price.replace('€', '');
+        price = price.replace(',', '.');
         change = change.replace('€', '');
 
         // console.log("voucher: " + voucher);
@@ -182,17 +181,17 @@ export class CartComponent implements OnInit {
             // console.log("voucherLeft: " + voucherLeft);
             if (+voucherLeft.replace('€', '') >= 0) {
                 document.getElementById("Restbetrag").innerHTML = "Gutscheinrest:"
-                change = "0.00 €";
+                change = "0,00 €";
             }
             if (+voucherLeft.replace('€', '') < 0) {
                 document.getElementById("Restbetrag").innerHTML = "noch zu zahlen:"
-                change = (moneyReceived - - +voucherLeft.replace('€', '')).toFixed(2) + " €";
+                change = (moneyReceived - - +voucherLeft.replace('€', '')).toFixed(2).replace('.',',') + " €";
             }
         }
         else {
             voucherLeft = "";
             document.getElementById("Restbetrag").innerHTML = "";
-            change = (moneyReceived - +price - drinkMoney).toFixed(2) + " €";
+            change = (moneyReceived - +price - drinkMoney).toFixed(2).replace('.',',') + " €";
         }
 
         // Control when the order can be finished
