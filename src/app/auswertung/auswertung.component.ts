@@ -224,7 +224,7 @@ export class AuswertungComponent implements OnInit {
       pdf.internal.scaleFactor = 300;
       pdf.addImage(contentDataURL, 'SVG', 0, position, imgWidth, imgHeight)
       pdf.text(10, 10, 'Sitzungsabrechnung BarTool');
-      pdf.text(65, 10, `Nutzer: ${this.login}`);
+      pdf.text(100, 10, `Nutzer: ${this.login}`);
       pdf.text(10, 20, `Gesamtmenge: ${this.Menge}`);
       pdf.text(65, 20, `Gesamtumsatz: ${this.Umsatz} €`);
       pdf.text(145, 20, `Gesamtgutschein: ${this.Gutschein}`);
