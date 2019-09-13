@@ -1,19 +1,28 @@
-<google-chart style="display: none" #chart [type]="myType3" [(data)]="myData"
+<!-- <google-chart style="display: none" #chart [type]="myType3" [(data)]="myData"
   [(columnNames)]="columnNames" [width]="myWidth" [height]="myHeight">
-</google-chart>
-
-<div class="navbar">
-  <p class="headInfo">Gesamtmenge: {{Menge}}</p>
-
-  <p class="headInfo">Gesamtumsatz: <i style="text-align: right">{{Umsatz}} €</i></p>
-  <button mat-button class="btn btn-info" (click)="confirm(chartDiv3);">Sitzung
-    abschließen</button>
+</google-chart> -->
+<button style="position: absolute; right: 30px;
+top: 11em; z-index: 1000;" mat-button class="btn btn-info" (click)="confirm();">Sitzung
+  abschließen</button>
+<div class="navbar headInfo">
+  Gesamtsummen:
 </div>
 
-<div #chartDiv3 id="chart_div3">
+<div class="navbar">
+  <p class="headInfo">Menge: {{Menge}}</p>
+  <p class="headInfo">Umsatz: <i style="text-align: right">{{Umsatz}} €</i></p>
+  <p class="headInfo">davon <i>{{Gutschein}} €</i> Gutschein </p>
+
+</div>
+
+<hr>
+
+<!-- <div #chartDiv3 id="chart_div3">
   <mat-spinner style="margin-left: 43%; margin-top: 10%; margin-bottom: 10%">
   </mat-spinner>
 </div>
+
+<hr>
 
 <div #chartDiv id="chart_div">
   <mat-spinner style="margin-left: 43%; margin-top: 20%"></mat-spinner>
@@ -21,9 +30,9 @@
 
 <div #chartDiv2 id="chart_div2">
   <mat-spinner style="margin-left: 43%; margin-top: 20%"></mat-spinner>
-</div>
+</div> -->
 
-<!-- <table id="contentToConvert" mdbTable>
+<table id="contentToConvert" mdbTable striped="true" class="table table-striped">
   <thead class="thead-light">
     <tr>
       <th *ngFor="let head of headElements; let i = index"
@@ -32,16 +41,16 @@
       </th>
     </tr>
   </thead>
-  <tbody>
+  <tbody class="">
     <tr *ngFor="let el of elements; let i = index">
       <th scope="row">{{el.produkt}}</th>
-      <td>{{el.Groesse}} L</td>
-      <td>{{el.Preis}} €</td>
+      <td>{{el.Groesse}}</td>
+      <td>{{el.Preis}}</td>
       <td>{{el.Menge}}</td>
-      <td>{{el.Umsatz}} €</td>
-      <td>{{el.Kosten}} €</td>
-      <td>{{el.Gewinn}} €</td>
+      <td>{{el.Umsatz}}</td>
+      <td>{{el.Kosten}}</td>
+      <td>{{el.Gewinn}}</td>
 
     </tr>
   </tbody>
-</table> -->
+</table>

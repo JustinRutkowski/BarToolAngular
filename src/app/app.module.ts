@@ -13,7 +13,6 @@ import { MatSelectModule } from '@angular/material/select';
 import { Routes, RouterModule } from '@angular/router';
 import { AuswertungComponent } from './auswertung/auswertung.component';
 import { WavesModule, TableModule, IconsModule } from 'angular-bootstrap-md';
-import { GoogleChartsModule } from 'angular-google-charts';
 import { LoginComponent } from './login/login/login.component';
 import { MatProgressSpinnerModule, MatRadioModule, MatSliderModule } from '@angular/material'
 import { ExcelService } from './excel.service';
@@ -45,7 +44,6 @@ import { AppRoutingModule } from './app-routing/app-routing.module';
     TableModule,
     WavesModule,
     IconsModule,
-    GoogleChartsModule,
     AppRoutingModule,
     // RouterModule.forRoot(appRoutes),
   ],

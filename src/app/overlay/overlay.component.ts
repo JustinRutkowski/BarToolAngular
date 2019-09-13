@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Produkt } from '../produkt';
+import { JsonpClientBackend } from '@angular/common/http';
 
 @Component({
   selector: 'overlay',
@@ -17,6 +18,7 @@ export class OverlayComponent implements OnInit {
   selected = '1';
   cartProdukte: Produkt[] = new Array();
   cartProdukteOld: Produkt[] = new Array();
+  previousQuantity: string = '0';
 
   /**
    ** fades out an overlay 
@@ -71,6 +73,9 @@ export class OverlayComponent implements OnInit {
         this2.cartProdukte.splice(this2.cartProdukte.indexOf(cartItem), 1)
         containerNew.className = "cart slide-up";
       }, 275);
+      // var checkout: HTMLInputElement;
+      // checkout = <HTMLInputElement>document.getElementById("checkout");
+      // checkout.disabled = true;
     }
 
     editButton.onclick = function () {
@@ -95,9 +100,22 @@ export class OverlayComponent implements OnInit {
    * @param item the item to add
    * @param amount the quantity of the item
    */
-  addToCart(item: Produkt, amount: number) {
+  addToCart(item: Produkt, amount: number, containerNew) {
     var sizeAndQuantityOverlay: HTMLElement = document.getElementById('overlay');
-    item.Menge = amount.toString();
+
+    if (this.cartProdukte.includes(item)) {
+      containerNew.className = "cart slide-down";
+      setTimeout(() => {
+        containerNew.className = "cart slide-up";
+        this.cartProdukte.splice(this.cartProdukte.indexOf(item), 1)
+        item.Menge = (+amount + parseInt(this.previousQuantity)).toString();
+      }, 275);
+
+    } else {
+      item.Menge = amount.toString();
+    }
+    this.previousQuantity = item.Menge;
+
     this.cartProdukte.push(item);
     this.off(sizeAndQuantityOverlay);
     localStorage.setItem("cart", JSON.stringify(item));

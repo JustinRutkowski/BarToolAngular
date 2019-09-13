@@ -1,9 +1,9 @@
 <!-- Header of the main page -->
 <div class="navbar">
     <img class="mobile-logo preload-me"
-        src="http://cat-stairs.de/wp-content/uploads/2015/02/cat-stairs-header_mobil.jpg"
-        srcset="http://cat-stairs.de/wp-content/uploads/2015/02/cat-stairs-header_mobil.jpg 274w"
-        width="270" height="95" sizes="274px" alt="CAT-stairs">
+        src="./assets/cat-stairs-header_mobil.jpg"
+        width="270" height="95" sizes="274px" alt="CAT-stairs" role="presentation" routerLinkActive="active"
+        [routerLinkActiveOptions]="{exact: true}" routerLink='/monitor'>
     <ul class="nav nav-tabs">
         <li role="presentation" routerLinkActive="active"
             [routerLinkActiveOptions]="{exact: true}"> <a routerLink='/'>BarTool</a>
@@ -17,6 +17,8 @@
         </li>
     </ul>
 </div>
+
+<p style="position: absolute; top: 5px; right: 15px" id="nutzer"></p>
 
 <hr>
 

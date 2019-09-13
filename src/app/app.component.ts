@@ -18,4 +18,8 @@ export class AppComponent {
   prepareRoute(outlet: RouterOutlet){
     return outlet && outlet.activatedRouteData && outlet.activatedRouteData['animation'];
   }
+
+  ngAfterViewInit(){
+    document.getElementById("nutzer").innerHTML = localStorage.getItem("login");
+  }
 }

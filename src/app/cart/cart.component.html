@@ -1,5 +1,5 @@
 <button [disabled]="checkEmpty()" style="margin-left:10%; margin-right: 10%;"
-    class="btn-success" (click)="placeOrder()">zur
+    id="checkout" class="btn-success" (click)="placeOrder()">zur
     Kasse <i class="far fa-hand-point-up"></i></button>
 
 
@@ -56,7 +56,8 @@
                         [required]="voucherAmount != 0 || voucherAmount != undefined"
                         [disabled]="voucherAmount == 0 || voucherAmount == undefined"
                         placeholder="Gutscheinnummer"
-                        [ngStyle]="{'border': voucherAmount != 0 && voucherAmount != undefined ? '3px solid red' : 'black'}">
+                        [ngStyle]="{'border': voucherAmount != 0 && voucherAmount != undefined ? '3px solid red' : 'black'}"
+                        (keyup)="calculateChange(voucher.value, price.innerHTML, change.innerHTML, moneyReceived.value, drinkMoney.value)">
                     <span class="help-block danger"
                         *ngIf="VoucherModel.errors?.required && VoucherModel.touched">
                         The model name is required
@@ -114,7 +115,7 @@
                         (keyup)="calculateChange(voucher.value,price.innerHTML, change.innerHTML,moneyReceived.value, drinkMoney.value)">
                 </div>
                 <button type="button"
-                    (click)="deleteInput(moneyReceived, drinkMoney); drinkMoneymode = false"
+                    (click)="deleteInput(moneyReceived, drinkMoney, btnSwitch)"
                     class="btn-custom"
                     style="margin-right: 0.1em; color:white">Eingabe löschen</button>
                 <button type="button" #btnSwitch
@@ -140,7 +141,7 @@
                 <label #change id="change"></label>
             </div>
 
-            <button [disabled]="f.invalid || !condition" id="edit" type="submit"
+            <button [disabled]="f.invalid || !condition" type="submit"
                 class="btn btn-success">Bestellung
                 abschließen <i class="far fa-hand-point-up"></i>
             </button>

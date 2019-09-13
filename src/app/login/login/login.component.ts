@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class LoginComponent implements OnInit {
 
   log;
-  
+
   constructor() { }
 
   ngOnInit() {
@@ -24,6 +24,7 @@ export class LoginComponent implements OnInit {
   _login(input) {
     console.log(input);
     localStorage.setItem("login", input);
+    document.getElementById("nutzer").innerHTML = localStorage.getItem("login");
   }
 
   /**

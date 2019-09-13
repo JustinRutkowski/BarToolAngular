@@ -1,4 +1,24 @@
 .headInfo {
-    font-size: 2em; font-weight: bold;
+    font-size: 1.5em; font-weight: bold;
+}
+
+hr{
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+/* .table{
+    margin-right: 15px;
+    margin-left: 15px;
+} */
+
+th{
+    font-size: 1.2em;
+    text-align: center;
+}
+
+td{
+    font-size: 1.2em;
+    text-align: center;
 }
 

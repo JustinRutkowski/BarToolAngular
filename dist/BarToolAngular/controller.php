@@ -135,7 +135,7 @@ switch ($cmd) {
             ':Nutzer'               => $Nutzer,
         ));
 
-        echo json_encode(array('data' => ""));
+        echo json_encode(array('data' => $GutscheinNummer));
         break;
 
     case 7:
@@ -199,5 +199,32 @@ switch ($cmd) {
         ));
 
         echo json_encode(array('data' => ""));
+        break;
+
+    case 11:
+        $login = mysqli_real_escape_string($con, $request->data);
+
+        $stmt = $conPDO->prepare(
+            "SELECT SUM(BestellungsPreis) as GutscheinWert from bestellungen where GutscheinWert > BestellungsPreis and Nutzer = :Nutzer"
+        );
+
+        $stmt2 = $conPDO->prepare(
+            "SELECT SUM(GutscheinWert) as GutscheinWert from bestellungen where GutscheinWert <= BestellungsPreis and Nutzer = :Nutzer"
+        );
+
+        $stmt->execute(array(
+            ':Nutzer' => $login,
+        ));
+        $result = $stmt->fetchAll();
+
+        $stmt2->execute(array(
+            ':Nutzer' => $login,
+        ));
+        $result2 = $stmt2->fetchAll();
+
+        $res = $result[0]['GutscheinWert'] + $result2[0]['GutscheinWert'];
+
+        echo json_encode(array('data' => $res));
+
         break;
 }

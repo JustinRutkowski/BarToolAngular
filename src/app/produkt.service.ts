@@ -3,7 +3,6 @@ import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http'
 import { BehaviorSubject } from 'rxjs';
 import { Observable, throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
-
 import { Produkt } from './produkt';
 import { Bestellung } from './bestellung';
 import { environment } from '../environments/environment'
@@ -75,6 +74,10 @@ export class ProduktService {
       catchError(this.handleError));
   }
 
+  /**
+   * 
+   * @param item 
+   */
   delete(item: Produkt): Observable<Produkt[]> {
     return this.http.post(`${this.baseUrl}/controller.php?cmd=4`, { data: item })
       .pipe(map((res) => {
@@ -84,6 +87,10 @@ export class ProduktService {
         catchError(this.handleError));
   }
 
+  /**
+   * 
+   * @param item 
+   */
   add(item: Produkt): Observable<Produkt[]> {
 
     return this.http.post(`${this.baseUrl}/controller.php?cmd=5`, { data: item })
@@ -94,6 +101,10 @@ export class ProduktService {
         catchError(this.handleError));
   }
 
+  /**
+   * 
+   * @param bill 
+   */
   order(bill: Bill): Observable<Produkt[]> {
     return this.http.post(`${this.baseUrl}/controller.php?cmd=6`, { data: bill })
       .pipe(map((res) => {
@@ -103,6 +114,10 @@ export class ProduktService {
         catchError(this.handleError));
   }
 
+  /**
+   * 
+   * @param bill 
+   */
   getBill(bill: Bill): Observable<string> {
     return this.http.post(`${this.baseUrl}/controller.php?cmd=7`, { data: bill })
       .pipe(map((res) => {
@@ -112,18 +127,24 @@ export class ProduktService {
         catchError(this.handleError));
   }
 
+  /**
+   * 
+   * @param produkt 
+   */
   getProdukt(produkt: Produkt): Observable<string> {
-    console.log(produkt);
 
     return this.http.post(`${this.baseUrl}/controller.php?cmd=8`, { data: produkt })
       .pipe(map((res) => {
-        console.log(res);
 
         return res['data'];
       }),
         catchError(this.handleError));
   }
 
+  /**
+   * 
+   * @param relation 
+   */
   relateOrderAndProduct(relation: Relation): Observable<string> {
     return this.http.post(`${this.baseUrl}/controller.php?cmd=9`, { data: relation })
       .pipe(map((res) => {
@@ -132,6 +153,10 @@ export class ProduktService {
         catchError(this.handleError));
   }
 
+  /**
+   * 
+   * @param login 
+   */
   deleteEntries(login) {
 
     return this.http.post(`${this.baseUrl}/controller.php?cmd=10`, { login })
@@ -141,6 +166,19 @@ export class ProduktService {
         catchError(this.handleError));
   }
 
+  /**
+   * 
+   */
+  getVoucher(): Observable<string> {
+    var nutzer = localStorage.getItem("login");
+
+    return this.http.post(`${this.baseUrl}/controller.php?cmd=11`, { data: nutzer })
+      .pipe(map((res) => {
+
+        return res['data'];
+      }),
+        catchError(this.handleError));
+  }
 
   /**
    * Anzeige des Fehlers

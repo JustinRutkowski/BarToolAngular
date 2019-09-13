@@ -30,6 +30,7 @@ export class CartComponent implements OnInit {
     input: number = 0;
     drinkMoneymode: boolean = false;
     previous: boolean;
+    gutscheinnummer: HTMLInputElement;
 
     constructor(private produktService: ProduktService) { };
 
@@ -44,6 +45,12 @@ export class CartComponent implements OnInit {
     // todo
     off(overlay: HTMLElement) {
         overlay.className = "overlay fade-out";
+        this.condition = false;
+        this.input = 0;
+        this.gutscheinnummer = <HTMLInputElement>document.getElementById("voucherNumber");
+        this.gutscheinnummer.value = '';
+        document.getElementById("Restbetrag").innerHTML = '';
+
         setTimeout(() => {
             overlay.style.display = "none";
             overlay.className = "overlay fade-in";
@@ -67,11 +74,13 @@ export class CartComponent implements OnInit {
         }
     }
 
-    deleteInput(moneyReceived, drinkMoney) {
+    deleteInput(moneyReceived, drinkMoney, btnSwitch) {
         moneyReceived.value = '';
         drinkMoney.value = '';
         this.input = 0;
         document.getElementById("change").innerHTML = "€";
+        this.drinkMoneymode = false;
+        this.switchText(btnSwitch);
     }
 
     inputMoney(value) {
@@ -80,10 +89,8 @@ export class CartComponent implements OnInit {
         } else {
             this.val = <HTMLInputElement>document.getElementById("drinkMoney");
         }
-
         this.val.value = (this.input + parseFloat(value)).toFixed(2);
         this.input = parseFloat(this.val.value);
-
     }
 
     switchText(btnSwitch) {
@@ -154,11 +161,13 @@ export class CartComponent implements OnInit {
      * @param drinkMoney money that the client voulentiery gives to us
      */
     calculateChange(voucher, price, change, moneyReceived, drinkMoney) {
-        var docVoucher = <HTMLInputElement>document.getElementById("voucherNumber");
-        var bool = docVoucher.disabled;
+        this.gutscheinnummer = <HTMLInputElement>document.getElementById("voucherNumber");
+        
+   
+        var bool = this.gutscheinnummer.disabled;
 
         if (bool == true) {
-            document.getElementById("voucherNumber").innerHTML = '';
+            this.gutscheinnummer.innerHTML = '';
             this.voucherNumber = '';
         }
 
@@ -173,9 +182,12 @@ export class CartComponent implements OnInit {
         // console.log("moneyReceived: " + moneyReceived);
         // console.log("drinkMoney: " + drinkMoney);
         if (drinkMoney != 0) {
-            change = (+document.getElementById("change").innerHTML.replace('€', '')
+            console.log('change');
+            
+            change = (+document.getElementById("change").innerHTML.replace('€', '').replace(',','.')
                 - drinkMoney).toFixed(2) + " €";
         }
+
         if (voucher != 0) {
             voucherLeft = (voucher - +price).toFixed(2) + " €";
             // console.log("voucherLeft: " + voucherLeft);
@@ -185,7 +197,7 @@ export class CartComponent implements OnInit {
             }
             if (+voucherLeft.replace('€', '') < 0) {
                 document.getElementById("Restbetrag").innerHTML = "noch zu zahlen:"
-                change = (moneyReceived - - +voucherLeft.replace('€', '')).toFixed(2).replace('.',',') + " €";
+                change = (moneyReceived - - +voucherLeft.replace('€', '')- drinkMoney).toFixed(2).replace('.',',') + " €";
             }
         }
         else {
@@ -201,32 +213,23 @@ export class CartComponent implements OnInit {
             this.condition = true;
             document.getElementById("change").style.color = "white";
 
-            if (+change.replace('€', '') < 0) {
+            if (+change.replace('€', '').replace(',', '.') < 0) {
                 document.getElementById("change").style.color = "red";
                 this.condition = false;
             }
         } else {
             this.condition = false;
             document.getElementById("change").style.color = "red";
-
         }
-
+        
         this.change.innerHTML = change;
         this.voucherLeft.innerHTML = voucherLeft;
-
-
         this.bill.Bestellungspreis = price;
         this.bill.Gelderhalten = moneyReceived;
         this.bill.Gutscheinwert = voucher;
-        var gutscheinnummer: HTMLInputElement;
-        gutscheinnummer = <HTMLInputElement>document.getElementById("voucherNumber");
-        this.bill.Gutscheinnummer = gutscheinnummer.value;
-        // var nutzer: HTMLInputElement;
-        // nutzer = <HTMLInputElement>document.getElementById("user").value;
-        // this.bill.Nutzer = nutzer.toString();
+        this.bill.Gutscheinnummer = this.gutscheinnummer.value;
         this.bill.Rueckgeld = change;
         this.bill.Trinkgeld = drinkMoney;
-
         this.bill.Nutzer = localStorage.getItem("login");
     }
 
@@ -235,11 +238,7 @@ export class CartComponent implements OnInit {
      */
     finishOrder() {
 
-        // gather all the things to send
-        var BestellungsID;
-
         var overlay = document.getElementById('paymentOverlay');
-        var containerNew = document.getElementById('containerNew');
         var containerOld = document.getElementById('containerOld');
 
         // fade-out animation and close the paymentOverlay

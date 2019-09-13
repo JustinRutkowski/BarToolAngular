@@ -28,6 +28,7 @@ export class MainComponent {
     this.produktService.currentMessage.subscribe(message => this.message = message);
   }
 
+
   newMessage() {
     this.produktService.changeMessage(JSON.stringify(this.produkte));
   }

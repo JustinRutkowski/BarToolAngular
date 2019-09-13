@@ -24,7 +24,6 @@
     "@angular/router": "~8.0.0",
     "@ng-bootstrap/ng-bootstrap": "^5.1.0",
     "angular-bootstrap-md": "^8.2.0",
-    "angular-google-charts": "^0.1.6",
     "bootstrap": "^3.4.1",
     "bootstrap-select": "^1.13.10",
     "chart.js": "^2.8.0",
