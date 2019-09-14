@@ -317,7 +317,7 @@
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { BrowserModule } from &#x27;@angular/platform-browser&#x27;;
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from &#x27;@angular/core&#x27;;
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA, LOCALE_ID } from &#x27;@angular/core&#x27;;
 import { HttpClientModule } from &#x27;@angular/common/http&#x27;;
 import { AppComponent } from &#x27;./app.component&#x27;;
 import { FormsModule } from &#x27;@angular/forms&#x27;;
@@ -331,7 +331,6 @@ import { MatSelectModule } from &#x27;@angular/material/select&#x27;;
 import { Routes, RouterModule } from &#x27;@angular/router&#x27;;
 import { AuswertungComponent } from &#x27;./auswertung/auswertung.component&#x27;;
 import { WavesModule, TableModule, IconsModule } from &#x27;angular-bootstrap-md&#x27;;
-import { GoogleChartsModule } from &#x27;angular-google-charts&#x27;;
 import { LoginComponent } from &#x27;./login/login/login.component&#x27;;
 import { MatProgressSpinnerModule, MatRadioModule, MatSliderModule } from &#x27;@angular/material&#x27;
 import { ExcelService } from &#x27;./excel.service&#x27;;
@@ -363,12 +362,11 @@ import { AppRoutingModule } from &#x27;./app-routing/app-routing.module&#x27;;
     TableModule,
     WavesModule,
     IconsModule,
-    GoogleChartsModule,
     AppRoutingModule,
     // RouterModule.forRoot(appRoutes),
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  providers: [ExcelService],
+  providers: [{provide: LOCALE_ID, useValue: &quot;de-CH&quot;}, ExcelService],
 
   bootstrap: [AppComponent]
 })

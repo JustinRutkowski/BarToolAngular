@@ -10,11 +10,9 @@ import { MainComponent } from './main.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material';
 import { MatSelectModule } from '@angular/material/select';
-import { Routes, RouterModule } from '@angular/router';
 import { AuswertungComponent } from './auswertung/auswertung.component';
 import { WavesModule, TableModule, IconsModule } from 'angular-bootstrap-md';
 import { LoginComponent } from './login/login/login.component';
-import { MatProgressSpinnerModule, MatRadioModule, MatSliderModule } from '@angular/material'
 import { ExcelService } from './excel.service';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 // const appRoutes: Routes = [
@@ -34,7 +32,6 @@ import { AppRoutingModule } from './app-routing/app-routing.module';
     LoginComponent,
   ],
   imports: [
-    MatProgressSpinnerModule, MatRadioModule, MatSliderModule,
     BrowserModule,
     HttpClientModule,
     FormsModule,
@@ -45,6 +42,7 @@ import { AppRoutingModule } from './app-routing/app-routing.module';
     WavesModule,
     IconsModule,
     AppRoutingModule,
+
     // RouterModule.forRoot(appRoutes),
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

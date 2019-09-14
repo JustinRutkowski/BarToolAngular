@@ -139,6 +139,9 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
+                                <a href="#ngAfterViewInit">ngAfterViewInit</a>
+                            </li>
+                            <li>
                                 <a href="#prepareRoute">prepareRoute</a>
                             </li>
                         </ul>
@@ -163,6 +166,45 @@
     <h3 id="methods">
         Methods
     </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngAfterViewInit"></a>
+                    <span class="name">
+                        <b>
+                            ngAfterViewInit
+                        </b>
+                        <a href="#ngAfterViewInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngAfterViewInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="22"
+                            class="link-to-prism">src/app/app.component.ts:22</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
     <table class="table table-sm table-bordered">
         <tbody>
             <tr>
@@ -297,6 +339,10 @@ export class AppComponent {
   prepareRoute(outlet: RouterOutlet){
     return outlet &amp;&amp; outlet.activatedRouteData &amp;&amp; outlet.activatedRouteData[&#x27;animation&#x27;];
   }
+
+  ngAfterViewInit(){
+    document.getElementById(&quot;nutzer&quot;).innerHTML &#x3D; localStorage.getItem(&quot;login&quot;);
+  }
 }
 </code></pre>
     </div>
@@ -305,9 +351,9 @@ export class AppComponent {
         <pre class="line-numbers"><code class="language-html">&lt;!-- Header of the main page --&gt;
 &lt;div class&#x3D;&quot;navbar&quot;&gt;
     &lt;img class&#x3D;&quot;mobile-logo preload-me&quot;
-        src&#x3D;&quot;http://cat-stairs.de/wp-content/uploads/2015/02/cat-stairs-header_mobil.jpg&quot;
-        srcset&#x3D;&quot;http://cat-stairs.de/wp-content/uploads/2015/02/cat-stairs-header_mobil.jpg 274w&quot;
-        width&#x3D;&quot;270&quot; height&#x3D;&quot;95&quot; sizes&#x3D;&quot;274px&quot; alt&#x3D;&quot;CAT-stairs&quot;&gt;
+        src&#x3D;&quot;./assets/cat-stairs-header_mobil.jpg&quot;
+        width&#x3D;&quot;270&quot; height&#x3D;&quot;95&quot; sizes&#x3D;&quot;274px&quot; alt&#x3D;&quot;CAT-stairs&quot; role&#x3D;&quot;presentation&quot; routerLinkActive&#x3D;&quot;active&quot;
+        [routerLinkActiveOptions]&#x3D;&quot;{exact: true}&quot; routerLink&#x3D;&#x27;/monitor&#x27;&gt;
     &lt;ul class&#x3D;&quot;nav nav-tabs&quot;&gt;
         &lt;li role&#x3D;&quot;presentation&quot; routerLinkActive&#x3D;&quot;active&quot;
             [routerLinkActiveOptions]&#x3D;&quot;{exact: true}&quot;&gt; &lt;a routerLink&#x3D;&#x27;/&#x27;&gt;BarTool&lt;/a&gt;
@@ -321,6 +367,8 @@ export class AppComponent {
         &lt;/li&gt;
     &lt;/ul&gt;
 &lt;/div&gt;
+
+&lt;p style&#x3D;&quot;position: absolute; top: 5px; right: 15px&quot; id&#x3D;&quot;nutzer&quot;&gt;&lt;/p&gt;
 
 &lt;hr&gt;
 
@@ -418,7 +466,7 @@ h1 {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><!-- Header of the main page --><div class="navbar">    <img class="mobile-logo preload-me"        src="http://cat-stairs.de/wp-content/uploads/2015/02/cat-stairs-header_mobil.jpg"        srcset="http://cat-stairs.de/wp-content/uploads/2015/02/cat-stairs-header_mobil.jpg 274w"        width="270" height="95" sizes="274px" alt="CAT-stairs">    <ul class="nav nav-tabs">        <li role="presentation" routerLinkActive="active"            [routerLinkActiveOptions]="{exact: true}"> <a routerLink=\'/\'>BarTool</a>        </li>        <li role="presentation" routerLinkActive="active"> <a                routerLink=\'/verwaltung\'>Verwaltung</a></li>        <!-- Google Charts wont reload without reloading the window -->        <li role="presentation" routerLinkActive="active"> <a                routerLink=\'/auswertung\'>Auswertung</a>        </li>    </ul></div><hr><div class="content" [@routeAnimations]="prepareRoute(outlet)">    <router-outlet #outlet="outlet"></router-outlet></div></div>'
+        var COMPONENT_TEMPLATE = '<div><!-- Header of the main page --><div class="navbar">    <img class="mobile-logo preload-me"        src="./assets/cat-stairs-header_mobil.jpg"        width="270" height="95" sizes="274px" alt="CAT-stairs" role="presentation" routerLinkActive="active"        [routerLinkActiveOptions]="{exact: true}" routerLink=\'/monitor\'>    <ul class="nav nav-tabs">        <li role="presentation" routerLinkActive="active"            [routerLinkActiveOptions]="{exact: true}"> <a routerLink=\'/\'>BarTool</a>        </li>        <li role="presentation" routerLinkActive="active"> <a                routerLink=\'/verwaltung\'>Verwaltung</a></li>        <!-- Google Charts wont reload without reloading the window -->        <li role="presentation" routerLinkActive="active"> <a                routerLink=\'/auswertung\'>Auswertung</a>        </li>    </ul></div><p style="position: absolute; top: 5px; right: 15px" id="nutzer"></p><hr><div class="content" [@routeAnimations]="prepareRoute(outlet)">    <router-outlet #outlet="outlet"></router-outlet></div></div>'
     var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AuswertungComponent', 'selector': 'auswertung'},{'name': 'CartComponent', 'selector': 'cart'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MainComponent', 'selector': 'main'},{'name': 'ManagementComponent', 'selector': 'management'},{'name': 'OverlayComponent', 'selector': 'overlay'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'AppComponent'};

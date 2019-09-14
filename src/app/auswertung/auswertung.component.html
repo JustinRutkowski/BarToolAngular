@@ -2,7 +2,8 @@
   [(columnNames)]="columnNames" [width]="myWidth" [height]="myHeight">
 </google-chart> -->
 <button style="position: absolute; right: 30px;
-top: 11em; z-index: 1000;" mat-button class="btn btn-info" (click)="confirm();">Sitzung
+top: 11em; z-index: 1000;" mat-button class="btn btn-info"
+  (click)="confirm();">Sitzung
   abschließen</button>
 <div class="navbar headInfo">
   Gesamtsummen:
@@ -41,7 +42,7 @@ top: 11em; z-index: 1000;" mat-button class="btn btn-info" (click)="confirm();">
       </th>
     </tr>
   </thead>
-  <tbody class="">
+  <tbody>
     <tr *ngFor="let el of elements; let i = index">
       <th scope="row">{{el.produkt}}</th>
       <td>{{el.Groesse}}</td>
@@ -50,7 +51,13 @@ top: 11em; z-index: 1000;" mat-button class="btn btn-info" (click)="confirm();">
       <td>{{el.Umsatz}}</td>
       <td>{{el.Kosten}}</td>
       <td>{{el.Gewinn}}</td>
-
     </tr>
   </tbody>
 </table>
+
+<!-- <div style="display: block">
+    <canvas baseChart
+            [data]="myData2"
+            [labels]="columnNames2"
+            [chartType]="chartType"></canvas>
+  </div> -->

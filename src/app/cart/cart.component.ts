@@ -1,8 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Produkt } from '../produkt';
 import { ProduktService } from '../produkt.service';
-import { CommandExecutor } from 'selenium-webdriver/safari';
-import { Overlay } from '@angular/cdk/overlay';
 import { Bill } from './bill';
 import { Relation } from './relation';
 
@@ -74,13 +72,15 @@ export class CartComponent implements OnInit {
         }
     }
 
-    deleteInput(moneyReceived, drinkMoney, btnSwitch) {
+    deleteInput(voucher ,price, change ,moneyReceived, drinkMoney, btnSwitch) {
         moneyReceived.value = '';
         drinkMoney.value = '';
         this.input = 0;
-        document.getElementById("change").innerHTML = "€";
+        document.getElementById("change").innerHTML = this.change.innerHTML;
         this.drinkMoneymode = false;
         this.switchText(btnSwitch);
+
+        this.calculateChange(voucher ,price, change ,moneyReceived.value, drinkMoney.value);
     }
 
     inputMoney(value) {
@@ -149,7 +149,7 @@ export class CartComponent implements OnInit {
                 document.getElementById('cartOverview').appendChild(overviewItem);
             }
         }
-        document.getElementById("price").innerHTML = priceSum.toFixed(2).replace('.',',') + " €";
+        document.getElementById("price").innerHTML = priceSum.toFixed(2).replace('.', ',') + " €";
     }
 
     /**
@@ -162,8 +162,8 @@ export class CartComponent implements OnInit {
      */
     calculateChange(voucher, price, change, moneyReceived, drinkMoney) {
         this.gutscheinnummer = <HTMLInputElement>document.getElementById("voucherNumber");
-        
-   
+
+
         var bool = this.gutscheinnummer.disabled;
 
         if (bool == true) {
@@ -171,7 +171,8 @@ export class CartComponent implements OnInit {
             this.voucherNumber = '';
         }
 
-        var voucherLeft = this.voucherLeft.innerHTML;
+        var voucherLeft;
+        var voucherLeftShow = this.voucherLeft.innerHTML;
         price = price.replace('€', '');
         price = price.replace(',', '.');
         change = change.replace('€', '');
@@ -182,9 +183,7 @@ export class CartComponent implements OnInit {
         // console.log("moneyReceived: " + moneyReceived);
         // console.log("drinkMoney: " + drinkMoney);
         if (drinkMoney != 0) {
-            console.log('change');
-            
-            change = (+document.getElementById("change").innerHTML.replace('€', '').replace(',','.')
+            change = (+document.getElementById("change").innerHTML.replace('€', '').replace(',', '.')
                 - drinkMoney).toFixed(2) + " €";
         }
 
@@ -193,17 +192,19 @@ export class CartComponent implements OnInit {
             // console.log("voucherLeft: " + voucherLeft);
             if (+voucherLeft.replace('€', '') >= 0) {
                 document.getElementById("Restbetrag").innerHTML = "Gutscheinrest:"
-                change = "0,00 €";
+                voucherLeftShow = voucherLeft;
+                change = (moneyReceived - - +voucherLeft.replace('€', '') - drinkMoney).toFixed(2).replace('.', ',') + " €";
             }
             if (+voucherLeft.replace('€', '') < 0) {
                 document.getElementById("Restbetrag").innerHTML = "noch zu zahlen:"
-                change = (moneyReceived - - +voucherLeft.replace('€', '')- drinkMoney).toFixed(2).replace('.',',') + " €";
+                voucherLeftShow = (parseFloat(voucherLeft) * -1).toFixed(2).replace('.', ',') + " €";
+                change = (moneyReceived - - +voucherLeft.replace('€', '') - drinkMoney).toFixed(2).replace('.', ',') + " €";
             }
         }
         else {
             voucherLeft = "";
             document.getElementById("Restbetrag").innerHTML = "";
-            change = (moneyReceived - +price - drinkMoney).toFixed(2).replace('.',',') + " €";
+            change = (moneyReceived - +price - drinkMoney).toFixed(2).replace('.', ',') + " €";
         }
 
         // Control when the order can be finished
@@ -221,9 +222,9 @@ export class CartComponent implements OnInit {
             this.condition = false;
             document.getElementById("change").style.color = "red";
         }
-        
+
         this.change.innerHTML = change;
-        this.voucherLeft.innerHTML = voucherLeft;
+        this.voucherLeft.innerHTML = voucherLeftShow;
         this.bill.Bestellungspreis = price;
         this.bill.Gelderhalten = moneyReceived;
         this.bill.Gutscheinwert = voucher;
@@ -259,7 +260,10 @@ export class CartComponent implements OnInit {
         // reset the overview
         document.getElementById('cartOverview').innerHTML = "";
         this.condition = false;
-
+        this.input = 0;
+        this.gutscheinnummer = <HTMLInputElement>document.getElementById("voucherNumber");
+        this.gutscheinnummer.value = '';
+        document.getElementById("Restbetrag").innerHTML = '';
     }
 
     order(bill) {

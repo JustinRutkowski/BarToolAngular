@@ -1,17 +1,12 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ProduktService } from '../produkt.service';
 import { Produkt } from '../produkt';
-import { Observable } from 'rxjs';
 import { Bestellung } from '../bestellung';
 import { Router } from '@angular/router';
 import * as jspdf from 'jspdf';
 import html2canvas from 'html2canvas';
-import { Chart } from 'chart.js';
 import { ExcelService } from '../excel.service';
 import swal from 'sweetalert';
-
-
-declare let google: any;
 
 @Component({
   selector: 'auswertung',
@@ -30,7 +25,7 @@ export class AuswertungComponent implements OnInit {
   myData = new Array();
   myData2 = new Array();
   myData3 = new Array();
-  myType = "Bar";
+  chartType = "pie";
   myType2 = "PieChart";
   myType3 = "Table";
   myTitle = "Verkaufte Mengen nach Produkt"
@@ -52,17 +47,15 @@ export class AuswertungComponent implements OnInit {
 
   ngOnInit() {
     this.getProdukte();
+
     // google.charts.load('current', { 'packages': ['corechart', 'table'] });
 
-    setTimeout(() => {
-      for (var i = 0; i < this.myData.length; i++) {
-        
-        this.elements.push({ produkt: this.myData[i][0], Groesse: this.myData[i][1], Preis: this.myData[i][2], Menge: this.myData[i][3], Umsatz: this.myData[i][4], Kosten: this.myData[i][5], Gewinn: this.myData[i][6] });
-      }
-      // Set a callback to run when the Google Visualization API is loaded.
-      // google.charts.setOnLoadCallback(this.drawChart());
+    //   setTimeout(() => {
 
-    }, 500);
+    //     // Set a callback to run when the Google Visualization API is loaded.
+    //     // google.charts.setOnLoadCallback(this.drawChart());
+
+    //   }, 1000);
   }
 
   // drawChart() {
@@ -133,16 +126,16 @@ export class AuswertungComponent implements OnInit {
     this.produktService.getAll().subscribe(
       (res: Produkt[]) => {
         this.produkte = res;
-
         this.getVoucher();
         // get sum of selled amount per product
         for (var i = 0; i < this.produkte.length; i++) {
           this.produkte[i].Nutzer = localStorage.getItem("login");
           this.getMenge(this.produkte[i]);
         }
-        
       },
+
     );
+
   }
 
   /**
@@ -164,6 +157,11 @@ export class AuswertungComponent implements OnInit {
               this.myData2.push([(this.produkte2[i].Art + " " + this.produkte2[i].Groesse).toString().replace('.', ',') + " L", (parseFloat(produkt.Preis) * parseFloat(this.produkte2[i].Menge))]);
 
               this.myData3.push([(`${this.produkte2[i].Art} ${this.produkte2[i].Groesse} L`).replace('.', ','), parseFloat(this.produkte2[i].Menge)]);
+            }
+          }
+          for (var i = 0; i < this.myData.length; i++) {
+            if (this.elements.includes(this.elements[i]) == false) {
+              this.elements.push({ produkt: this.myData[i][0], Groesse: this.myData[i][1], Preis: this.myData[i][2], Menge: this.myData[i][3], Umsatz: this.myData[i][4], Kosten: this.myData[i][5], Gewinn: this.myData[i][6] });
             }
           }
         }

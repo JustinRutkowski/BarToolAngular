@@ -45,7 +45,7 @@ switch ($cmd) {
         $Nutzer = mysqli_real_escape_string($con, $request->data->Nutzer);
 
         $stmt = $con->prepare(
-            "SELECT Sum(Menge) as Menge from produktebestellung WHERE ProdukteID = (SELECT produkteID from produkte WHERE Art = ? and Groesse = ?) and Nutzer = ?"
+            "SELECT Sum(Menge) as Menge from zuordnungproduktebestellung WHERE ProdukteID = (SELECT produkteID from produkte WHERE Art = ? and Groesse = ?) and Nutzer = ?"
         );
 
         $stmt->bind_param("sss", $produktName, $size, $Nutzer);
@@ -172,7 +172,7 @@ switch ($cmd) {
         $Nutzer = mysqli_real_escape_string($con, $request->data->Nutzer);
 
         // prepare sql and bind parameters
-        $stmt = $conPDO->prepare("INSERT INTO produktebestellung (BestellungsID, ProdukteID, Menge, Nutzer) values (:BestellungsID, :ProdukteID, :Menge, :Nutzer)");
+        $stmt = $conPDO->prepare("INSERT INTO zuordnungproduktebestellung (BestellungsID, ProdukteID, Menge, Nutzer) values (:BestellungsID, :ProdukteID, :Menge, :Nutzer)");
         $stmt->execute(array(
             ':BestellungsID' => $BestellungsID,
             ':ProdukteID' => $ProdukteID,
@@ -188,7 +188,7 @@ switch ($cmd) {
 
         $stmt = $conPDO->prepare("DELETE FROM bestellungen where Nutzer = :Nutzer");
 
-        $stmt2 = $conPDO->prepare("DELETE FROM produktebestellung where Nutzer = :Nutzer");
+        $stmt2 = $conPDO->prepare("DELETE FROM zuordnungproduktebestellung where Nutzer = :Nutzer");
 
         $stmt->execute(array(
             ':Nutzer' => $login,

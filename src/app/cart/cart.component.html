@@ -111,11 +111,11 @@
                     </div>
                     <input #moneyReceived inputType="numeric" type="number"
                         step="0.01" min="0" oninput="validity.valid||(value='');"
-                        id="moneyReceived" placeholder="Eingabe Gelderhalten"
+                        id="moneyReceived" placeholder="Geld erhalten"
                         (keyup)="calculateChange(voucher.value,price.innerHTML, change.innerHTML,moneyReceived.value, drinkMoney.value)">
                 </div>
                 <button type="button"
-                    (click)="deleteInput(moneyReceived, drinkMoney, btnSwitch)"
+                    (click)="deleteInput(voucher.value,price.innerHTML, change.innerHTML,moneyReceived, drinkMoney, btnSwitch)"
                     class="btn-custom"
                     style="margin-right: 0.1em; color:white">Eingabe löschen</button>
                 <button type="button" #btnSwitch

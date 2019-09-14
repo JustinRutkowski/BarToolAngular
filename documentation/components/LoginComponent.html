@@ -362,8 +362,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="33"
-                            class="link-to-prism">src/app/login/login/login.component.ts:33</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="34"
+                            class="link-to-prism">src/app/login/login/login.component.ts:34</a></div>
                 </td>
             </tr>
 
@@ -462,7 +462,7 @@
 export class LoginComponent implements OnInit {
 
   log;
-  
+
   constructor() { }
 
   ngOnInit() {
@@ -478,6 +478,7 @@ export class LoginComponent implements OnInit {
   _login(input) {
     console.log(input);
     localStorage.setItem(&quot;login&quot;, input);
+    document.getElementById(&quot;nutzer&quot;).innerHTML &#x3D; localStorage.getItem(&quot;login&quot;);
   }
 
   /**
@@ -507,13 +508,18 @@ export class LoginComponent implements OnInit {
     &lt;div class&#x3D;&quot;form-group&quot;&gt;
       &lt;form #f&#x3D;&quot;ngForm&quot; name&#x3D;&quot;theForm&quot;&gt;
         &lt;input [(ngModel)]&#x3D;&quot;log&quot; #LogModel&#x3D;&quot;ngModel&quot; name&#x3D;&quot;model&quot; #loginInput
-          id&#x3D;&quot;logon&quot; type&#x3D;&quot;text&quot; class&#x3D;&quot;form-control&quot; placeholder&#x3D;&quot;Sitzungsname&quot;
+          id&#x3D;&quot;logon&quot; type&#x3D;&quot;text&quot; class&#x3D;&quot;form-control&quot; placeholder&#x3D;&quot;Nutzer&quot;
           pattern&#x3D;&quot;^[a-zA-Z1-9]+$&quot; required&gt;
         &lt;button [disabled]&#x3D;&quot;f.invalid&quot; class&#x3D;&quot;btn btn-secondary&quot;
           (click)&#x3D;&quot;_login(loginInput.value); off(login)&quot;&gt;login&lt;/button&gt;
       &lt;/form&gt;
     &lt;/div&gt;
-    &lt;!-- show only the sizes for the coresponding product  --&gt;
+    &lt;p style&#x3D;&quot;color: white; position: absolute;
+    bottom: 0;
+    left: 15px;&quot;&gt;Version 1.0&lt;/p&gt;
+    &lt;p style&#x3D;&quot;color: white; position: absolute;
+    bottom: 0;
+    right: 15px;&quot;&gt;&amp;#169; 2019 Justin Rutkowski All Rights Reserved&lt;/p&gt;
   &lt;/div&gt;
 &lt;/div&gt;</code></pre>
     </div>
@@ -565,7 +571,7 @@ export class LoginComponent implements OnInit {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><!-- Product Overlay --><div #login id="login" class="overlay fade-in">  <!-- the currently displayed product -->  <h1 class="title">BarTool Login</h1>  <!-- Button to close the overlay -->  <!-- Overlay content -->  <div class="overlay-content">    <div class="form-group">      <form #f="ngForm" name="theForm">        <input [(ngModel)]="log" #LogModel="ngModel" name="model" #loginInput          id="logon" type="text" class="form-control" placeholder="Sitzungsname"          pattern="^[a-zA-Z1-9]+$" required>        <button [disabled]="f.invalid" class="btn btn-secondary"          (click)="_login(loginInput.value); off(login)">login</button>      </form>    </div>    <!-- show only the sizes for the coresponding product  -->  </div></div></div>'
+        var COMPONENT_TEMPLATE = '<div><!-- Product Overlay --><div #login id="login" class="overlay fade-in">  <!-- the currently displayed product -->  <h1 class="title">BarTool Login</h1>  <!-- Button to close the overlay -->  <!-- Overlay content -->  <div class="overlay-content">    <div class="form-group">      <form #f="ngForm" name="theForm">        <input [(ngModel)]="log" #LogModel="ngModel" name="model" #loginInput          id="logon" type="text" class="form-control" placeholder="Nutzer"          pattern="^[a-zA-Z1-9]+$" required>        <button [disabled]="f.invalid" class="btn btn-secondary"          (click)="_login(loginInput.value); off(login)">login</button>      </form>    </div>    <p style="color: white; position: absolute;    bottom: 0;    left: 15px;">Version 1.0</p>    <p style="color: white; position: absolute;    bottom: 0;    right: 15px;">&#169; 2019 Justin Rutkowski All Rights Reserved</p>  </div></div></div>'
     var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AuswertungComponent', 'selector': 'auswertung'},{'name': 'CartComponent', 'selector': 'cart'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MainComponent', 'selector': 'main'},{'name': 'ManagementComponent', 'selector': 'management'},{'name': 'OverlayComponent', 'selector': 'overlay'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'LoginComponent'};
